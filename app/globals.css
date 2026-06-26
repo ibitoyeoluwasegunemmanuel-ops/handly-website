@@ -120,9 +120,14 @@ p {
   padding-right: var(--container-padding);
 }
 
+section {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .section {
-  padding-top: var(--spacing-4xl);
-  padding-bottom: var(--spacing-4xl);
+  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .section-light {

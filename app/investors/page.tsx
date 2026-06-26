@@ -1,331 +1,206 @@
 import { Metadata } from 'next';
-import { ArrowRight, TrendingUp, Globe, Users, Zap, Shield, Target } from 'lucide-react';
-import Link from 'next/link';
 import Button from '@/components/Button';
-import Card from '@/components/Card';
-import Section from '@/components/Section';
-import InvestorMetrics from '@/components/InvestorMetrics';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Investors - HANDLY | Funding & Growth Opportunities',
-  description: 'Discover why HANDLY is the most promising services marketplace in Africa. Real traction, clear path to profitability, and massive market opportunity.',
+  description: 'Join us in transforming work across Africa. Explore investment opportunities with HANDLY, the fastest-growing marketplace for skilled professionals.',
 };
 
 export default function InvestorsPage() {
-  const advantages = [
-    {
-      icon: '🚀',
-      title: 'Proven Traction',
-      description: '50K+ users, 15K active workers, ₦2B+ paid to workers in first 12 months',
-    },
-    {
-      icon: '🌍',
-      title: 'African-First',
-      description: 'Built for African markets with local payment methods and offline-first mobile',
-    },
-    {
-      icon: '💰',
-      title: 'Unit Economics',
-      description: '300:1 LTV:CAC ratio with path to 40-50% margins at scale',
-    },
-    {
-      icon: '📈',
-      title: 'Rapid Growth',
-      description: '45% month-over-month growth with no paid acquisition',
-    },
-    {
-      icon: '🤝',
-      title: 'Network Effects',
-      description: 'More workers = better matching = more customers = exponential growth',
-    },
-    {
-      icon: '🎯',
-      title: 'Massive TAM',
-      description: '500M workers across Africa with fragmented offline markets',
-    },
-  ];
-
-  const keyMetrics = [
-    { label: 'User Growth', value: '45%', sublabel: 'Month-over-Month' },
-    { label: 'Worker Growth', value: '60%', sublabel: 'Month-over-Month' },
-    { label: 'Revenue Growth', value: '200%', sublabel: 'Year-over-Year' },
-    { label: 'LTV:CAC Ratio', value: '300:1', sublabel: 'Exceptional Economics' },
-    { label: 'Geographic Coverage', value: '15', sublabel: 'Countries' },
-    { label: 'Time to Profitability', value: '18mo', sublabel: 'At Current Trajectory' },
-  ];
-
-  const opportunities = [
-    {
-      title: 'Series A: $3-5M',
-      timeline: 'Q1 2025',
-      use: [
-        'Product engineering (25%)',
-        'Market expansion (35%)',
-        'Go-to-market & partnerships (25%)',
-        'Operations & team (15%)',
-      ],
-    },
-    {
-      title: 'Series B: $10-15M',
-      timeline: 'Q4 2025',
-      use: [
-        'Pan-African expansion (40%)',
-        'Multi-language support (20%)',
-        'Enterprise platform (20%)',
-        'Operations & team (20%)',
-      ],
-    },
-  ];
-
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
+    <div className="bg-white">
+      {/* Hero */}
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-handly-700 via-handly-800 to-handly-900">
+        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15" />
+        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10" style={{ animationDelay: '-2s' }} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <span className="inline-block px-4 py-2 bg-white bg-opacity-10 backdrop-blur-md text-white rounded-full text-sm font-semibold mb-6">For Investors</span>
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
-            The Future of Work in Africa
-          </h1>
-          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            HANDLY is building the operating system connecting workers, customers, and businesses across Africa.
-            Real traction. Clear path to profitability. Massive market opportunity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+          <div className="max-w-4xl">
+            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter mb-8">
+              Africa's Marketplace for Talent
+            </h1>
+            <p className="text-2xl md:text-3xl text-white/80 leading-relaxed mb-12 font-light max-w-2xl">
+              50K+ users. ₦480K/month revenue. Growing 45% month-over-month. This is a $100B opportunity.
+            </p>
             <Button
-              href="/traction"
+              href="#contact"
               variant="primary"
               size="lg"
               icon={<ArrowRight size={20} />}
               iconPosition="right"
-              className="!bg-white !text-handly-600 hover:!shadow-2xl"
             >
-              View Traction Dashboard
-            </Button>
-            <Button
-              href="/company"
-              variant="outline"
-              size="lg"
-              icon={<ArrowRight size={20} />}
-              iconPosition="right"
-              className="!border-white !text-white hover:!bg-white hover:!bg-opacity-10"
-            >
-              Company Overview
+              Schedule a Meeting
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Quick Metrics */}
-      <section className="py-16 bg-white">
+      {/* Key Metrics */}
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {keyMetrics.map((metric, index) => (
-              <div key={index} className="text-center">
-                <p className="text-3xl md:text-4xl font-bold text-handly-600 mb-1">
-                  {metric.value}
-                </p>
-                <p className="text-sm font-semibold text-gray-900">{metric.label}</p>
-                <p className="text-xs text-gray-600">{metric.sublabel}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+            {[
+              { label: 'Active Users', value: '50K+', context: 'year-over-year growth' },
+              { label: 'Monthly Revenue', value: '₦480K', context: '45% month-over-month' },
+              { label: 'Success Rate', value: '95%', context: 'customer satisfaction' },
+              { label: 'Countries', value: '15+', context: 'pan-African presence' },
+            ].map((metric, idx) => (
+              <div key={idx}>
+                <p className="text-5xl font-black text-handly-700 mb-3">{metric.value}</p>
+                <p className="font-semibold text-gray-900 mb-2">{metric.label}</p>
+                <p className="text-sm text-gray-600">{metric.context}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Investor Metrics */}
-      <InvestorMetrics />
+      {/* The Opportunity */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl">
+            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-12">The Opportunity</h2>
 
-      {/* Why Invest */}
-      <Section light>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Investment Thesis</span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Invest in HANDLY?</h2>
-        </div>
+            <div className="space-y-12">
+              <div>
+                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Total Addressable Market</p>
+                <p className="text-5xl font-black text-gray-900">$100B</p>
+                <p className="text-lg text-gray-600 mt-4">Services economy across Africa growing at 15%+ annually</p>
+              </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {advantages.map((advantage, index) => (
-            <Card key={index} variant="default" hover="lift">
-              <div className="text-4xl mb-4">{advantage.icon}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{advantage.title}</h3>
-              <p className="text-gray-600">{advantage.description}</p>
-            </Card>
-          ))}
-        </div>
-      </Section>
+              <div>
+                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Serviceable Market</p>
+                <p className="text-5xl font-black text-gray-900">$5B</p>
+                <p className="text-lg text-gray-600 mt-4">Platform-enabled services in our target geographies and verticals</p>
+              </div>
 
-      {/* Market Opportunity */}
-      <Section light>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Market</span>
-            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Massive Market Opportunity</h2>
-
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Total Addressable Market</h3>
-                  <p className="text-4xl font-bold text-handly-600">$100B+</p>
-                  <p className="text-gray-600 mt-2">Services marketplace across Africa</p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Serviceable Addressable Market</h3>
-                  <p className="text-4xl font-bold text-handly-600">$5B</p>
-                  <p className="text-gray-600 mt-2">Professional services in top 10 countries</p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">Our Target (Year 5)</h3>
-                  <p className="text-4xl font-bold text-handly-600">1% Market Share</p>
-                  <p className="text-gray-600 mt-2">$50M+ revenue opportunity</p>
-                </div>
+              <div>
+                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Serviceable Obtainable Market (1% target)</p>
+                <p className="text-5xl font-black text-gray-900">$50M</p>
+                <p className="text-lg text-gray-600 mt-4">Conservative 5-year revenue target at 1% market penetration</p>
               </div>
             </div>
-
-            <Card variant="default" hover="lift">
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Market Drivers</h3>
-              <ul className="space-y-4">
-                {[
-                  'Rising mobile penetration (45%+ smartphone adoption)',
-                  'Growing gig economy (150M+ informal workers)',
-                  'Digital payment adoption (Paystack, Flutterwave)',
-                  'Government mandate for formal work',
-                  'Youth unemployment driving demand for flexible work',
-                  'Cross-border worker mobility increasing',
-                  'Post-pandemic remote work normalization',
-                  'Enterprise efficiency focus on outsourcing',
-                ].map((driver, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Zap size={20} className="text-handly-600 flex-shrink-0 mt-1" />
-                    <span className="text-gray-700">{driver}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-        </div>
-      </Section>
-
-      {/* Funding Opportunities */}
-      <Section>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Funding</span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Funding Opportunities</h2>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {opportunities.map((opportunity, index) => (
-            <Card key={index} variant="gradient" hover="lift">
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 className="text-2xl font-bold text-gray-900">{opportunity.title}</h3>
-                    <p className="text-gray-600 mt-1">{opportunity.timeline}</p>
-                  </div>
-                  <TrendingUp size={32} className="text-handly-600" />
-                </div>
-
-                <h4 className="text-sm font-semibold text-gray-900 mb-4 uppercase">Use of Funds</h4>
-                <div className="space-y-3">
-                  {opportunity.use.map((item, i) => (
-                    <div key={i}>
-                      <p className="text-gray-700 text-sm mb-1">{item}</p>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className="bg-handly-600 h-2 rounded-full"
-                          style={{
-                            width: item.includes('25%')
-                              ? '25%'
-                              : item.includes('35%')
-                              ? '35%'
-                              : item.includes('15%')
-                              ? '15%'
-                              : item.includes('40%')
-                              ? '40%'
-                              : item.includes('20%')
-                              ? '20%'
-                              : '20%',
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-            </Card>
-          ))}
-        </div>
-
-        <div className="relative py-12 overflow-hidden rounded-xl" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-            <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          </div>
-          <div className="text-center relative z-10">
-            <h3 className="text-2xl font-bold text-white mb-2">Interested in investing?</h3>
-            <p className="mb-6 text-white text-opacity-90">Let's discuss how HANDLY can deliver exceptional returns</p>
-            <Button
-              href="/contact?type=investor"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={20} />}
-              iconPosition="right"
-              className="!bg-white !text-handly-600 hover:!shadow-2xl"
-            >
-              Schedule a Meeting
-            </Button>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Navigation to Other Pages */}
-      <Section light>
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900">Explore More</h2>
+      {/* Why HANDLY */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-16">Why HANDLY</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {[
+              {
+                title: 'First-Mover Advantage',
+                desc: 'No mature competitor in Africa doing this at scale. We\'re building the standard.'
+              },
+              {
+                title: 'Network Effects',
+                desc: 'More workers attract more customers. More customers attract more workers. Exponential growth.'
+              },
+              {
+                title: 'Built for Africa',
+                desc: 'Designed for emerging markets. Local payment methods, trust-first approach, African team.'
+              },
+              {
+                title: 'Unit Economics',
+                desc: '$0.50 CAC, $150 LTV, 300:1 ratio. Profitable at scale. Clear path to profitability in 18 months.'
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="space-y-4 border-l-4 border-handly-600 pl-6">
+                <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
+                <p className="text-lg text-gray-600 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <Link href="/company" className="group">
-            <Card variant="default" hover="lift">
-              <div className="text-3xl mb-3">🏢</div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
-                Company Overview
-              </h3>
-              <p className="text-gray-600 text-sm mt-2">Vision, mission, and why HANDLY exists</p>
-              <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
-                Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Card>
-          </Link>
+      {/* Investment Terms */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-16">Investment Opportunities</h2>
 
-          <Link href="/roadmap" className="group">
-            <Card variant="default" hover="lift">
-              <div className="text-3xl mb-3">🗺️</div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
-                Product Roadmap
-              </h3>
-              <p className="text-gray-600 text-sm mt-2">Where we're heading and how we'll get there</p>
-              <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
-                View roadmap <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            {[
+              {
+                title: 'Series A',
+                amount: '$2M',
+                use: [
+                  'Product development & mobile app improvements',
+                  'Sales & marketing (user acquisition)',
+                  'Operations & customer support scaling',
+                  'Geographic expansion (3+ new countries)'
+                ]
+              },
+              {
+                title: 'Series B',
+                amount: '$10M',
+                use: [
+                  'Enterprise SaaS platform for organizations',
+                  'Regional expansion (pan-African scale)',
+                  'AI-powered matching & recommendation engine',
+                  'Strategic partnerships & integrations'
+                ]
+              },
+            ].map((round, idx) => (
+              <div key={idx} className="space-y-8 border-t-4 border-handly-600 pt-8">
+                <div>
+                  <p className="text-sm uppercase tracking-widest font-semibold text-handly-700 mb-2">Funding Round</p>
+                  <h3 className="text-4xl font-black text-gray-900">{round.title}</h3>
+                  <p className="text-3xl font-black text-gray-900 mt-2">{round.amount}</p>
+                </div>
+                <div>
+                  <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-4">Use of Funds</p>
+                  <ul className="space-y-3">
+                    {round.use.map((item, i) => (
+                      <li key={i} className="flex gap-3">
+                        <span className="text-handly-600 font-bold">→</span>
+                        <span className="text-gray-600">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </Card>
-          </Link>
-
-          <Link href="/traction" className="group">
-            <Card variant="default" hover="lift">
-              <div className="text-3xl mb-3">📊</div>
-              <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
-                Traction Dashboard
-              </h3>
-              <p className="text-gray-600 text-sm mt-2">Real-time metrics and platform analytics</p>
-              <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
-                View metrics <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Card>
-          </Link>
+            ))}
+          </div>
         </div>
-      </Section>
+      </section>
+
+      {/* CTA */}
+      <section className="py-24 bg-handly-700 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8" id="contact">
+          <h2 className="text-5xl md:text-6xl font-black">Let's Build the Future Together</h2>
+          <p className="text-xl text-white/90">Join us in transforming how work happens across Africa</p>
+          <Button
+            href="/contact"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={20} />}
+            iconPosition="right"
+            className="mx-auto"
+          >
+            Schedule a Call
+          </Button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400">© 2026 HANDLY. All rights reserved.</p>
+            <div className="flex gap-6 text-gray-400 mt-4 md:mt-0">
+              <a href="/" className="hover:text-white">Home</a>
+              <a href="/about" className="hover:text-white">About</a>
+              <a href="/company" className="hover:text-white">Company</a>
+              <a href="/traction" className="hover:text-white">Traction</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
