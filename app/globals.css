@@ -1,5 +1,18 @@
 @import "tailwindcss";
 
+@theme {
+  --color-handly-50: #E6F4EF;
+  --color-handly-100: #CCEADF;
+  --color-handly-200: #99D5BF;
+  --color-handly-300: #66BF9F;
+  --color-handly-400: #33AA7F;
+  --color-handly-500: #158F72;
+  --color-handly-600: #0E6B55;
+  --color-handly-700: #0A5444;
+  --color-handly-800: #073D33;
+  --color-handly-900: #052622;
+}
+
 /* HANDLY Design System */
 :root {
   /* Brand Colors */
