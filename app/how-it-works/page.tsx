@@ -4,14 +4,14 @@ import { ArrowDown } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'How HANDLY Works - Step-by-Step Guide',
-  description: 'Learn how to get started with HANDLY as a freelancer or business.',
+  description: 'Learn how to get started with HANDLY as a customer, worker, or business.',
 };
 
 export default function HowItWorksPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">How It Works</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -62,7 +62,7 @@ export default function HowItWorksPage() {
                 ].map((item, index) => (
                   <div key={index} className="flex gap-8 items-start">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-blue-100 text-2xl">
+                      <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-handly-100 text-2xl">
                         {item.icon}
                       </div>
                     </div>
@@ -73,7 +73,7 @@ export default function HowItWorksPage() {
                       <p className="text-gray-600 text-lg">{item.description}</p>
                     </div>
                     {index < 4 && (
-                      <div className="hidden md:flex items-center text-blue-600 text-2xl">
+                      <div className="hidden md:flex items-center text-handly-600 text-2xl">
                         <ArrowDown />
                       </div>
                     )}
@@ -82,9 +82,9 @@ export default function HowItWorksPage() {
               </div>
             </div>
 
-            {/* For Freelancers */}
+            {/* For Workers & Service Providers */}
             <div className="border-t-2 pt-20">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">For Freelancers & Workers</h2>
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">For Workers, Artisans & Service Providers</h2>
               <div className="space-y-8">
                 {[
                   {
@@ -120,7 +120,7 @@ export default function HowItWorksPage() {
                 ].map((item, index) => (
                   <div key={index} className="flex gap-8 items-start">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-green-100 text-2xl">
+                      <div className="flex items-center justify-center h-16 w-16 rounded-lg bg-handly-100 text-2xl">
                         {item.icon}
                       </div>
                     </div>
@@ -131,7 +131,7 @@ export default function HowItWorksPage() {
                       <p className="text-gray-600 text-lg">{item.description}</p>
                     </div>
                     {index < 4 && (
-                      <div className="hidden md:flex items-center text-green-600 text-2xl">
+                      <div className="hidden md:flex items-center text-handly-600 text-2xl">
                         <ArrowDown />
                       </div>
                     )}
@@ -176,13 +176,13 @@ export default function HowItWorksPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-gradient-to-r from-handly-600 to-handly-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-lg mb-8 opacity-90">Join thousands of freelancers and businesses on HANDLY</p>
+          <p className="text-lg mb-8 opacity-90">Join thousands of customers, workers, and businesses on HANDLY</p>
           <Link
             href="/waitlist"
-            className="inline-block px-8 py-3 bg-white text-blue-600 rounded-lg hover:bg-gray-100 transition-colors font-medium"
+            className="inline-block px-8 py-3 bg-white text-handly-600 rounded-lg hover:bg-gray-100 transition-colors font-medium"
           >
             Join Waitlist Now
           </Link>
