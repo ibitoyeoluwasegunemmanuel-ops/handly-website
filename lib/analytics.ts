@@ -95,6 +95,16 @@ export function trackAppDownload(platform: 'ios' | 'android' | 'web') {
   });
 }
 
+export function trackDownloadClick(platform: 'app_store' | 'google_play' | 'web') {
+  const platformMap = {
+    app_store: 'ios' as const,
+    google_play: 'android' as const,
+    web: 'web' as const,
+  };
+
+  trackAppDownload(platformMap[platform]);
+}
+
 export function trackContactForm(email: string, subject?: string) {
   trackEvent(EventCategory.CONVERSION, EventName.CONTACT_FORM, {
     email,
@@ -133,4 +143,59 @@ export function trackUserTypeSelect(userType: string) {
   trackEvent(EventCategory.ENGAGEMENT, EventName.USER_TYPE_SELECT, {
     user_type: userType,
   });
+}
+
+/**
+ * Data fetching functions for analytics dashboard
+ */
+
+export async function getDailySignups(
+  startDate: Date,
+  endDate: Date
+): Promise<Array<{ date: string; signups: number }>> {
+  // This would fetch from database in production
+  // For now, return empty array (dashboard will show no data)
+  return [];
+}
+
+export async function getDownloadStats(
+  startDate: Date,
+  endDate: Date
+): Promise<{
+  total: number;
+  app_store: number;
+  google_play: number;
+  conversion_rate: string;
+}> {
+  // This would fetch from database/analytics in production
+  return {
+    total: 0,
+    app_store: 0,
+    google_play: 0,
+    conversion_rate: '0',
+  };
+}
+
+export async function getAnalyticsMetrics(
+  startDate: Date,
+  endDate: Date
+): Promise<{
+  total_page_views: number;
+  unique_visitors: number;
+  device_breakdown: {
+    desktop: number;
+    mobile: number;
+    tablet: number;
+  };
+}> {
+  // This would fetch from Google Analytics in production
+  return {
+    total_page_views: 0,
+    unique_visitors: 0,
+    device_breakdown: {
+      desktop: 0,
+      mobile: 0,
+      tablet: 0,
+    },
+  };
 }

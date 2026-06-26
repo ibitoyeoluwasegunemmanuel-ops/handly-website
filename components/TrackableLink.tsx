@@ -21,7 +21,7 @@ export default function TrackableLink({
   const handleClick = () => {
     trackEvent(EventCategory.NAVIGATION, EventName.LINK_CLICK, {
       href,
-      label: trackingLabel || children?.toString(),
+      label: trackingLabel || children?.toString() || 'unknown-link',
     });
 
     if (onClick) {

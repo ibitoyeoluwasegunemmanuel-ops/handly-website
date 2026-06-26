@@ -15,7 +15,7 @@ export default function TrackableButton({
   ...props
 }: TrackableButtonProps) {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    trackButtonClick(trackingLabel || children?.toString());
+    trackButtonClick(trackingLabel || children?.toString() || 'unknown-button');
 
     if (onClick) {
       onClick(e);
