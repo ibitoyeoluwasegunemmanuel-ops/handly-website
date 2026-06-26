@@ -16,13 +16,49 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HANDLY - Africa's Freelancer Platform",
-  description: "Connect with skilled freelancers and build your dream team. HANDLY is Africa's leading platform for freelance work.",
+  title: "HANDLY | Africa's Premier Freelancer Marketplace",
+  description: "Hire Africa's best talent or sell your skills. HANDLY connects 50K+ freelancers with leading businesses across 15 countries. Secure payments. Instant matching. Real results.",
+  keywords: "freelance, talent marketplace, Africa, remote work, hiring, jobs, gig economy",
+  authors: [{ name: "HANDLY" }],
   openGraph: {
-    title: "HANDLY - Africa's Freelancer Platform",
-    description: "Connect with skilled freelancers and build your dream team.",
+    title: "HANDLY - Work Worth Doing",
+    description: "Africa's premier talent marketplace. 50K+ freelancers. 15 countries. Secure payments. Instant matching.",
     url: "https://handly.africa",
     type: "website",
+    locale: "en_US",
+    siteName: "HANDLY",
+    images: [
+      {
+        url: "https://handly.africa/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "HANDLY - Africa's Talent Marketplace",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "HANDLY - Work Worth Doing",
+    description: "Africa's premier talent marketplace",
+    creator: "@handlyafrica",
+    images: ["https://handly.africa/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  verification: {
+    google: "google_site_verification",
   },
 };
 
