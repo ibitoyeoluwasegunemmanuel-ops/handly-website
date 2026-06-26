@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import Button from './Button';
 
 interface HeroProps {
   badge?: string;
@@ -22,63 +23,90 @@ export default function Hero({
   rightContent,
 }: HeroProps) {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-      {/* Decorative blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-handly-600 via-handly-700 to-handly-800" />
+
+      {/* Animated gradient blobs - premium effect */}
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" />
+      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 right-0 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10" />
+
+      {/* Overlay for contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/5" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Column */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Premium Typography */}
           <div>
             {badge && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white bg-opacity-10 rounded-full border border-white border-opacity-20 mb-6 hover:shadow-lg transition-shadow">
-                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white bg-opacity-15 backdrop-blur-md rounded-full border border-white border-opacity-30 mb-8 hover:bg-opacity-20 transition-all duration-300 group">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse group-hover:scale-125 transition-transform" />
                 <span className="text-white text-sm font-semibold">{badge}</span>
               </div>
             )}
 
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+            {/* Premium Heading - Bold, Clear, Impactful */}
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 leading-tight tracking-tight">
               {title}
             </h1>
 
-            <p className="text-xl text-white opacity-90 mb-8 leading-relaxed max-w-xl">
+            {/* Subtitle - Optimized contrast and readability */}
+            <p className="text-lg md:text-xl text-white text-opacity-95 mb-12 leading-relaxed max-w-xl font-medium">
               {subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            {/* CTA Buttons - Premium styling */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-16">
               {ctaPrimary && (
-                <Link
+                <Button
                   href={ctaPrimary.href}
-                  className="px-8 py-4 bg-white text-handly-600 rounded-xl hover:shadow-2xl transition-all duration-300 font-semibold flex items-center justify-center gap-2 group"
+                  variant="primary"
+                  size="lg"
+                  icon={<ArrowRight size={22} />}
+                  iconPosition="right"
+                  className="group"
                 >
-                  {ctaPrimary.text} <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
+                  <span>{ctaPrimary.text}</span>
+                </Button>
               )}
               {ctaSecondary && (
-                <Link
+                <Button
                   href={ctaSecondary.href}
-                  className="px-8 py-4 border-2 border-white text-white rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 font-semibold"
+                  variant="outline"
+                  size="lg"
+                  className="!bg-white !bg-opacity-10 !border-white !text-white hover:!bg-opacity-20 hover:!shadow-xl"
                 >
                   {ctaSecondary.text}
-                </Link>
+                </Button>
               )}
             </div>
 
+            {/* Stats - Premium presentation */}
             {stats && (
-              <div className="flex items-center gap-8">
+              <div className="flex flex-wrap items-center gap-12 pt-8 border-t border-white border-opacity-20">
                 {stats.map((stat, index) => (
-                  <div key={index}>
-                    <p className="text-sm text-white opacity-75 mb-1">{stat.label}</p>
-                    <p className="font-semibold text-white text-lg">{stat.value}</p>
+                  <div key={index} className="group">
+                    <p className="text-sm text-white text-opacity-80 mb-2 font-medium uppercase tracking-wider">{stat.label}</p>
+                    <p className="text-3xl font-black text-white group-hover:text-opacity-80 transition-all">{stat.value}</p>
                   </div>
                 ))}
               </div>
             )}
           </div>
 
-          {/* Right Column */}
-          {rightContent && <div className="hidden lg:block">{rightContent}</div>}
+          {/* Right Column - Visual Content */}
+          {rightContent && (
+            <div className="hidden lg:flex items-center justify-center">
+              <div className="relative">
+                {/* Premium card container with glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white to-blue-50 rounded-2xl blur-xl opacity-20" />
+                <div className="relative">
+                  {rightContent}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
