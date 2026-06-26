@@ -18,6 +18,7 @@ export default function Home() {
 
   if (!mounted) return null;
 
+
   return (
     <div className="overflow-hidden">
       {/* ===== SECTION 1: PREMIUM HERO ===== */}
