@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Github, Linkedin, Twitter, Mail, MessageCircle } from 'lucide-react';
+import { Share2, X, Mail, Send } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -118,7 +118,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition"
                 aria-label="Twitter"
               >
-                <Twitter size={20} />
+                <X size={20} />
               </a>
               <a
                 href={process.env.NEXT_PUBLIC_LINKEDIN_LINK}
@@ -127,7 +127,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition"
                 aria-label="LinkedIn"
               >
-                <Linkedin size={20} />
+                <Share2 size={20} />
               </a>
               <a
                 href={`mailto:hello@handly.africa`}
@@ -143,7 +143,7 @@ export default function Footer() {
                 className="text-gray-400 hover:text-white transition"
                 aria-label="Telegram"
               >
-                <MessageCircle size={20} />
+                <Send size={20} />
               </a>
             </div>
           </div>

@@ -1,9 +1,11 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || '';
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '';
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-export const supabase = createClient(supabaseUrl, supabaseKey);
+export const supabase = supabaseUrl && supabaseKey
+  ? createClient(supabaseUrl, supabaseKey)
+  : null;
 
 export async function addToWaitlist(data: {
   email: string;
@@ -13,6 +15,8 @@ export async function addToWaitlist(data: {
   city: string;
   referredBy?: string;
 }) {
+  if (!supabase) throw new Error('Supabase not configured');
+
   const { data: result, error } = await supabase
     .from('waitlist')
     .insert([
@@ -33,6 +37,8 @@ export async function addToWaitlist(data: {
 }
 
 export async function getWaitlistStats() {
+  if (!supabase) return { total: 0, customers: 0, workers: 0, businesses: 0 };
+
   const { count: total } = await supabase
     .from('waitlist')
     .select('*', { count: 'exact', head: true });
@@ -61,6 +67,8 @@ export async function getWaitlistStats() {
 }
 
 export async function getTopStates() {
+  if (!supabase) return [];
+
   const { data } = await supabase
     .from('waitlist')
     .select('state')
@@ -80,6 +88,8 @@ export async function getTopStates() {
 }
 
 export async function checkEmailExists(email: string) {
+  if (!supabase) return false;
+
   const { data } = await supabase
     .from('waitlist')
     .select('id')
