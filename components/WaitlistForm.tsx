@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { addToWaitlist } from '@/lib/supabase';
+import { addToWaitlist, getOrCreateUser } from '@/lib/supabase';
 import { ArrowRight, Loader } from 'lucide-react';
 
 const NIGERIAN_STATES = [
@@ -64,6 +64,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
 
     setLoading(true);
     try {
+      // Add to waitlist
       await addToWaitlist({
         email: formData.email,
         phone: formData.phone,
@@ -71,6 +72,21 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
         state: formData.state,
         city: formData.city,
         referredBy: formData.referralCode || undefined,
+      });
+
+      // Create user record for authentication integration
+      const roleMap = {
+        customer: 'customer' as const,
+        worker: 'worker' as const,
+        business: 'business' as const,
+      };
+
+      await getOrCreateUser({
+        email: formData.email,
+        phone: formData.phone,
+        role: roleMap[formData.type as keyof typeof roleMap],
+        state: formData.state,
+        isFromApp: false,
       });
 
       setSuccess(true);

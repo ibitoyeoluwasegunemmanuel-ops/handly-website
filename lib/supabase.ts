@@ -7,6 +7,10 @@ export const supabase = supabaseUrl && supabaseKey
   ? createClient(supabaseUrl, supabaseKey)
   : null;
 
+// Re-export authentication and metrics functions for convenience
+export { getOrCreateUser, matchWaitlistUser, findAndMatchWaitlistUser, getUserByEmail, getUserByPhone, getUserByAppId } from './auth-integration';
+export { getLatestMetrics, getMetricsForDate, updateTodayMetrics, getDashboardMetrics, getWaitlistStatsWithMetrics } from './metrics-integration';
+
 export async function addToWaitlist(data: {
   email: string;
   phone: string;
