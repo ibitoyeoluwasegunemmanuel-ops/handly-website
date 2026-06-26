@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { ArrowRight, Star } from 'lucide-react';
 import Link from 'next/link';
+import Button from '@/components/Button';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   title: 'Success Stories - Real Impact from HANDLY',
@@ -131,35 +133,43 @@ export default function SuccessStoriesPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Real Stories from Real People
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              See how workers, artisans, customers, and businesses are transforming their lives and growing their enterprises with HANDLY.
-            </p>
-            <Link
-              href="/waitlist"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-handly-500 to-handly-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 font-semibold"
-            >
-              Join the Community
-              <ArrowRight size={20} />
-            </Link>
-          </div>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            Real Stories from Real People
+          </h1>
+          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto mb-10">
+            See how workers, artisans, customers, and businesses are transforming their lives and growing their enterprises with HANDLY.
+          </p>
+          <Button
+            href="/waitlist"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={20} />}
+            iconPosition="right"
+            className="!bg-white !text-handly-600 hover:!shadow-2xl"
+          >
+            Join the Community
+          </Button>
         </div>
       </section>
 
       {/* Worker Stories */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+      <Section>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Stories</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Workers & Artisans
           </h2>
-          <p className="text-gray-600 text-center mb-12">
+          <p className="text-gray-600 text-center">
             How workers transformed their income and built thriving businesses
           </p>
+        </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {stories.map((story) => (
@@ -216,18 +226,19 @@ export default function SuccessStoriesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Business Stories */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
+      <Section light>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Businesses</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
             Businesses Growing with HANDLY
           </h2>
-          <p className="text-gray-600 text-center mb-12">
+          <p className="text-gray-600 text-center">
             How businesses find reliable contractors and scale operations
           </p>
+        </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {businessStories.map((story, index) => (
@@ -263,14 +274,12 @@ export default function SuccessStoriesPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Stats Section */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-handly-500 to-handly-600 rounded-lg p-12 text-white text-center">
-            <h2 className="text-3xl font-bold mb-8">Impact by the Numbers</h2>
+      <Section>
+        <div className="bg-gradient-to-r from-handly-600 to-handly-700 rounded-2xl p-12 text-white text-center">
+          <h2 className="text-4xl font-black mb-8">Impact by the Numbers</h2>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div>
                 <p className="text-5xl font-bold mb-2">50K+</p>
@@ -289,26 +298,33 @@ export default function SuccessStoriesPage() {
                 <p className="text-handly-100">Paid to Workers</p>
               </div>
             </div>
-          </div>
         </div>
-      </section>
+      </Section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Ready to Write Your Success Story?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Join thousands of workers, artisans, customers, and businesses already transforming their lives with HANDLY.
           </p>
-          <Link
+          <Button
             href="/waitlist"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-handly-500 to-handly-600 text-white rounded-lg hover:shadow-lg transition-all duration-300 font-semibold"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={20} />}
+            iconPosition="right"
+            className="!bg-white !text-handly-600 hover:!shadow-2xl"
           >
             Get Started Today
-            <ArrowRight size={20} />
-          </Link>
+          </Button>
         </div>
       </section>
     </div>
