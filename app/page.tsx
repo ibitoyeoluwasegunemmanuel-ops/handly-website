@@ -14,158 +14,180 @@ export default function Home() {
 
   return (
     <div className="bg-white">
-      {/* SECTION 1: HERO - Bold Gradient Background */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Bold gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-handly-600 via-handly-500 to-handly-700"></div>
+      {/* SECTION 1: HERO - Complete Rebuild */}
+      <section className="relative w-full min-h-screen bg-gradient-to-br from-handly-600 via-handly-550 to-handly-700 overflow-hidden pt-32 pb-20">
+        {/* Background blur elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
 
-        {/* Animated accent elements */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-white opacity-5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-20 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[600px]">
 
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Text Content */}
-            <div className="text-white">
+            {/* LEFT COLUMN */}
+            <div className="w-full">
               {/* Status Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white bg-opacity-15 backdrop-blur-sm rounded-full border border-white border-opacity-30 mb-8">
+              <div className="inline-flex items-center gap-2 px-5 py-3 bg-white bg-opacity-20 backdrop-blur-md rounded-full border border-white border-opacity-40 mb-10 hover:bg-opacity-30 transition-all">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                <span className="text-sm font-semibold">Live in 15 Countries</span>
+                <span className="text-white text-sm font-bold">Available on Apple App Store</span>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tight">
-                Find Trusted Workers, Services & Businesses.
+              {/* Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight tracking-tight">
+                Find Trusted Workers, Services & Businesses
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg md:text-xl text-white text-opacity-90 mb-12 leading-relaxed max-w-lg font-medium">
-                Book skilled artisans, hire professionals, discover local businesses, and get things done anywhere.
+              <p className="text-lg sm:text-xl text-white text-opacity-95 mb-12 leading-relaxed font-medium max-w-2xl">
+                HANDLY connects customers, skilled workers, artisans, and local businesses in one trusted marketplace. <span className="font-black text-white">Find. Book. Get It Done.</span>
               </p>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              {/* CTA Buttons - Download First */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                <a
+                  href="https://apps.apple.com/us/app/handly-app/id6778122913"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 bg-white text-handly-600 font-bold text-lg rounded-2xl hover:shadow-2xl hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group w-full sm:w-auto"
+                >
+                  <span className="text-2xl">🍎</span>
+                  Download on App Store
+                </a>
                 <Link
                   href="/waitlist"
-                  className="px-8 py-4 bg-white text-handly-600 rounded-2xl hover:shadow-2xl transition-all duration-300 font-bold text-lg flex items-center justify-center gap-2 group"
+                  className="px-8 py-4 bg-white bg-opacity-20 border-2 border-white text-white font-bold text-lg rounded-2xl hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center gap-2 group w-full sm:w-auto"
                 >
                   Post a Job <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
+              </div>
+
+              {/* Secondary CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/workers"
-                  className="px-8 py-4 bg-white bg-opacity-20 border-2 border-white text-white rounded-2xl hover:bg-opacity-30 transition-all duration-300 font-bold text-lg flex items-center justify-center gap-2"
+                  className="px-8 py-4 bg-white bg-opacity-15 border-2 border-white text-white font-bold text-lg rounded-2xl hover:bg-opacity-25 transition-all duration-300 flex items-center justify-center w-full sm:w-auto"
                 >
                   Find Workers
                 </Link>
                 <Link
                   href="/businesses"
-                  className="px-8 py-4 bg-white bg-opacity-20 border-2 border-white text-white rounded-2xl hover:bg-opacity-30 transition-all duration-300 font-bold text-lg flex items-center justify-center gap-2"
+                  className="px-8 py-4 bg-white bg-opacity-15 border-2 border-white text-white font-bold text-lg rounded-2xl hover:bg-opacity-25 transition-all duration-300 flex items-center justify-center w-full sm:w-auto"
                 >
                   List Your Business
                 </Link>
               </div>
 
-              {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="https://apps.apple.com/us/app/handly-app/id6778122913"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-6 py-3 bg-white bg-opacity-15 backdrop-blur-sm text-white rounded-xl hover:bg-opacity-25 transition-all border border-white border-opacity-30"
-                >
-                  <span className="text-2xl">🍎</span>
-                  <div className="text-left">
-                    <p className="text-xs opacity-90">Download on</p>
-                    <p className="font-bold">App Store</p>
-                  </div>
-                </a>
-                <div className="flex items-center gap-3 px-6 py-3 bg-white bg-opacity-15 backdrop-blur-sm text-white rounded-xl border border-white border-opacity-30 cursor-not-allowed opacity-75">
-                  <span className="text-2xl">▶️</span>
-                  <div className="text-left">
-                    <p className="text-xs opacity-90">Get it on</p>
-                    <p className="font-bold">Google Play</p>
-                  </div>
-                </div>
+              {/* Google Play - Disabled */}
+              <div className="mt-8 flex items-center gap-3 px-8 py-4 bg-white bg-opacity-10 border-2 border-white border-opacity-40 text-white font-bold text-lg rounded-2xl cursor-not-allowed opacity-60 w-full sm:w-auto justify-center">
+                <span className="text-2xl">▶️</span>
+                Coming Soon on Google Play
               </div>
             </div>
 
-            {/* Right: iPhone Mockup with Floating Cards */}
-            <div className="hidden lg:flex justify-center">
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* iPhone Mockup */}
-                <div className="relative w-72">
-                  {/* Phone Border */}
-                  <div className="absolute inset-0 bg-gradient-to-b from-gray-800 to-gray-900 rounded-3xl p-2.5 shadow-2xl">
-                    {/* Screen */}
-                    <div className="bg-white rounded-3xl h-full overflow-hidden flex flex-col">
-                      {/* Status Bar */}
-                      <div className="bg-gradient-to-r from-handly-600 to-handly-700 text-white px-6 py-3 flex justify-between items-center text-xs font-semibold">
-                        <span>9:41</span>
-                        <span>📶 📡</span>
-                      </div>
-                      {/* Phone Content */}
-                      <div className="flex-1 bg-gray-50 p-4 flex flex-col">
-                        <h2 className="font-bold text-gray-900 mb-1">Lagos, Nigeria</h2>
-                        <p className="text-sm text-gray-600 mb-4">What do you need?</p>
+            {/* RIGHT COLUMN - iPhone Mockup & Stats */}
+            <div className="hidden lg:flex justify-center items-center relative h-[600px]">
+              {/* iPhone Mockup Container */}
+              <div className="relative w-80 h-96">
+                {/* Phone Bezel */}
+                <div className="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800 rounded-3xl p-3 shadow-2xl">
+                  {/* Screen */}
+                  <div className="bg-white rounded-3xl h-full overflow-hidden flex flex-col shadow-2xl">
+                    {/* Status Bar */}
+                    <div className="bg-gradient-to-r from-handly-600 to-handly-700 text-white px-6 py-3 flex justify-between items-center text-xs font-bold">
+                      <span>9:41</span>
+                      <span className="flex gap-1">📶 📡</span>
+                    </div>
 
-                        <div className="grid grid-cols-3 gap-2 mb-6">
-                          <div className="bg-handly-50 p-3 rounded-lg text-center hover:bg-handly-100 transition">
-                            <p className="text-xs text-gray-700 font-bold">Post</p>
-                            <p className="text-xs text-handly-700">Job</p>
-                          </div>
-                          <div className="bg-handly-50 p-3 rounded-lg text-center hover:bg-handly-100 transition">
-                            <p className="text-xs text-gray-700 font-bold">Find</p>
-                            <p className="text-xs text-handly-700">Workers</p>
-                          </div>
-                          <div className="bg-handly-50 p-3 rounded-lg text-center hover:bg-handly-100 transition">
-                            <p className="text-xs text-gray-700 font-bold">Browse</p>
-                            <p className="text-xs text-handly-700">Services</p>
-                          </div>
+                    {/* Phone Content */}
+                    <div className="flex-1 bg-gray-50 p-5 overflow-y-auto">
+                      <h2 className="font-black text-gray-900 text-lg mb-1">Lagos, Nigeria</h2>
+                      <p className="text-sm text-gray-600 mb-5">What do you need?</p>
+
+                      {/* Main Actions */}
+                      <div className="grid grid-cols-3 gap-3 mb-8">
+                        <div className="bg-handly-50 p-3 rounded-lg text-center border border-handly-200 hover:bg-handly-100 transition cursor-pointer">
+                          <p className="text-xs font-bold text-gray-900">Post</p>
+                          <p className="text-xs font-bold text-handly-700 mt-1">Job</p>
                         </div>
-
-                        <p className="text-xs font-semibold text-gray-600 mb-2">Popular</p>
-                        <div className="grid grid-cols-4 gap-2">
-                          {['🏠', '🔧', '✨', '⚡'].map((icon, i) => (
-                            <div key={i} className="text-center">
-                              <p className="text-2xl mb-1">{icon}</p>
-                              <p className="text-xs text-gray-600 font-semibold">
-                                {['Home', 'Fix', 'Clean', 'Electric'][i]}
-                              </p>
-                            </div>
-                          ))}
+                        <div className="bg-handly-50 p-3 rounded-lg text-center border border-handly-200 hover:bg-handly-100 transition cursor-pointer">
+                          <p className="text-xs font-bold text-gray-900">Find</p>
+                          <p className="text-xs font-bold text-handly-700 mt-1">Workers</p>
+                        </div>
+                        <div className="bg-handly-50 p-3 rounded-lg text-center border border-handly-200 hover:bg-handly-100 transition cursor-pointer">
+                          <p className="text-xs font-bold text-gray-900">Browse</p>
+                          <p className="text-xs font-bold text-handly-700 mt-1">Services</p>
                         </div>
                       </div>
-                    </div>
-                  </div>
 
-                  {/* Floating Stats Cards */}
-                  <div className="absolute -top-12 -right-12 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-200 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-lg">👥</div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-semibold">50K+ Customers</p>
-                        <p className="text-sm font-bold text-gray-900">Active Users</p>
+                      {/* Popular Services */}
+                      <p className="text-xs font-bold text-gray-600 mb-3">Popular Services</p>
+                      <div className="grid grid-cols-4 gap-2">
+                        {[
+                          { emoji: '🏠', label: 'Home' },
+                          { emoji: '🔧', label: 'Fix' },
+                          { emoji: '✨', label: 'Clean' },
+                          { emoji: '⚡', label: 'Electric' },
+                        ].map((service, i) => (
+                          <div key={i} className="text-center">
+                            <p className="text-2xl mb-1">{service.emoji}</p>
+                            <p className="text-xs font-bold text-gray-600">{service.label}</p>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div className="absolute top-32 -right-16 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-200 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-lg">💼</div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-semibold">15K+ Workers</p>
-                        <p className="text-sm font-bold text-gray-900">Verified</p>
-                      </div>
+                {/* Floating Stat Card 1 */}
+                <div className="absolute -top-16 -right-24 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-2xl font-bold">👥</div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-bold">50K+ Customers</p>
+                      <p className="text-sm font-black text-gray-900">Active Users</p>
                     </div>
                   </div>
+                </div>
 
-                  <div className="absolute bottom-32 -right-12 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-200 backdrop-blur-sm">
-                    <div className="flex items-center gap-3">
-                      <div className="w-12 h-12 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-lg">⭐</div>
-                      <div>
-                        <p className="text-xs text-gray-500 font-semibold">4.8★ Rating</p>
-                        <p className="text-sm font-bold text-gray-900">Trusted</p>
-                      </div>
+                {/* Floating Stat Card 2 */}
+                <div className="absolute top-20 -right-20 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-2xl font-bold">💼</div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-bold">15K+ Workers</p>
+                      <p className="text-sm font-black text-gray-900">Verified</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Stat Card 3 */}
+                <div className="absolute bottom-16 -right-24 w-56 bg-white rounded-2xl p-5 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all">
+                  <div className="flex items-center gap-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-2xl font-bold">🏢</div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-bold">3.2K+ Businesses</p>
+                      <p className="text-sm font-black text-gray-900">Verified</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Stat Card 4 */}
+                <div className="absolute -bottom-12 -left-12 w-48 bg-white rounded-2xl p-4 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-xl">⭐</div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-bold">4.8★</p>
+                      <p className="text-sm font-black text-gray-900">Rating</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Stat Card 5 */}
+                <div className="absolute -bottom-8 left-32 w-48 bg-white rounded-2xl p-4 shadow-2xl border border-gray-100 hover:shadow-3xl transition-all">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-handly-100 to-handly-50 rounded-full flex items-center justify-center text-xl">✅</div>
+                    <div>
+                      <p className="text-xs text-gray-500 font-bold">120K+</p>
+                      <p className="text-sm font-black text-gray-900">Jobs Done</p>
                     </div>
                   </div>
                 </div>
@@ -173,17 +195,17 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Floating Trust Indicators */}
-          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 text-white text-center">
+          {/* Bottom Trust Indicators - Visible on all sizes */}
+          <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { value: '120K+', label: 'Jobs Completed' },
-              { value: '3.2K', label: 'Businesses' },
-              { value: '15', label: 'Countries' },
-              { value: '₦2B+', label: 'Paid Out' },
+              { value: '50K+', label: 'Customers' },
+              { value: '15K+', label: 'Workers' },
+              { value: '3.2K+', label: 'Businesses' },
+              { value: '4.8★', label: 'Rating' },
             ].map((stat, i) => (
-              <div key={i} className="p-4 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl border border-white border-opacity-20">
-                <p className="text-3xl md:text-4xl font-black">{stat.value}</p>
-                <p className="text-sm text-white text-opacity-80 mt-2">{stat.label}</p>
+              <div key={i} className="p-5 bg-white bg-opacity-15 backdrop-blur-md rounded-2xl border border-white border-opacity-30 text-center text-white hover:bg-opacity-25 transition-all">
+                <p className="text-3xl sm:text-4xl font-black">{stat.value}</p>
+                <p className="text-sm text-white text-opacity-85 mt-2 font-semibold">{stat.label}</p>
               </div>
             ))}
           </div>
