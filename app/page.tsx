@@ -17,9 +17,9 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* Hero Section - Premium Design */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-blue-50 to-white">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-handly-50 to-white">
         {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute top-0 right-0 w-96 h-96 bg-handly-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse" style={{animationDelay: '2s'}}></div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
@@ -70,9 +70,9 @@ export default function Home() {
             {/* Right Column - Visual */}
             <div className="hidden lg:block">
               <div className="relative">
-                <div className="bg-gradient-to-br from-blue-600 to-emerald-500 rounded-3xl p-1 shadow-2xl">
+                <div className="bg-gradient-to-br from-handly-600 to-handly-700 rounded-3xl p-1 shadow-2xl">
                   <div className="bg-white rounded-3xl p-8 space-y-4">
-                    <div className="h-32 bg-gradient-to-r from-blue-100 to-emerald-100 rounded-xl"></div>
+                    <div className="h-32 bg-gradient-to-r from-handly-50 to-handly-100 rounded-xl"></div>
                     <div className="space-y-2">
                       <div className="h-3 bg-gray-200 rounded w-3/4"></div>
                       <div className="h-3 bg-gray-200 rounded w-1/2"></div>
@@ -214,7 +214,7 @@ export default function Home() {
           <div className="text-center">
             <Link
               href="/how-it-works"
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold group"
+              className="inline-flex items-center gap-2 text-handly-600 hover:text-handly-700 font-semibold group"
             >
               See Detailed Walkthrough <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -226,8 +226,8 @@ export default function Home() {
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Loved by Thousands of Freelancers & Clients</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">See what freelancers and business owners say about HANDLY</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Loved by Thousands of Users</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">See what customers, workers, and business owners say about HANDLY</p>
           </div>
 
           <Testimonials limit={3} />
