@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
 import { ArrowUpRight, Users, TrendingUp, Globe, DollarSign, Zap } from 'lucide-react';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 import InvestorMetrics from '@/components/InvestorMetrics';
 
 export const metadata: Metadata = {
@@ -88,12 +90,17 @@ export default function TractionPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
             Traction Dashboard
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-white text-opacity-90 leading-relaxed">
             Real-time metrics showing HANDLY's market-leading growth and unit economics
           </p>
         </div>
