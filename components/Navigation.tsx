@@ -12,6 +12,7 @@ export default function Navigation() {
     { href: '/customers', label: 'For Customers' },
     { href: '/workers', label: 'For Workers' },
     { href: '/businesses', label: 'For Businesses' },
+    { href: '/investors', label: 'Investors' },
     { href: '/success-stories', label: 'Success Stories' },
     { href: '/about', label: 'About' },
     { href: '/how-it-works', label: 'How It Works' },
