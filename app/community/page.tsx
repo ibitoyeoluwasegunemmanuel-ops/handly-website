@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Community - Join HANDLY\'s Community',
-  description: 'Join our thriving community of freelancers and businesses.',
+  description: 'Join our thriving community of workers, artisans, customers, and businesses across Africa.',
 };
 
 export default function CommunityPage() {
@@ -13,7 +13,7 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Join Our Community</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Connect with freelancers and businesses across Africa. Share experiences, learn, and grow together.
+            Connect with workers, artisans, customers, and businesses across Africa. Share experiences, learn, and grow together.
           </p>
         </div>
       </section>
@@ -81,7 +81,7 @@ export default function CommunityPage() {
               {
                 icon: '🤝',
                 title: 'Network',
-                description: 'Build relationships with thousands of freelancers and business owners',
+                description: 'Build relationships with thousands of workers, artisans, customers, and business owners',
               },
               {
                 icon: '📚',
