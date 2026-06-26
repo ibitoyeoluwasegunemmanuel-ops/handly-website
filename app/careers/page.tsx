@@ -9,7 +9,7 @@ export default function CareersPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Join Our Team</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -60,7 +60,7 @@ export default function CareersPage() {
                       <span>{job.location}</span>
                     </div>
                   </div>
-                  <button className="mt-4 md:mt-0 px-6 py-2 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium">
+                  <button className="mt-4 md:mt-0 px-6 py-2 border-2 border-handly-600 text-handly-600 rounded-lg hover:bg-handly-50 transition-colors font-medium">
                     Apply Now
                   </button>
                 </div>
@@ -68,13 +68,13 @@ export default function CareersPage() {
             ))}
           </div>
 
-          <div className="mt-12 p-8 bg-blue-50 rounded-lg text-center">
+          <div className="mt-12 p-8 bg-handly-50 rounded-lg text-center">
             <p className="text-lg text-gray-700">
               Don't see a role that fits? We're always looking for talented people.
             </p>
             <a
               href="mailto:careers@handly.africa"
-              className="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+              className="inline-block mt-4 px-6 py-2 bg-handly-600 text-white rounded-lg hover:bg-handly-700 transition-colors font-medium"
             >
               Send Your Resume
             </a>

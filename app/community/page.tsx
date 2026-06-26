@@ -9,7 +9,7 @@ export default function CommunityPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Join Our Community</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -63,7 +63,7 @@ export default function CommunityPage() {
                 <div className="text-4xl mb-4">{channel.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{channel.name}</h3>
                 <p className="text-gray-600 mb-4 text-sm">{channel.description}</p>
-                <span className="inline-block px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium text-sm">
+                <span className="inline-block px-4 py-2 text-handly-600 border border-handly-600 rounded-lg hover:bg-handly-50 transition-colors font-medium text-sm">
                   {channel.action}
                 </span>
               </a>
@@ -148,7 +148,7 @@ export default function CommunityPage() {
                     <p className="text-gray-600 text-sm mb-2">{event.date}</p>
                     <p className="text-gray-600 text-sm">Speaker: {event.speaker}</p>
                   </div>
-                  <button className="mt-4 md:mt-0 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+                  <button className="mt-4 md:mt-0 px-6 py-2 bg-handly-600 text-white rounded-lg hover:bg-handly-700 transition-colors font-medium">
                     RSVP
                   </button>
                 </div>

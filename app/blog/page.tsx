@@ -60,7 +60,7 @@ export default function BlogPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
+      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">HANDLY Blog</h1>
           <p className="text-xl text-gray-600">Tips, guides, and insights for freelancers and businesses</p>
@@ -75,18 +75,18 @@ export default function BlogPage() {
               <article key={post.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                 <div className="p-6">
                   <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-semibold px-3 py-1 bg-blue-100 text-blue-700 rounded-full">
+                    <span className="text-xs font-semibold px-3 py-1 bg-handly-100 text-handly-700 rounded-full">
                       {post.category}
                     </span>
                     <span className="text-xs text-gray-500">{post.readTime} read</span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2 hover:text-blue-600 cursor-pointer">
+                  <h2 className="text-xl font-bold text-gray-900 mb-2 hover:text-handly-600 cursor-pointer">
                     {post.title}
                   </h2>
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
                   <div className="flex justify-between items-center text-sm text-gray-500">
                     <span>{post.date}</span>
-                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
+                    <a href="#" className="text-handly-600 hover:text-handly-700 font-medium">
                       Read More →
                     </a>
                   </div>
@@ -98,7 +98,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="bg-blue-600 text-white py-16">
+      <section className="bg-handly-600 text-white py-16">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
           <p className="text-lg mb-6 opacity-90">Get the latest tips and insights delivered to your inbox</p>
