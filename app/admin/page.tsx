@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { getWaitlistStats, getTopStates } from '@/lib/supabase';
 import { BarChart3, Users, TrendingUp, Map } from 'lucide-react';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
 
 export default function AdminPage() {
   const [stats, setStats] = useState({
@@ -43,29 +45,32 @@ export default function AdminPage() {
 
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
-        <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200 w-full max-w-md">
-          <h1 className="text-2xl font-bold text-gray-900 mb-6">Admin Dashboard</h1>
-          <form onSubmit={handleAuth} className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="Enter admin password"
-              />
-            </div>
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-            >
-              Login
-            </button>
-          </form>
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+        <div className="w-full max-w-md px-4 relative z-10">
+          <Card variant="default" hover="none">
+            <h1 className="text-3xl font-black text-gray-900 mb-8">Admin Dashboard</h1>
+            <form onSubmit={handleAuth} className="space-y-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
+                  placeholder="Enter admin password"
+                />
+              </div>
+              <Button type="submit" variant="primary" size="lg" fullWidth>
+                Login
+              </Button>
+            </form>
+          </Card>
         </div>
       </div>
     );
@@ -115,12 +120,6 @@ export default function AdminPage() {
                 },
               ].map((metric, index) => {
                 const Icon = metric.icon;
-                const bgColors = {
-                  blue: 'bg-blue-50 border-blue-200',
-                  green: 'bg-green-50 border-green-200',
-                  purple: 'bg-purple-50 border-purple-200',
-                  orange: 'bg-orange-50 border-orange-200',
-                };
                 const iconColors = {
                   blue: 'text-blue-600',
                   green: 'text-green-600',
@@ -129,10 +128,7 @@ export default function AdminPage() {
                 };
 
                 return (
-                  <div
-                    key={index}
-                    className={`p-6 rounded-lg border ${bgColors[metric.color as keyof typeof bgColors]}`}
-                  >
+                  <Card key={index} variant="default" hover="none">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-gray-600 mb-2">{metric.label}</p>
@@ -145,13 +141,13 @@ export default function AdminPage() {
                         className={iconColors[metric.color as keyof typeof iconColors]}
                       />
                     </div>
-                  </div>
+                  </Card>
                 );
               })}
             </div>
 
             {/* Breakdown Chart */}
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <Card variant="default" hover="none">
               <h2 className="text-xl font-bold text-gray-900 mb-6">User Type Distribution</h2>
               <div className="space-y-4">
                 {[
@@ -190,10 +186,10 @@ export default function AdminPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
 
             {/* Top States */}
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
+            <Card variant="default" hover="none">
               <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <Map size={24} />
                 Top States
@@ -218,10 +214,10 @@ export default function AdminPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </Card>
 
-            {/* Conversion Rate */}
-            <div className="bg-white p-6 rounded-lg border border-gray-200">
+            {/* Summary */}
+            <Card variant="default" hover="none">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Summary</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -240,7 +236,7 @@ export default function AdminPage() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         )}
       </div>

@@ -1,5 +1,8 @@
 import { Metadata } from 'next';
+import { Mail } from 'lucide-react';
 import FAQ from '@/components/FAQ';
+import Button from '@/components/Button';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   title: 'FAQ - Frequently Asked Questions',
@@ -10,35 +13,45 @@ export default function FAQPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h1>
-          <p className="text-xl text-gray-600">Find answers to common questions about HANDLY</p>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Frequently Asked Questions</h1>
+          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto">
+            Find answers to common questions about HANDLY
+          </p>
         </div>
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Section>
+        <div className="max-w-3xl mx-auto">
           <FAQ category="all" />
         </div>
-      </section>
+      </Section>
 
       {/* Contact Support */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Didn't find your answer?</h2>
-          <p className="text-gray-600 mb-8">
+      <Section light>
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Didn't find your answer?</h2>
+          <p className="text-lg text-gray-600 mb-10 leading-relaxed">
             Our support team is here to help. Get in touch with us directly.
           </p>
-          <a
+          <Button
             href="mailto:support@handly.africa"
-            className="inline-block px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+            variant="primary"
+            size="lg"
+            icon={<Mail size={20} />}
+            iconPosition="right"
           >
             Contact Support
-          </a>
+          </Button>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

@@ -1,4 +1,8 @@
 import { Metadata } from 'next';
+import { Send } from 'lucide-react';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   title: 'Blog - HANDLY News & Tips',
@@ -60,60 +64,72 @@ export default function BlogPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">HANDLY Blog</h1>
-          <p className="text-xl text-gray-600">Tips, guides, and insights for freelancers and businesses</p>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">HANDLY Blog</h1>
+          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto">
+            Tips, guides, and insights for freelancers and businesses
+          </p>
         </div>
       </section>
 
       {/* Blog Posts */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {posts.map((post) => (
-              <article key={post.id} className="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="p-6">
-                  <div className="flex gap-2 mb-3">
-                    <span className="text-xs font-semibold px-3 py-1 bg-handly-100 text-handly-700 rounded-full">
-                      {post.category}
-                    </span>
-                    <span className="text-xs text-gray-500">{post.readTime} read</span>
-                  </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-2 hover:text-handly-600 cursor-pointer">
-                    {post.title}
-                  </h2>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <div className="flex justify-between items-center text-sm text-gray-500">
-                    <span>{post.date}</span>
-                    <a href="#" className="text-handly-600 hover:text-handly-700 font-medium">
-                      Read More →
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {posts.map((post) => (
+            <Card key={post.id} variant="default" hover="lift">
+              <div className="flex gap-2 mb-4">
+                <span className="text-xs font-semibold px-3 py-1 bg-handly-100 text-handly-700 rounded-full">
+                  {post.category}
+                </span>
+                <span className="text-xs text-gray-500">{post.readTime} read</span>
+              </div>
+              <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-handly-600 cursor-pointer transition-colors">
+                {post.title}
+              </h2>
+              <p className="text-gray-600 mb-6">{post.excerpt}</p>
+              <div className="flex justify-between items-center text-sm text-gray-500 pt-4 border-t border-gray-200">
+                <span>{post.date}</span>
+                <a href="#" className="text-handly-600 hover:text-handly-700 font-medium">
+                  Read More →
+                </a>
+              </div>
+            </Card>
+          ))}
         </div>
-      </section>
+      </Section>
 
       {/* Newsletter CTA */}
-      <section className="bg-handly-600 text-white py-16">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-          <p className="text-lg mb-6 opacity-90">Get the latest tips and insights delivered to your inbox</p>
-          <form className="flex gap-3">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Stay Updated</h2>
+          <p className="text-lg text-white text-opacity-90 mb-10">Get the latest tips and insights delivered to your inbox</p>
+          <form className="flex gap-3 max-w-md mx-auto">
             <input
               type="email"
               placeholder="your@email.com"
-              className="flex-1 px-4 py-3 rounded-lg text-gray-900"
+              className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:ring-2 focus:ring-handly-300 focus:outline-none"
             />
-            <button
+            <Button
               type="submit"
-              className="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors font-medium"
+              variant="primary"
+              size="md"
+              icon={<Send size={20} />}
+              iconPosition="right"
+              className="!bg-white !text-handly-600"
             >
               Subscribe
-            </button>
+            </Button>
           </form>
         </div>
       </section>

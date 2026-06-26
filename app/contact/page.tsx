@@ -1,4 +1,7 @@
 import { Metadata } from 'next';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   title: 'Contact Us - HANDLY',
@@ -9,102 +12,107 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-          <p className="text-xl text-gray-600">We'd love to hear from you</p>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Contact Us</h1>
+          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto">
+            We'd love to hear from you. Get in touch and let's start a conversation.
+          </p>
         </div>
       </section>
 
       {/* Contact Options */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: '📧',
-                title: 'Email',
-                description: 'hello@handly.africa',
-                action: 'mailto:hello@handly.africa',
-              },
-              {
-                icon: '💬',
-                title: 'WhatsApp',
-                description: 'Chat with us on WhatsApp',
-                action: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
-              },
-              {
-                icon: '🌐',
-                title: 'Twitter',
-                description: '@handlyafrica',
-                action: process.env.NEXT_PUBLIC_TWITTER_LINK || '#',
-              },
-            ].map((item, index) => (
-              <a
-                key={index}
-                href={item.action}
-                target={item.action.startsWith('mailto') ? undefined : '_blank'}
-                rel={item.action.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow text-center"
-              >
+      <Section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {[
+            {
+              icon: '📧',
+              title: 'Email',
+              description: 'hello@handly.africa',
+              action: 'mailto:hello@handly.africa',
+            },
+            {
+              icon: '💬',
+              title: 'WhatsApp',
+              description: 'Chat with us on WhatsApp',
+              action: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
+            },
+            {
+              icon: '🌐',
+              title: 'Twitter',
+              description: '@handlyafrica',
+              action: process.env.NEXT_PUBLIC_TWITTER_LINK || '#',
+            },
+          ].map((item, index) => (
+            <a
+              key={index}
+              href={item.action}
+              target={item.action.startsWith('mailto') ? undefined : '_blank'}
+              rel={item.action.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            >
+              <Card variant="default" hover="lift">
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-600">{item.description}</p>
-              </a>
-            ))}
-          </div>
+              </Card>
+            </a>
+          ))}
+        </div>
 
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg border border-gray-200 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Contact Form */}
+        <div className="max-w-2xl mx-auto">
+          <Card variant="default" hover="none">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
                   placeholder="What's this about?"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                 <textarea
                   rows={6}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent resize-none"
                   placeholder="Your message..."
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-handly-600 text-white py-2 rounded-lg hover:bg-handly-700 transition-colors font-medium"
-              >
+              <Button type="submit" variant="primary" size="lg" fullWidth>
                 Send Message
-              </button>
+              </Button>
             </form>
-          </div>
+          </Card>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

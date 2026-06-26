@@ -13,6 +13,7 @@ interface ButtonProps {
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   fullWidth?: boolean;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 const variantStyles = {
@@ -55,6 +56,7 @@ export default function Button({
   icon,
   iconPosition = 'right',
   fullWidth = false,
+  type = 'button',
 }: ButtonProps) {
   const variantClass = variantStyles[variant];
   const sizeClass = sizeStyles[size];
@@ -89,7 +91,7 @@ export default function Button({
   }
 
   return (
-    <button onClick={onClick} disabled={disabled} className={buttonClassName}>
+    <button type={type} onClick={onClick} disabled={disabled} className={buttonClassName}>
       {content}
     </button>
   );

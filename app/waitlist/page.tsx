@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Card from '@/components/Card';
 import WaitlistForm from '@/components/WaitlistForm';
 
 export const metadata: Metadata = {
@@ -8,13 +9,18 @@ export const metadata: Metadata = {
 
 export default function WaitlistPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-handly-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+    <div className="relative min-h-screen overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {/* Left Side - Info */}
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">Join the Marketplace Revolution</h1>
-            <p className="text-lg text-gray-700 mb-8">
+            <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Join the Marketplace Revolution</h1>
+            <p className="text-lg text-white text-opacity-90 mb-8 leading-relaxed">
               Be among the first to experience HANDLY—Africa's operating system for services, workers, local businesses, and communities.
             </p>
 
@@ -36,11 +42,11 @@ export default function WaitlistPage() {
                   description: 'Connect with customers, workers, and businesses across Nigeria and beyond'
                 },
               ].map((item, index) => (
-                <div key={index} className="flex gap-4">
+                <div key={index} className="flex gap-4 bg-white bg-opacity-10 backdrop-blur-md p-4 rounded-lg border border-white border-opacity-20">
                   <div className="text-2xl flex-shrink-0">{item.icon}</div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-gray-600 text-sm">{item.description}</p>
+                    <h3 className="font-semibold text-white mb-1">{item.title}</h3>
+                    <p className="text-white text-opacity-80 text-sm">{item.description}</p>
                   </div>
                 </div>
               ))}
@@ -48,10 +54,10 @@ export default function WaitlistPage() {
           </div>
 
           {/* Right Side - Form */}
-          <div className="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Get Early Access</h2>
+          <Card variant="default" hover="none">
+            <h2 className="text-3xl font-black text-gray-900 mb-6">Get Early Access</h2>
             <WaitlistForm />
-          </div>
+          </Card>
         </div>
       </div>
     </div>
