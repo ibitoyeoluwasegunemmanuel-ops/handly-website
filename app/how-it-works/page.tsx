@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowDown } from 'lucide-react';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 
 export const metadata: Metadata = {
   title: 'How HANDLY Works - Step-by-Step Guide',
@@ -11,22 +13,27 @@ export default function HowItWorksPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">How It Works</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">How It Works</h1>
+          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto">
             Whether you're looking to hire talent or find your next opportunity, HANDLY makes it simple.
           </p>
         </div>
       </section>
 
       {/* Tabs for different user types */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-20">
-            {/* For Customers */}
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">For Customers & Businesses</h2>
+      <Section>
+        <div className="space-y-20">
+          {/* For Customers */}
+          <div>
+            <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Customers & Businesses</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-12 text-center">For Customers & Businesses</h2>
               <div className="space-y-8">
                 {[
                   {
@@ -82,9 +89,10 @@ export default function HowItWorksPage() {
               </div>
             </div>
 
-            {/* For Workers & Service Providers */}
-            <div className="border-t-2 pt-20">
-              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">For Workers, Artisans & Service Providers</h2>
+          {/* For Workers & Service Providers */}
+          <div className="border-t-2 pt-20">
+            <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Workers & Artisans</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-12 text-center">For Workers, Artisans & Service Providers</h2>
               <div className="space-y-8">
                 {[
                   {
@@ -140,51 +148,57 @@ export default function HowItWorksPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Safety & Security */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Safety & Security</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: '🔒',
-                title: 'Secure Payments',
-                description: 'All payments are held in escrow until work is verified. Safe for both freelancers and clients.',
-              },
-              {
-                icon: '⭐',
-                title: 'Verified Profiles',
-                description: 'All users are verified and reviewed. See ratings from past clients and projects.',
-              },
-              {
-                icon: '🛡️',
-                title: 'Dispute Resolution',
-                description: 'Our team helps resolve disputes fairly. We protect both parties and ensure quality work.',
-              },
-            ].map((item, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg border border-gray-200">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </div>
-            ))}
-          </div>
+      <Section light>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Security</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Safety & Security</h2>
         </div>
-      </section>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: '🔒',
+              title: 'Secure Payments',
+              description: 'All payments are held in escrow until work is verified. Safe for both freelancers and clients.',
+            },
+            {
+              icon: '⭐',
+              title: 'Verified Profiles',
+              description: 'All users are verified and reviewed. See ratings from past clients and projects.',
+            },
+            {
+              icon: '🛡️',
+              title: 'Dispute Resolution',
+              description: 'Our team helps resolve disputes fairly. We protect both parties and ensure quality work.',
+            },
+          ].map((item, index) => (
+            <Card key={index} variant="default" hover="lift">
+              <div className="text-4xl mb-4">{item.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+              <p className="text-gray-600">{item.description}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-handly-600 to-handly-700 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-lg mb-8 opacity-90">Join thousands of customers, workers, and businesses on HANDLY</p>
-          <Link
-            href="/waitlist"
-            className="inline-block px-8 py-3 bg-white text-handly-600 rounded-lg hover:bg-gray-100 transition-colors font-medium"
-          >
-            Join Waitlist Now
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Get Started?</h2>
+          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Join thousands of customers, workers, and businesses on HANDLY
+          </p>
+          <Link href="/waitlist" className="inline-block">
+            <button className="px-10 py-4 bg-white text-handly-600 rounded-xl hover:shadow-2xl transition-all duration-300 font-bold text-lg hover:bg-gray-50">
+              Join Waitlist Now
+            </button>
           </Link>
         </div>
       </section>
