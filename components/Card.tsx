@@ -24,16 +24,16 @@ export default function Card({
   }
   finalVariant = finalVariant || 'default';
   const variantStyles = {
-    default: `bg-white border border-gray-200 shadow-md`,
-    glass: `bg-white/10 backdrop-blur-md border border-white/20 shadow-lg`,
-    gradient: `bg-gradient-to-br from-white to-gray-50 border border-gray-100 shadow-lg`,
+    default: `bg-white border border-gray-150 shadow-md shadow-gray-950/5 hover:border-gray-200`,
+    glass: `bg-white/8 backdrop-blur-xl border border-white/20 shadow-xl shadow-black/10`,
+    gradient: `bg-gradient-to-br from-white/95 via-white to-gray-50/80 border border-gray-100 shadow-lg shadow-gray-950/8`,
     minimal: `bg-transparent border-0 shadow-none`,
   };
 
   const hoverStyles = {
-    lift: `${interactive ? 'hover:-translate-y-1 hover:shadow-2xl hover:border-handly-300' : ''}`,
-    glow: `${interactive ? 'hover:shadow-xl hover:shadow-handly-600/20 hover:border-handly-400' : ''}`,
-    shine: `${interactive ? 'hover:shadow-xl group-hover:scale-105' : ''}`,
+    lift: `${interactive ? 'hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-950/10 hover:border-gray-300' : ''}`,
+    glow: `${interactive ? 'hover:shadow-2xl hover:shadow-handly-600/25 hover:border-handly-300 hover:-translate-y-1' : ''}`,
+    shine: `${interactive ? 'hover:shadow-2xl hover:shadow-handly-600/30 hover:scale-102 hover:-translate-y-1' : ''}`,
     none: ``,
   };
 

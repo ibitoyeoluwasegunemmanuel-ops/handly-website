@@ -18,31 +18,35 @@ interface ButtonProps {
 
 const variantStyles = {
   primary: {
-    base: 'bg-gradient-to-r from-handly-600 to-handly-700 text-white',
-    hover: 'hover:shadow-xl hover:from-handly-700 hover:to-handly-800',
+    base: 'bg-gradient-to-br from-handly-600 via-handly-650 to-handly-700 text-white shadow-lg shadow-handly-600/30',
+    hover: 'hover:shadow-2xl hover:shadow-handly-600/40 hover:scale-105 hover:from-handly-700 hover:via-handly-750 hover:to-handly-800',
     focus: 'focus:ring-2 focus:ring-offset-2 focus:ring-handly-500',
+    active: 'active:scale-95 active:shadow-lg',
   },
   secondary: {
-    base: 'bg-handly-50 text-handly-700 border-2 border-handly-200',
-    hover: 'hover:bg-handly-100 hover:border-handly-300 hover:shadow-md',
+    base: 'bg-gradient-to-br from-handly-50 to-handly-100 text-handly-700 border-2 border-handly-200 shadow-sm',
+    hover: 'hover:bg-gradient-to-br hover:from-handly-100 hover:to-handly-200 hover:border-handly-300 hover:shadow-md hover:scale-105',
     focus: 'focus:ring-2 focus:ring-offset-2 focus:ring-handly-500',
+    active: 'active:scale-95',
   },
   accent: {
-    base: 'bg-gradient-to-r from-orange-500 to-orange-600 text-white',
-    hover: 'hover:shadow-xl hover:from-orange-600 hover:to-orange-700',
+    base: 'bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30',
+    hover: 'hover:shadow-2xl hover:shadow-orange-500/40 hover:scale-105 hover:from-orange-600 hover:to-orange-700',
     focus: 'focus:ring-2 focus:ring-offset-2 focus:ring-orange-500',
+    active: 'active:scale-95 active:shadow-lg',
   },
   outline: {
-    base: 'bg-transparent border-2 border-gray-300 text-gray-900',
-    hover: 'hover:border-handly-600 hover:bg-handly-50 hover:shadow-md',
+    base: 'bg-transparent border-2 border-gray-300 text-gray-900 hover:border-handly-600',
+    hover: 'hover:bg-handly-50 hover:shadow-md hover:scale-105 hover:border-handly-600',
     focus: 'focus:ring-2 focus:ring-offset-2 focus:ring-handly-500',
+    active: 'active:scale-95',
   },
 };
 
 const sizeStyles = {
-  sm: 'px-4 py-2 text-sm gap-1.5',
-  md: 'px-6 py-3 text-base gap-2',
-  lg: 'px-8 py-4 text-lg gap-2.5',
+  sm: 'px-4 py-2 text-sm gap-1.5 rounded-md',
+  md: 'px-6 py-3 text-base gap-2 rounded-lg',
+  lg: 'px-8 py-4 text-lg gap-2.5 rounded-xl',
 };
 
 export default function Button({
@@ -63,14 +67,15 @@ export default function Button({
   const widthClass = fullWidth ? 'w-full' : '';
 
   const buttonClassName = `
-    inline-flex items-center justify-center gap-2
-    rounded-lg font-semibold transition-all duration-200
+    inline-flex items-center justify-center
+    font-semibold tracking-wide transition-all duration-300 ease-out
     ${variantClass.base}
     ${variantClass.hover}
     ${variantClass.focus}
+    ${variantClass.active}
     ${sizeClass}
     ${widthClass}
-    ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
+    ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer active:shadow-none'}
     ${className}
   `;
 
