@@ -15,7 +15,16 @@ export default function Home() {
   return (
     <div className="bg-white">
       {/* SECTION 1: HERO - Complete Rebuild */}
-      <section className="relative w-full min-h-screen bg-gradient-to-br from-handly-600 via-handly-550 to-handly-700 overflow-hidden pt-32 pb-20">
+      <section
+        style={{
+          background: 'linear-gradient(to bottom right, #158F72, #0E6B55)',
+          minHeight: '100vh',
+          position: 'relative',
+          overflow: 'hidden',
+          paddingTop: '8rem',
+          paddingBottom: '5rem',
+        }}
+      >
         {/* Background blur elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full blur-3xl"></div>
@@ -32,12 +41,12 @@ export default function Home() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black text-white mb-8 leading-tight tracking-tight">
+              <h1 style={{ color: 'white' }} className="text-5xl sm:text-6xl lg:text-7xl font-black mb-8 leading-tight tracking-tight">
                 Find Trusted Workers, Services & Businesses
               </h1>
 
               {/* Subheadline */}
-              <p className="text-lg sm:text-xl text-white text-opacity-95 mb-12 leading-relaxed font-medium max-w-2xl">
+              <p style={{ color: 'rgba(255,255,255,0.95)' }} className="text-lg sm:text-xl mb-12 leading-relaxed font-medium max-w-2xl">
                 HANDLY connects customers, skilled workers, artisans, and local businesses in one trusted marketplace. <span className="font-black text-white">Find. Book. Get It Done.</span>
               </p>
 
