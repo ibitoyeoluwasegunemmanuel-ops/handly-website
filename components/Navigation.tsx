@@ -9,7 +9,9 @@ export default function Navigation() {
 
   const links = [
     { href: '/', label: 'Home' },
-    { href: '/categories', label: 'Services' },
+    { href: '/customers', label: 'For Customers' },
+    { href: '/workers', label: 'For Workers' },
+    { href: '/businesses', label: 'For Businesses' },
     { href: '/about', label: 'About' },
     { href: '/how-it-works', label: 'How It Works' },
     { href: '/community', label: 'Community' },

@@ -31,8 +31,8 @@ export default function Home() {
                 <span className="text-emerald-700 text-sm font-semibold">Live in 15 Countries</span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6 leading-tight">
-                Find Trusted <span className="bg-gradient-to-r from-handly-500 to-handly-700 bg-clip-text text-transparent">Workers</span>
+              <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Find Trusted <span className="bg-gradient-to-r from-handly-500 to-handly-700 bg-clip-text text-transparent">Workers, Services & Businesses</span>
               </h1>
 
               <p className="text-xl text-gray-600 mb-8 leading-relaxed max-w-xl">
@@ -160,6 +160,49 @@ export default function Home() {
                 <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* User Type Sections */}
+      <section className="py-24 bg-gradient-to-br from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* For Customers */}
+            <Link href="/customers" className="group">
+              <div className="h-full bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:border-handly-300 transition-all duration-300">
+                <div className="text-5xl mb-4">👤</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-handly-600 transition-colors">For Customers</h3>
+                <p className="text-gray-600 mb-6">Post jobs and hire trusted workers, artisans, and service providers. Get things done right, at fair prices.</p>
+                <div className="flex items-center gap-2 text-handly-600 font-semibold group-hover:translate-x-1 transition-transform">
+                  Learn More <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
+
+            {/* For Workers */}
+            <Link href="/workers" className="group">
+              <div className="h-full bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:border-handly-300 transition-all duration-300">
+                <div className="text-5xl mb-4">💼</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-handly-600 transition-colors">For Workers</h3>
+                <p className="text-gray-600 mb-6">Get discovered by customers. Build your reputation. Earn fair rates and grow your income sustainably.</p>
+                <div className="flex items-center gap-2 text-handly-600 font-semibold group-hover:translate-x-1 transition-transform">
+                  Learn More <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
+
+            {/* For Businesses */}
+            <Link href="/businesses" className="group">
+              <div className="h-full bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl hover:border-handly-300 transition-all duration-300">
+                <div className="text-5xl mb-4">🏢</div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-handly-600 transition-colors">For Businesses</h3>
+                <p className="text-gray-600 mb-6">Create a business profile. Connect with thousands of customers. Grow your business across Africa.</p>
+                <div className="flex items-center gap-2 text-handly-600 font-semibold group-hover:translate-x-1 transition-transform">
+                  Learn More <ArrowRight size={20} />
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
