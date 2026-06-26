@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
+import Button from '@/components/Button';
 import Link from 'next/link';
 import { ArrowRight, Zap, TrendingUp, Users, Award, Globe, Briefcase } from 'lucide-react';
 
@@ -44,9 +45,10 @@ export default function WorkersPage() {
       />
 
       {/* Benefits Section */}
-      <Section>
+      <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Workers Choose HANDLY</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Benefits</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Workers Choose HANDLY</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">Earn fair rates, build your reputation, grow sustainably.</p>
         </div>
 
@@ -83,8 +85,8 @@ export default function WorkersPage() {
               description: 'Get paid safely. Fast payouts to your bank account.',
             },
           ].map((benefit, index) => (
-            <Card key={index} light>
-              <div className="mb-4 p-3 bg-white rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
+            <Card key={index} variant="default" hover="lift">
+              <div className="mb-4 p-3 bg-gradient-to-br from-handly-100 to-handly-50 rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
                 {benefit.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -95,9 +97,10 @@ export default function WorkersPage() {
       </Section>
 
       {/* How It Works */}
-      <Section light id="how-it-works">
+      <Section id="how-it-works">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How It Works for Workers</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Process</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">How It Works for Workers</h2>
           <p className="text-xl text-gray-600">Start earning in 4 simple steps.</p>
         </div>
 
@@ -128,9 +131,9 @@ export default function WorkersPage() {
               icon: '🏆',
             },
           ].map((step, index) => (
-            <Card key={index} light={false}>
-              <div className="text-6xl font-bold text-handly-100 mb-4">{step.number}</div>
-              <div className="text-4xl mb-4">{step.icon}</div>
+            <Card key={index} variant="gradient" hover="lift">
+              <div className="text-6xl font-black text-handly-100 mb-4">{step.number}</div>
+              <div className="text-5xl mb-4">{step.icon}</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
               <p className="text-gray-600 leading-relaxed">{step.description}</p>
             </Card>

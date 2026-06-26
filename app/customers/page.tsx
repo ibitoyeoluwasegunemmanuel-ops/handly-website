@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
+import Button from '@/components/Button';
 import Link from 'next/link';
 import { ArrowRight, Zap, Shield, Clock, Users, CheckCircle } from 'lucide-react';
 
@@ -44,9 +45,10 @@ export default function CustomersPage() {
       />
 
       {/* Benefits Section */}
-      <Section>
+      <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Customers Choose HANDLY</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Benefits</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Customers Choose HANDLY</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">Get work done right, safely, and affordably.</p>
         </div>
 
@@ -83,8 +85,8 @@ export default function CustomersPage() {
               description: 'Get help in your language, timezone. Support when you need it.',
             },
           ].map((benefit, index) => (
-            <Card key={index} light>
-              <div className="mb-4 p-3 bg-white rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
+            <Card key={index} variant="default" hover="lift">
+              <div className="mb-4 p-3 bg-gradient-to-br from-handly-100 to-handly-50 rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
                 {benefit.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -95,9 +97,10 @@ export default function CustomersPage() {
       </Section>
 
       {/* How It Works */}
-      <Section light id="how-it-works">
+      <Section id="how-it-works">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How It Works for Customers</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Process</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">How It Works for Customers</h2>
           <p className="text-xl text-gray-600">Get the job done in 4 simple steps.</p>
         </div>
 
@@ -128,9 +131,9 @@ export default function CustomersPage() {
               icon: '⭐',
             },
           ].map((step, index) => (
-            <Card key={index} light={false}>
-              <div className="text-6xl font-bold text-handly-100 mb-4">{step.number}</div>
-              <div className="text-4xl mb-4">{step.icon}</div>
+            <Card key={index} variant="gradient" hover="lift">
+              <div className="text-6xl font-black text-handly-100 mb-4">{step.number}</div>
+              <div className="text-5xl mb-4">{step.icon}</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
               <p className="text-gray-600 leading-relaxed">{step.description}</p>
             </Card>
@@ -139,9 +142,10 @@ export default function CustomersPage() {
       </Section>
 
       {/* Success Stories */}
-      <Section>
+      <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Customer Success Stories</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Success Stories</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Customer Success Stories</h2>
           <p className="text-xl text-gray-600">See how customers are getting things done on HANDLY.</p>
         </div>
 
@@ -166,15 +170,15 @@ export default function CustomersPage() {
               rating: 5,
             },
           ].map((story, index) => (
-            <Card key={index} light>
+            <Card key={index} variant="default" hover="glow">
               <div className="flex gap-1 mb-4">
                 {[...Array(story.rating)].map((_, i) => (
                   <span key={i} className="text-2xl">⭐</span>
                 ))}
               </div>
-              <p className="text-gray-700 mb-6 text-lg leading-relaxed">"{story.story}"</p>
+              <p className="text-gray-700 mb-6 text-lg leading-relaxed font-medium">"{story.story}"</p>
               <div>
-                <p className="font-semibold text-gray-900">{story.name}</p>
+                <p className="font-bold text-gray-900">{story.name}</p>
                 <p className="text-sm text-gray-600">{story.role}</p>
               </div>
             </Card>
@@ -183,23 +187,26 @@ export default function CustomersPage() {
       </Section>
 
       {/* CTA */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-handly-600 via-handly-700 to-handly-800" />
+        <div className="absolute top-0 right-1/4 w-80 h-80 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
+        <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20" />
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Get Work Done?</h2>
-          <p className="text-xl text-white opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">Ready to Get Work Done?</h2>
+          <p className="text-xl text-white text-opacity-95 mb-10 max-w-2xl mx-auto leading-relaxed">
             Post your first job today and discover the HANDLY difference.
           </p>
-          <Link
+          <Button
             href="/waitlist"
-            className="inline-flex items-center gap-2 px-10 py-4 bg-white text-handly-600 rounded-xl hover:shadow-2xl transition-all duration-300 font-bold text-lg group"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={24} />}
+            iconPosition="right"
+            className="!bg-white !text-handly-600 hover:!shadow-2xl"
           >
-            Post Your Job <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+            Post Your Job
+          </Button>
         </div>
       </section>
     </div>

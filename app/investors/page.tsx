@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import { ArrowRight, TrendingUp, Globe, Users, Zap, Shield, Target } from 'lucide-react';
 import Link from 'next/link';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 import InvestorMetrics from '@/components/InvestorMetrics';
 
 export const metadata: Metadata = {
@@ -77,32 +80,42 @@ export default function InvestorsPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              The Future of Work in Africa
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              HANDLY is building the operating system connecting workers, customers, and businesses across Africa.
-              Real traction. Clear path to profitability. Massive market opportunity.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/traction"
-                className="inline-flex items-center gap-2 px-8 py-3 bg-handly-600 text-white rounded-lg hover:bg-handly-700 transition-colors font-semibold"
-              >
-                View Traction Dashboard
-                <ArrowRight size={20} />
-              </Link>
-              <Link
-                href="/company"
-                className="inline-flex items-center gap-2 px-8 py-3 border-2 border-handly-600 text-handly-600 rounded-lg hover:bg-handly-50 transition-colors font-semibold"
-              >
-                Company Overview
-                <ArrowRight size={20} />
-              </Link>
-            </div>
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <span className="inline-block px-4 py-2 bg-white bg-opacity-10 backdrop-blur-md text-white rounded-full text-sm font-semibold mb-6">For Investors</span>
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
+            The Future of Work in Africa
+          </h1>
+          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
+            HANDLY is building the operating system connecting workers, customers, and businesses across Africa.
+            Real traction. Clear path to profitability. Massive market opportunity.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              href="/traction"
+              variant="primary"
+              size="lg"
+              icon={<ArrowRight size={20} />}
+              iconPosition="right"
+              className="!bg-white !text-handly-600 hover:!shadow-2xl"
+            >
+              View Traction Dashboard
+            </Button>
+            <Button
+              href="/company"
+              variant="outline"
+              size="lg"
+              icon={<ArrowRight size={20} />}
+              iconPosition="right"
+              className="!border-white !text-white hover:!bg-white hover:!bg-opacity-10"
+            >
+              Company Overview
+            </Button>
           </div>
         </div>
       </section>
@@ -128,28 +141,29 @@ export default function InvestorsPage() {
       <InvestorMetrics />
 
       {/* Why Invest */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Why Invest in HANDLY?</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {advantages.map((advantage, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="text-4xl mb-4">{advantage.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{advantage.title}</h3>
-                <p className="text-gray-600">{advantage.description}</p>
-              </div>
-            ))}
-          </div>
+      <Section light>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Investment Thesis</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Invest in HANDLY?</h2>
         </div>
-      </section>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {advantages.map((advantage, index) => (
+            <Card key={index} variant="default" hover="lift">
+              <div className="text-4xl mb-4">{advantage.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{advantage.title}</h3>
+              <p className="text-gray-600">{advantage.description}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* Market Opportunity */}
-      <section className="py-16 bg-gradient-to-r from-handly-50 to-handly-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Massive Market Opportunity</h2>
+      <Section light>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Market</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Massive Market Opportunity</h2>
 
               <div className="space-y-6">
                 <div>
@@ -172,7 +186,7 @@ export default function InvestorsPage() {
               </div>
             </div>
 
-            <div className="bg-white p-8 rounded-lg border border-gray-200">
+            <Card variant="default" hover="lift">
               <h3 className="text-xl font-bold text-gray-900 mb-6">Market Drivers</h3>
               <ul className="space-y-4">
                 {[
@@ -191,19 +205,20 @@ export default function InvestorsPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-          </div>
+            </Card>
         </div>
-      </section>
+      </Section>
 
       {/* Funding Opportunities */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Funding Opportunities</h2>
+      <Section>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Funding</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Funding Opportunities</h2>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {opportunities.map((opportunity, index) => (
-              <div key={index} className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-lg border-2 border-handly-200">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          {opportunities.map((opportunity, index) => (
+            <Card key={index} variant="gradient" hover="lift">
                 <div className="flex items-start justify-between mb-6">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900">{opportunity.title}</h3>
@@ -238,34 +253,41 @@ export default function InvestorsPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
+            </Card>
+          ))}
+        </div>
 
-          <div className="bg-handly-600 text-white p-8 rounded-lg text-center">
-            <h3 className="text-2xl font-bold mb-2">Interested in investing?</h3>
-            <p className="mb-6 text-handly-100">Let's discuss how HANDLY can deliver exceptional returns</p>
-            <Link
+        <div className="relative py-12 overflow-hidden rounded-xl" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          </div>
+          <div className="text-center relative z-10">
+            <h3 className="text-2xl font-bold text-white mb-2">Interested in investing?</h3>
+            <p className="mb-6 text-white text-opacity-90">Let's discuss how HANDLY can deliver exceptional returns</p>
+            <Button
               href="/contact?type=investor"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-white text-handly-600 rounded-lg hover:bg-gray-100 transition-colors font-semibold"
+              variant="primary"
+              size="lg"
+              icon={<ArrowRight size={20} />}
+              iconPosition="right"
+              className="!bg-white !text-handly-600 hover:!shadow-2xl"
             >
               Schedule a Meeting
-              <ArrowRight size={20} />
-            </Link>
+            </Button>
           </div>
         </div>
-      </section>
+      </Section>
 
       {/* Navigation to Other Pages */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">Explore More</h2>
+      <Section light>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900">Explore More</h2>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Link
-              href="/company"
-              className="group bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-all"
-            >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link href="/company" className="group">
+            <Card variant="default" hover="lift">
               <div className="text-3xl mb-3">🏢</div>
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
                 Company Overview
@@ -274,12 +296,11 @@ export default function InvestorsPage() {
               <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
                 Learn more <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
-            </Link>
+            </Card>
+          </Link>
 
-            <Link
-              href="/roadmap"
-              className="group bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-all"
-            >
+          <Link href="/roadmap" className="group">
+            <Card variant="default" hover="lift">
               <div className="text-3xl mb-3">🗺️</div>
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
                 Product Roadmap
@@ -288,12 +309,11 @@ export default function InvestorsPage() {
               <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
                 View roadmap <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
-            </Link>
+            </Card>
+          </Link>
 
-            <Link
-              href="/traction"
-              className="group bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-all"
-            >
+          <Link href="/traction" className="group">
+            <Card variant="default" hover="lift">
               <div className="text-3xl mb-3">📊</div>
               <h3 className="text-xl font-bold text-gray-900 group-hover:text-handly-600 transition-colors">
                 Traction Dashboard
@@ -302,10 +322,10 @@ export default function InvestorsPage() {
               <div className="flex items-center gap-2 mt-4 text-handly-600 font-semibold text-sm">
                 View metrics <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </div>
-            </Link>
-          </div>
+            </Card>
+          </Link>
         </div>
-      </section>
+      </Section>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
+import Button from '@/components/Button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -27,7 +28,8 @@ export default function AboutPage() {
       <Section>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
+            <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">About</span>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">Our Story</h2>
             <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
               <p>
                 HANDLY was founded on a simple truth: <strong>Africa has incredible talent and untapped potential, but systems that don't work for them.</strong>
@@ -42,15 +44,19 @@ export default function AboutPage() {
                 Today, 50K+ users and thousands of businesses trust HANDLY. And we're just getting started.
               </p>
             </div>
-            <Link
+            <Button
               href="/waitlist"
-              className="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-handly-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-semibold group"
+              variant="primary"
+              size="md"
+              icon={<ArrowRight size={20} />}
+              iconPosition="right"
+              className="mt-8"
             >
-              Join the Movement <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+              Join the Movement
+            </Button>
           </div>
           <div className="relative">
-            <Card light={false}>
+            <Card variant="gradient" hover="lift">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="text-3xl">🌍</div>
@@ -81,14 +87,18 @@ export default function AboutPage() {
 
       {/* Our Mission & Vision */}
       <Section light>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Purpose</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Mission & Vision</h2>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <Card light={false}>
+          <Card variant="default" hover="lift">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               To empower Africa's talent by building a world-class platform that connects exceptional freelancers with high-impact opportunities, enabling sustainable income and business growth across the continent.
             </p>
           </Card>
-          <Card light={false}>
+          <Card variant="default" hover="lift">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Vision</h3>
             <p className="text-lg text-gray-700 leading-relaxed">
               A world where geographic location doesn't limit opportunity, where African talent is recognized globally, and where freelancers and businesses can thrive together on a platform built for them.
@@ -100,7 +110,8 @@ export default function AboutPage() {
       {/* Our Values */}
       <Section>
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Values</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Values</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Our Core Values</h2>
           <p className="text-xl text-gray-600">These principles guide every decision we make</p>
         </div>
 
@@ -137,7 +148,7 @@ export default function AboutPage() {
               description: 'We continuously evolve to serve you better with cutting-edge solutions.',
             },
           ].map((value, index) => (
-            <Card key={index} light>
+            <Card key={index} variant="default" hover="lift">
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform">{value.icon}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
               <p className="text-gray-600 leading-relaxed">{value.description}</p>
@@ -149,7 +160,8 @@ export default function AboutPage() {
       {/* Why HANDLY */}
       <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose HANDLY?</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Why HANDLY</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Choose HANDLY?</h2>
           <p className="text-xl text-gray-600">We're different because we're built for Africa</p>
         </div>
 
@@ -164,34 +176,45 @@ export default function AboutPage() {
             'Security tailored to local needs',
             'Growth opportunities across 15+ countries',
           ].map((item, i) => (
-            <div key={i} className="flex items-start gap-4 bg-white p-6 rounded-xl border border-gray-200">
-              <CheckCircle size={24} className="text-handly-600 flex-shrink-0 mt-1" />
-              <p className="text-lg text-gray-700">{item}</p>
-            </div>
+            <Card key={i} variant="default" hover="lift">
+              <div className="flex items-start gap-4">
+                <CheckCircle size={24} className="text-handly-600 flex-shrink-0 mt-1" />
+                <p className="text-lg text-gray-700">{item}</p>
+              </div>
+            </Card>
           ))}
         </div>
       </Section>
 
       {/* CTA */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Be Part of the Story?</h2>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Be Part of the Story?</h2>
+          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Join thousands of users, workers, and businesses already transforming how Africa does business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <Button
               href="/waitlist"
-              className="px-8 py-4 bg-gradient-to-r from-handly-500 to-handly-600 text-white rounded-xl hover:shadow-xl transition-all duration-300 font-semibold"
+              variant="primary"
+              size="lg"
+              className="!bg-white !text-handly-600 hover:!shadow-2xl"
             >
               Join Waitlist
-            </Link>
-            <Link
+            </Button>
+            <Button
               href="/how-it-works"
-              className="px-8 py-4 border-2 border-gray-300 text-gray-900 rounded-xl hover:border-handly-600 transition-all duration-300 font-semibold"
+              variant="outline"
+              size="lg"
+              className="!border-white !text-white hover:!bg-white hover:!bg-opacity-10"
             >
               Learn More
-            </Link>
+            </Button>
           </div>
         </div>
       </section>

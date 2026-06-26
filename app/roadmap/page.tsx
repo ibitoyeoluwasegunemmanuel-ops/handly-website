@@ -1,4 +1,6 @@
 import { Metadata } from 'next';
+import Card from '@/components/Card';
+import Section from '@/components/Section';
 import MilestonesTimeline from '@/components/MilestonesTimeline';
 
 export const metadata: Metadata = {
@@ -10,12 +12,17 @@ export default function RoadmapPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-handly-50 to-white py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+        </div>
+
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
             Our Product Roadmap
           </h1>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-white text-opacity-90 leading-relaxed">
             From MVP to pan-African market leader. Our clear path to dominance with measurable milestones and projected metrics.
           </p>
         </div>
@@ -25,54 +32,54 @@ export default function RoadmapPage() {
       <MilestonesTimeline />
 
       {/* Key Themes */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Strategic Themes</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl mb-4">🚀</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Rapid Growth</h3>
-              <p className="text-gray-600">
-                45% month-over-month user growth through product excellence and viral networks
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-4xl mb-4">🌍</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Geographic Expansion</h3>
-              <p className="text-gray-600">
-                Scale from Nigeria to 10+ African countries with localized products
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-4xl mb-4">🏢</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Enterprise Focus</h3>
-              <p className="text-gray-600">
-                Build dedicated enterprise platform and SaaS products for organizations
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="text-4xl mb-4">🤖</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">AI & Automation</h3>
-              <p className="text-gray-600">
-                Use AI for intelligent matching, recommendations, and automated support
-              </p>
-            </div>
-          </div>
+      <Section>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Strategy</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Strategic Themes</h2>
         </div>
-      </section>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              icon: '🚀',
+              title: 'Rapid Growth',
+              desc: '45% month-over-month user growth through product excellence and viral networks',
+            },
+            {
+              icon: '🌍',
+              title: 'Geographic Expansion',
+              desc: 'Scale from Nigeria to 10+ African countries with localized products',
+            },
+            {
+              icon: '🏢',
+              title: 'Enterprise Focus',
+              desc: 'Build dedicated enterprise platform and SaaS products for organizations',
+            },
+            {
+              icon: '🤖',
+              title: 'AI & Automation',
+              desc: 'Use AI for intelligent matching, recommendations, and automated support',
+            },
+          ].map((theme, i) => (
+            <Card key={i} variant="default" hover="lift">
+              <div className="text-4xl mb-4 text-center">{theme.icon}</div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2 text-center">{theme.title}</h3>
+              <p className="text-gray-600 text-center">{theme.desc}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
 
       {/* Feature Roadmap */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Feature Roadmap</h2>
+      <Section light>
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Timeline</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Feature Roadmap</h2>
+        </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Q4 2024 */}
-            <div className="bg-white p-8 rounded-lg border-2 border-blue-200">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Q4 2024 */}
+          <Card variant="default" hover="lift">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <span className="text-2xl">📅</span>
                 Q4 2024
@@ -106,10 +113,10 @@ export default function RoadmapPage() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </Card>
 
             {/* Q1 2025 */}
-            <div className="bg-white p-8 rounded-lg border-2 border-blue-300">
+            <Card variant="default" hover="lift">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <span className="text-2xl">📅</span>
                 Q1 2025
@@ -143,10 +150,10 @@ export default function RoadmapPage() {
                   </ul>
                 </div>
               </div>
-            </div>
+            </Card>
 
             {/* 2025+ */}
-            <div className="bg-white p-8 rounded-lg border-2 border-handly-200">
+            <Card variant="default" hover="lift">
               <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2">
                 <span className="text-2xl">🚀</span>
                 2025+
@@ -180,10 +187,9 @@ export default function RoadmapPage() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
+          </Card>
         </div>
-      </section>
+      </Section>
 
       {/* Success Metrics */}
       <section className="py-16 bg-white">

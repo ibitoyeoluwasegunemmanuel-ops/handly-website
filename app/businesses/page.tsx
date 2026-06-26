@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import Section from '@/components/Section';
 import Card from '@/components/Card';
+import Button from '@/components/Button';
 import Link from 'next/link';
 import { ArrowRight, Zap, Users, TrendingUp, BarChart, Globe, Shield } from 'lucide-react';
 
@@ -44,9 +45,10 @@ export default function BusinessesPage() {
       />
 
       {/* Benefits Section */}
-      <Section>
+      <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Why Businesses Choose HANDLY</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Benefits</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Why Businesses Choose HANDLY</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">Reach customers, manage your business, grow sustainably.</p>
         </div>
 
@@ -83,8 +85,8 @@ export default function BusinessesPage() {
               description: 'Create a professional business profile in minutes. No technical skills needed.',
             },
           ].map((benefit, index) => (
-            <Card key={index} light>
-              <div className="mb-4 p-3 bg-white rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
+            <Card key={index} variant="default" hover="lift">
+              <div className="mb-4 p-3 bg-gradient-to-br from-handly-100 to-handly-50 rounded-lg w-fit group-hover:scale-110 transition-transform duration-300">
                 {benefit.icon}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
@@ -95,9 +97,10 @@ export default function BusinessesPage() {
       </Section>
 
       {/* How It Works */}
-      <Section light id="how-it-works">
+      <Section id="how-it-works">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">How It Works for Businesses</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Process</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">How It Works for Businesses</h2>
           <p className="text-xl text-gray-600">Get your business listed in 4 simple steps.</p>
         </div>
 
@@ -128,9 +131,9 @@ export default function BusinessesPage() {
               icon: '💰',
             },
           ].map((step, index) => (
-            <Card key={index} light={false}>
-              <div className="text-6xl font-bold text-handly-100 mb-4">{step.number}</div>
-              <div className="text-4xl mb-4">{step.icon}</div>
+            <Card key={index} variant="gradient" hover="lift">
+              <div className="text-6xl font-black text-handly-100 mb-4">{step.number}</div>
+              <div className="text-5xl mb-4">{step.icon}</div>
               <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
               <p className="text-gray-600 leading-relaxed">{step.description}</p>
             </Card>
@@ -139,9 +142,10 @@ export default function BusinessesPage() {
       </Section>
 
       {/* Success Stories */}
-      <Section>
+      <Section light>
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Business Success Stories</h2>
+          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Success Stories</span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">Business Success Stories</h2>
           <p className="text-xl text-gray-600">See how businesses are growing on HANDLY.</p>
         </div>
 
@@ -163,10 +167,10 @@ export default function BusinessesPage() {
               story: 'Increased revenue by 3x in 6 months. Customers from 5 countries now.',
             },
           ].map((story, index) => (
-            <Card key={index} light>
-              <p className="text-lg font-semibold text-handly-600 mb-1">{story.name}</p>
+            <Card key={index} variant="default" hover="glow">
+              <p className="font-bold text-gray-900">{story.name}</p>
               <p className="text-sm text-gray-600 mb-4">{story.location}</p>
-              <p className="text-gray-700 text-lg leading-relaxed">"{story.story}"</p>
+              <p className="text-gray-700 mb-6 text-lg leading-relaxed">"{story.story}"</p>
             </Card>
           ))}
         </div>
@@ -181,15 +185,19 @@ export default function BusinessesPage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Ready to Grow Your Business?</h2>
-          <p className="text-xl text-white opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
             Get your business profile live today and start connecting with customers.
           </p>
-          <Link
+          <Button
             href="/waitlist"
-            className="inline-flex items-center gap-2 px-10 py-4 bg-white text-handly-600 rounded-xl hover:shadow-2xl transition-all duration-300 font-bold text-lg group"
+            variant="primary"
+            size="lg"
+            icon={<ArrowRight size={24} />}
+            iconPosition="right"
+            className="!bg-white !text-handly-600 hover:!shadow-2xl"
           >
-            Get Started as a Business <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+            Get Started as a Business
+          </Button>
         </div>
       </section>
     </div>
