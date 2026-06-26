@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { addToWaitlist, getOrCreateUser } from '@/lib/supabase';
+import { trackEvent, EventCategory, EventName, trackFormStart, trackUserTypeSelect, trackWaitlistSignup } from '@/lib/analytics';
 import { ArrowRight, Loader } from 'lucide-react';
 
 const NIGERIAN_STATES = [
@@ -21,6 +22,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const formStartedRef = useRef(false);
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
@@ -32,6 +34,18 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+
+    // Track form start on first interaction
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      trackFormStart('waitlist_form');
+    }
+
+    // Track user type selection
+    if (name === 'type') {
+      trackUserTypeSelect(value as 'customer' | 'worker' | 'business');
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -90,6 +104,10 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
       });
 
       setSuccess(true);
+
+      // Track successful waitlist signup
+      trackWaitlistSignup(formData.email, formData.type as 'customer' | 'worker' | 'business', formData.state);
+
       setFormData({
         email: '',
         phone: '',
@@ -112,6 +130,12 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
       } else {
         setError(message);
       }
+
+      // Track form error
+      trackEvent(EventCategory.ERROR, EventName.FORM_ERROR, {
+        form: 'waitlist_form',
+        error: message,
+      });
     } finally {
       setLoading(false);
     }

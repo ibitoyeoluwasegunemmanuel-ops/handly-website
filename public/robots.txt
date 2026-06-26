@@ -1,0 +1,30 @@
+# HANDLY SEO Configuration
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+Disallow: /*.json
+Disallow: /contact?*
+Allow: /sitemap.xml
+
+# Specific crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Avoid crawling dynamic URLs
+User-agent: *
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+
+# Sitemaps
+Sitemap: https://handly.app/sitemap.xml
+Sitemap: https://handly.app/sitemap-blog.xml
+
+# Host preference
+Host: https://handly.app

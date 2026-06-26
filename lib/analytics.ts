@@ -1,318 +1,136 @@
-import { EventType, DeviceType, DownloadType } from './types';
-import { supabase } from './supabase';
-
-// Google Analytics 4 integration
-export const initGoogleAnalytics = (measurementId: string) => {
-  if (typeof window === 'undefined') return;
-
-  // Load GA script
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script);
-
-  // Initialize gtag
-  window.dataLayer = window.dataLayer || [];
-  function gtag(...args: any[]) {
-    window.dataLayer.push(arguments);
-  }
-  window.gtag = gtag;
-  gtag('js', new Date());
-  gtag('config', measurementId);
-};
-
-// Detect device type
-export const getDeviceType = (): DeviceType => {
-  if (typeof window === 'undefined') return 'desktop';
-
-  const ua = navigator.userAgent.toLowerCase();
-  if (/android/.test(ua)) return 'mobile';
-  if (/iphone|ipod/.test(ua)) return 'mobile';
-  if (/ipad/.test(ua)) return 'tablet';
-  if (/windows phone/.test(ua)) return 'mobile';
-
-  const width = window.innerWidth;
-  if (width < 768) return 'mobile';
-  if (width < 1024) return 'tablet';
-  return 'desktop';
-};
-
-// Track page view
-export const trackPageView = async (pagePath: string) => {
-  if (typeof window === 'undefined') return;
-
-  // Google Analytics
-  if (window.gtag) {
-    window.gtag('event', 'page_view', {
-      page_path: pagePath,
-      page_title: document.title,
-    });
-  }
-
-  // Supabase tracking (if configured)
-  if (supabase) {
-    const sessionId = getSessionId();
-    const deviceType = getDeviceType();
-
-    try {
-      await supabase.from('analytics_events').insert([
-        {
-          event_type: 'page_view' as EventType,
-          session_id: sessionId,
-          page_path: pagePath,
-          device_type: deviceType,
-          referrer: document.referrer || null,
-        },
-      ]);
-    } catch (error) {
-      console.error('Failed to track page view:', error);
-    }
-  }
-};
-
-// Track waitlist signup
-export const trackWaitlistSignup = async (type: string, state: string) => {
-  if (typeof window === 'undefined') return;
-
-  // Google Analytics
-  if (window.gtag) {
-    window.gtag('event', 'sign_up', {
-      method: 'waitlist',
-      user_type: type,
-      state: state,
-    });
-  }
-
-  // Supabase tracking
-  if (supabase) {
-    const sessionId = getSessionId();
-    const deviceType = getDeviceType();
-
-    try {
-      await supabase.from('analytics_events').insert([
-        {
-          event_type: 'waitlist_signup' as EventType,
-          session_id: sessionId,
-          page_path: '/waitlist',
-          device_type: deviceType,
-          metadata: { type, state },
-        },
-      ]);
-    } catch (error) {
-      console.error('Failed to track signup:', error);
-    }
-  }
-};
-
-// Track app download click
-export const trackDownloadClick = async (downloadType: DownloadType) => {
-  if (typeof window === 'undefined') return;
-
-  // Google Analytics
-  if (window.gtag) {
-    window.gtag('event', 'file_download', {
-      file_name: downloadType === 'app_store' ? 'ios_app' : 'android_app',
-      link_url: downloadType === 'app_store'
-        ? 'https://apps.apple.com/app/handly'
-        : 'https://play.google.com/store/apps/details?id=com.handly',
-    });
-  }
-
-  // Supabase tracking
-  if (supabase) {
-    const deviceType = getDeviceType();
-
-    try {
-      await supabase.from('download_events').insert([
-        {
-          download_type: downloadType,
-          device_type: deviceType,
-          referrer: document.referrer || null,
-        },
-      ]);
-    } catch (error) {
-      console.error('Failed to track download:', error);
-    }
-  }
-};
-
-// Track community join
-export const trackCommunityJoin = async (platform: 'whatsapp' | 'telegram') => {
-  if (typeof window === 'undefined') return;
-
-  // Google Analytics
-  if (window.gtag) {
-    window.gtag('event', 'join_community', {
-      platform: platform,
-    });
-  }
-
-  // Supabase tracking
-  if (supabase) {
-    const sessionId = getSessionId();
-    const deviceType = getDeviceType();
-
-    try {
-      await supabase.from('analytics_events').insert([
-        {
-          event_type: 'community_join' as EventType,
-          session_id: sessionId,
-          page_path: '/community',
-          device_type: deviceType,
-          metadata: { platform },
-        },
-      ]);
-    } catch (error) {
-      console.error('Failed to track community join:', error);
-    }
-  }
-};
-
-// Get or create session ID
-export const getSessionId = (): string => {
-  if (typeof window === 'undefined') return '';
-
-  let sessionId = sessionStorage.getItem('handly_session_id');
-  if (!sessionId) {
-    sessionId = `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
-    sessionStorage.setItem('handly_session_id', sessionId);
-  }
-  return sessionId;
-};
-
-// Analytics data queries
-export async function getAnalyticsMetrics(startDate: Date, endDate: Date) {
-  if (!supabase) return null;
-
-  const startIso = startDate.toISOString();
-  const endIso = endDate.toISOString();
-
-  try {
-    // Total page views
-    const { count: pageViews } = await supabase
-      .from('analytics_events')
-      .select('*', { count: 'exact', head: true })
-      .eq('event_type', 'page_view')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    // Unique visitors (sessions)
-    const { data: uniqueData } = await supabase
-      .from('analytics_events')
-      .select('session_id')
-      .eq('event_type', 'page_view')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    const uniqueVisitors = new Set(uniqueData?.map(d => d.session_id) || []).size;
-
-    // Device breakdown
-    const { data: deviceData } = await supabase
-      .from('analytics_events')
-      .select('device_type')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    const deviceBreakdown = {
-      desktop: deviceData?.filter(d => d.device_type === 'desktop').length || 0,
-      mobile: deviceData?.filter(d => d.device_type === 'mobile').length || 0,
-      tablet: deviceData?.filter(d => d.device_type === 'tablet').length || 0,
-    };
-
-    return {
-      total_page_views: pageViews || 0,
-      unique_visitors: uniqueVisitors,
-      device_breakdown: deviceBreakdown,
-    };
-  } catch (error) {
-    console.error('Failed to get analytics metrics:', error);
-    return null;
-  }
-}
-
-export async function getDailySignups(startDate: Date, endDate: Date) {
-  if (!supabase) return [];
-
-  const startIso = startDate.toISOString();
-  const endIso = endDate.toISOString();
-
-  try {
-    const { data } = await supabase
-      .from('waitlist')
-      .select('created_at, type')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso)
-      .order('created_at');
-
-    if (!data) return [];
-
-    // Group by date
-    const grouped: Record<string, { total: number; customers: number; workers: number; businesses: number }> = {};
-
-    data.forEach(entry => {
-      const date = new Date(entry.created_at).toISOString().split('T')[0];
-      if (!grouped[date]) {
-        grouped[date] = { total: 0, customers: 0, workers: 0, businesses: 0 };
-      }
-      grouped[date].total++;
-      grouped[date][entry.type as 'customers' | 'workers' | 'businesses']++;
-    });
-
-    return Object.entries(grouped).map(([date, data]) => ({
-      date,
-      ...data,
-    }));
-  } catch (error) {
-    console.error('Failed to get daily signups:', error);
-    return [];
-  }
-}
-
-export async function getDownloadStats(startDate: Date, endDate: Date) {
-  if (!supabase) return { app_store: 0, google_play: 0, conversion_rate: 0 };
-
-  const startIso = startDate.toISOString();
-  const endIso = endDate.toISOString();
-
-  try {
-    const { count: appStore } = await supabase
-      .from('download_events')
-      .select('*', { count: 'exact', head: true })
-      .eq('download_type', 'app_store')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    const { count: googlePlay } = await supabase
-      .from('download_events')
-      .select('*', { count: 'exact', head: true })
-      .eq('download_type', 'google_play')
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    const { count: totalVisitors } = await supabase
-      .from('analytics_events')
-      .select('*', { count: 'exact', head: true })
-      .gte('created_at', startIso)
-      .lte('created_at', endIso);
-
-    const totalDownloads = (appStore || 0) + (googlePlay || 0);
-    const conversionRate = totalVisitors ? (totalDownloads / totalVisitors) * 100 : 0;
-
-    return {
-      app_store: appStore || 0,
-      google_play: googlePlay || 0,
-      total: totalDownloads,
-      conversion_rate: conversionRate.toFixed(2),
-    };
-  } catch (error) {
-    console.error('Failed to get download stats:', error);
-    return { app_store: 0, google_play: 0, total: 0, conversion_rate: '0' };
-  }
-}
+// Google Analytics 4 Event Tracking
+// Add your GA4 Measurement ID to .env.local: NEXT_PUBLIC_GA_MEASUREMENT_ID
 
 declare global {
   interface Window {
     gtag: (...args: any[]) => void;
-    dataLayer: any[];
   }
+}
+
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+
+// Event categories
+export enum EventCategory {
+  ENGAGEMENT = 'engagement',
+  CONVERSION = 'conversion',
+  DOWNLOAD = 'download',
+  SIGNUP = 'signup',
+  NAVIGATION = 'navigation',
+  ERROR = 'error',
+}
+
+// Event names
+export enum EventName {
+  // Conversion events
+  WAITLIST_SIGNUP = 'waitlist_signup',
+  NEWSLETTER_SIGNUP = 'newsletter_signup',
+  DOWNLOAD_APP = 'download_app',
+  CONTACT_FORM = 'contact_form_submit',
+  INVESTOR_INQUIRY = 'investor_inquiry',
+
+  // Community events
+  COMMUNITY_JOIN = 'community_join',
+  REFERRAL_CODE = 'referral_code_used',
+
+  // Navigation events
+  PAGE_VIEW = 'page_view',
+  LINK_CLICK = 'link_click',
+  SCROLL = 'scroll',
+
+  // Engagement events
+  VIDEO_PLAY = 'video_play',
+  BUTTON_CLICK = 'button_click',
+  FORM_START = 'form_start',
+  FORM_ERROR = 'form_error',
+
+  // User profile events
+  SIGN_UP = 'sign_up',
+  LOGIN = 'login',
+  USER_TYPE_SELECT = 'user_type_select',
+}
+
+interface EventParams {
+  [key: string]: string | number | boolean | string[] | number[];
+}
+
+/**
+ * Track event in Google Analytics 4
+ */
+export function trackEvent(
+  category: EventCategory | string,
+  eventName: EventName | string,
+  params?: EventParams
+) {
+  if (!GA_MEASUREMENT_ID || typeof window === 'undefined') {
+    console.log('GA not configured or not in browser');
+    return;
+  }
+
+  const eventParams = {
+    category,
+    ...params,
+    timestamp: new Date().toISOString(),
+  };
+
+  if (window.gtag) {
+    window.gtag('event', eventName, eventParams);
+  }
+}
+
+export function trackWaitlistSignup(
+  email: string,
+  userType: 'customer' | 'worker' | 'business',
+  location?: string
+) {
+  trackEvent(EventCategory.CONVERSION, EventName.WAITLIST_SIGNUP, {
+    email,
+    user_type: userType,
+    location: location || 'unknown',
+  });
+}
+
+export function trackAppDownload(platform: 'ios' | 'android' | 'web') {
+  trackEvent(EventCategory.DOWNLOAD, EventName.DOWNLOAD_APP, {
+    platform,
+  });
+}
+
+export function trackContactForm(email: string, subject?: string) {
+  trackEvent(EventCategory.CONVERSION, EventName.CONTACT_FORM, {
+    email,
+    subject: subject || 'general',
+  });
+}
+
+export function trackInvestorInquiry(email?: string, fundingType?: string) {
+  trackEvent(EventCategory.CONVERSION, EventName.INVESTOR_INQUIRY, {
+    email: email || 'unknown',
+    funding_type: fundingType || 'unknown',
+  });
+}
+
+export function trackCommunityJoin(community: string, email?: string) {
+  trackEvent(EventCategory.CONVERSION, EventName.COMMUNITY_JOIN, {
+    community_name: community,
+    email: email || 'unknown',
+  });
+}
+
+export function trackButtonClick(buttonName: string, location?: string) {
+  trackEvent(EventCategory.ENGAGEMENT, EventName.BUTTON_CLICK, {
+    button_name: buttonName,
+    location: location || 'unknown',
+  });
+}
+
+export function trackFormStart(formName: string) {
+  trackEvent(EventCategory.ENGAGEMENT, EventName.FORM_START, {
+    form_name: formName,
+  });
+}
+
+export function trackUserTypeSelect(userType: string) {
+  trackEvent(EventCategory.ENGAGEMENT, EventName.USER_TYPE_SELECT, {
+    user_type: userType,
+  });
 }
