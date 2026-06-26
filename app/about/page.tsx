@@ -17,10 +17,10 @@ export default function AboutPage() {
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Transforming How <span className="bg-gradient-to-r from-blue-600 to-emerald-500 bg-clip-text text-transparent">Africa Works</span>
+            Transforming How <span className="bg-gradient-to-r from-handly-500 to-handly-700 bg-clip-text text-transparent">Africa Does Business</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl leading-relaxed mb-8">
-            HANDLY is building Africa's most trusted platform for connecting exceptional talent with visionary businesses. We're empowering freelancers to earn sustainably and helping companies scale without limits.
+            HANDLY is building Africa's most trusted marketplace for connecting customers, skilled workers, artisans, service providers, and businesses. We're empowering people to earn sustainably and helping businesses grow without limits.
           </p>
         </div>
       </section>
@@ -33,27 +33,27 @@ export default function AboutPage() {
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                 <p>
-                  HANDLY was founded on a simple truth: <strong>Africa has world-class talent, but broken systems.</strong>
+                  HANDLY was founded on a simple truth: <strong>Africa has incredible talent and untapped potential, but systems that don't work for them.</strong>
                 </p>
                 <p>
-                  We watched talented developers, designers, and creators struggle to find fair opportunities, while innovative companies couldn't find the right people. The gap was costing Africa billions in unrealized potential.
+                  We watched skilled workers, artisans, service providers, and small businesses struggle to connect with customers at fair prices, while customers couldn't find trustworthy help. The gap was costing Africa billions in opportunity.
                 </p>
                 <p>
-                  So we built HANDLY—a platform designed specifically for African realities: instant matching, secure payments in local currencies, and a community that celebrates excellence.
+                  So we built HANDLY—a marketplace designed specifically for African realities: instant connections, secure payments in local currencies, verified workers, and a community that celebrates excellence.
                 </p>
                 <p>
-                  Today, 50K+ freelancers and thousands of businesses trust HANDLY. And we're just getting started.
+                  Today, 50K+ users and thousands of businesses trust HANDLY. And we're just getting started.
                 </p>
               </div>
               <Link
                 href="/waitlist"
-                className="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-blue-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-semibold group"
+                className="inline-flex items-center gap-2 mt-8 px-8 py-3 bg-handly-600 text-white rounded-xl hover:shadow-lg transition-all duration-300 font-semibold group"
               >
                 Join the Movement <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-3xl p-12 border border-gray-200">
+              <div className="bg-gradient-to-br from-handly-50 to-white rounded-3xl p-12 border border-gray-200">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="text-3xl">🌍</div>
@@ -155,7 +155,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why HANDLY */}
-      <section className="py-24 bg-gradient-to-br from-blue-50 to-emerald-50">
+      <section className="py-24 bg-gradient-to-br from-handly-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose HANDLY?</h2>
@@ -169,12 +169,12 @@ export default function AboutPage() {
               'African-focused customer support (African timezones)',
               'Verification system designed for African context',
               'Competitive rates—no middleman fees',
-              'Thriving community of African freelancers',
+              'Thriving community of African workers and entrepreneurs',
               'Security tailored to local needs',
               'Growth opportunities across 15+ countries',
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 bg-white p-6 rounded-xl border border-gray-200">
-                <CheckCircle size={24} className="text-emerald-500 flex-shrink-0 mt-1" />
+                <CheckCircle size={24} className="text-handly-600 flex-shrink-0 mt-1" />
                 <p className="text-lg text-gray-700">{item}</p>
               </div>
             ))}
@@ -187,18 +187,18 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold text-gray-900 mb-6">Ready to Be Part of the Story?</h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join thousands of freelancers and businesses already transforming how Africa works.
+            Join thousands of users, workers, and businesses already transforming how Africa does business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/waitlist"
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:shadow-xl transition-all duration-300 font-semibold"
+              className="px-8 py-4 bg-gradient-to-r from-handly-500 to-handly-600 text-white rounded-xl hover:shadow-xl transition-all duration-300 font-semibold"
             >
               Join Waitlist
             </Link>
             <Link
               href="/how-it-works"
-              className="px-8 py-4 border-2 border-gray-300 text-gray-900 rounded-xl hover:border-blue-600 transition-all duration-300 font-semibold"
+              className="px-8 py-4 border-2 border-gray-300 text-gray-900 rounded-xl hover:border-handly-600 transition-all duration-300 font-semibold"
             >
               Learn More
             </Link>

@@ -11,20 +11,20 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-emerald-500 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-handly-500 to-handly-700 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">H</span>
               </div>
               <span className="font-bold text-lg text-gray-900">HANDLY</span>
             </div>
             <p className="text-sm text-gray-600 leading-relaxed">
-              Africa's premier talent marketplace connecting exceptional freelancers with visionary businesses.
+              Africa's trusted marketplace connecting customers, workers, artisans, and businesses.
             </p>
             <div className="mt-6 flex gap-3">
               <a
                 href={process.env.NEXT_PUBLIC_TWITTER_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-all"
+                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-handly-100 hover:text-handly-600 transition-all"
                 aria-label="Twitter"
               >
                 <X size={18} />
@@ -33,14 +33,14 @@ export default function Footer() {
                 href={process.env.NEXT_PUBLIC_LINKEDIN_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-all"
+                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-handly-100 hover:text-handly-600 transition-all"
                 aria-label="LinkedIn"
               >
                 <Share2 size={18} />
               </a>
               <a
                 href={`mailto:hello@handly.africa`}
-                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-all"
+                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-handly-100 hover:text-handly-600 transition-all"
                 aria-label="Email"
               >
                 <Mail size={18} />
@@ -49,7 +49,7 @@ export default function Footer() {
                 href={process.env.NEXT_PUBLIC_TELEGRAM_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-blue-100 hover:text-blue-600 transition-all"
+                className="p-2 bg-gray-100 rounded-lg text-gray-600 hover:bg-handly-100 hover:text-handly-600 transition-all"
                 aria-label="Telegram"
               >
                 <Send size={18} />
@@ -62,22 +62,22 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Product</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/how-it-works" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/how-it-works" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/blog" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Blog
                 </Link>
               </li>
               <li>
-                <Link href="/testimonials" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/testimonials" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Success Stories
                 </Link>
               </li>
               <li>
-                <Link href="/dashboard/investor" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/dashboard/investor" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Investor Metrics
                 </Link>
               </li>
@@ -89,22 +89,22 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Company</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/about" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/careers" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/careers" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Careers
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/contact" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/faq" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   FAQ
                 </Link>
               </li>
@@ -116,7 +116,7 @@ export default function Footer() {
             <h3 className="font-semibold text-gray-900 mb-4">Community</h3>
             <ul className="space-y-3 text-sm">
               <li>
-                <Link href="/community" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/community" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Join Community
                 </Link>
               </li>
@@ -125,7 +125,7 @@ export default function Footer() {
                   href={process.env.NEXT_PUBLIC_WHATSAPP_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 transition font-medium"
+                  className="text-gray-600 hover:text-handly-600 transition font-medium"
                 >
                   WhatsApp
                 </a>
@@ -135,13 +135,13 @@ export default function Footer() {
                   href={process.env.NEXT_PUBLIC_TELEGRAM_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-blue-600 transition font-medium"
+                  className="text-gray-600 hover:text-handly-600 transition font-medium"
                 >
                   Telegram
                 </a>
               </li>
               <li>
-                <Link href="/waitlist" className="text-gray-600 hover:text-blue-600 transition font-medium">
+                <Link href="/waitlist" className="text-gray-600 hover:text-handly-600 transition font-medium">
                   Join Waitlist
                 </Link>
               </li>
@@ -155,10 +155,10 @@ export default function Footer() {
               <p>&copy; {currentYear} HANDLY. All rights reserved.</p>
             </div>
             <div className="flex gap-6 justify-center">
-              <Link href="#" className="hover:text-blue-600 transition font-medium">
+              <Link href="#" className="hover:text-handly-600 transition font-medium">
                 Privacy Policy
               </Link>
-              <Link href="#" className="hover:text-blue-600 transition font-medium">
+              <Link href="#" className="hover:text-handly-600 transition font-medium">
                 Terms of Service
               </Link>
             </div>
