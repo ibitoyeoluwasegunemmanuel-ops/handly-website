@@ -196,19 +196,19 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
             {[
-              { label: 'Customers', value: '50K+', icon: '👥', color: 'bg-blue-50' },
-              { label: 'Workers', value: '15K+', icon: '💼', color: 'bg-green-50' },
-              { label: 'Businesses', value: '3.2K', icon: '🏢', color: 'bg-purple-50' },
-              { label: 'Jobs Done', value: '120K+', icon: '✅', color: 'bg-yellow-50' },
-              { label: 'Paid Out', value: '₦480M+', icon: '💰', color: 'bg-pink-50' },
-              { label: 'Countries', value: '15', icon: '🌍', color: 'bg-cyan-50' },
-              { label: 'Cities', value: '200+', icon: '🏙️', color: 'bg-indigo-50' },
-              { label: 'Rating', value: '4.8★', icon: '⭐', color: 'bg-orange-50' },
+              { label: 'Customers', value: '50K+', icon: '👥', color: 'bg-handly-50' },
+              { label: 'Workers', value: '15K+', icon: '💼', color: 'bg-handly-100' },
+              { label: 'Businesses', value: '3.2K', icon: '🏢', color: 'bg-handly-200' },
+              { label: 'Jobs Done', value: '120K+', icon: '✅', color: 'bg-handly-50' },
+              { label: 'Paid Out', value: '₦480M+', icon: '💰', color: 'bg-handly-100' },
+              { label: 'Countries', value: '15', icon: '🌍', color: 'bg-handly-200' },
+              { label: 'Cities', value: '200+', icon: '🏙️', color: 'bg-handly-100' },
+              { label: 'Rating', value: '4.8★', icon: '⭐', color: 'bg-handly-50' },
             ].map((metric, i) => (
-              <div key={i} className={`${metric.color} rounded-2xl p-4 text-center hover:shadow-lg transition-all`}>
+              <div key={i} className={`${metric.color} rounded-2xl p-4 text-center hover:shadow-lg hover:border-handly-300 border border-handly-200 transition-all`}>
                 <p className="text-2xl mb-1">{metric.icon}</p>
-                <p className="text-xs font-bold text-gray-900 mb-0.5">{metric.value}</p>
-                <p className="text-xs text-gray-600">{metric.label}</p>
+                <p className="text-xs font-bold text-handly-900 mb-0.5">{metric.value}</p>
+                <p className="text-xs text-handly-700">{metric.label}</p>
               </div>
             ))}
           </div>
@@ -361,21 +361,21 @@ export default function Home() {
                 title: 'Sign Up',
                 description: 'Create your profile in seconds. Tell us who you are and what you need.',
                 icon: '📝',
-                color: 'bg-blue-100 text-blue-700'
+                color: 'bg-handly-100 text-handly-700'
               },
               {
                 number: '2',
                 title: 'Find or Post',
                 description: 'Find trusted workers or post a job. Our smart matching does the heavy lifting.',
                 icon: '🔍',
-                color: 'bg-green-100 text-green-700'
+                color: 'bg-handly-200 text-handly-800'
               },
               {
                 number: '3',
                 title: 'Get It Done',
                 description: 'Secure payments, real-time tracking, and support every step of the way.',
                 icon: '✅',
-                color: 'bg-purple-100 text-purple-700'
+                color: 'bg-handly-100 text-handly-700'
               },
             ].map((step, index) => (
               <div key={index} className="relative group">
