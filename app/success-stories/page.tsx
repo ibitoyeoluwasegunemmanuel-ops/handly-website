@@ -1,330 +1,140 @@
 import { Metadata } from 'next';
 import { ArrowRight, Star } from 'lucide-react';
-import Link from 'next/link';
-import Button from '@/components/Button';
-import Section from '@/components/Section';
 
 export const metadata: Metadata = {
-  title: 'Success Stories - Real Impact from HANDLY',
-  description: 'Discover how workers, artisans, customers, and businesses are achieving their goals with HANDLY.',
+  title: 'Success Stories – HANDLY',
+  description: 'Real people, real earnings, real growth. Stories from the HANDLY community.',
 };
 
+const stories = [
+  {
+    name: 'Chinedu Okafor',
+    role: 'Master Electrician',
+    location: 'Lagos, Nigeria',
+    initials: 'CO',
+    headline: '₦250K+/month',
+    story: 'Started with 2 jobs a week. Now gets 15+ requests daily and runs a team of 5 electricians across Lagos.',
+    quote: 'I went from struggling to find customers to having more work than I can handle.',
+    stat: '500+ jobs · 4.9★',
+  },
+  {
+    name: 'Ama Mensah',
+    role: 'Graphic Designer',
+    location: 'Accra, Ghana',
+    initials: 'AM',
+    headline: '₦180K+/month',
+    story: 'Freelanced across multiple platforms before HANDLY gave her the payment security to go all-in.',
+    quote: 'The payment system is trustworthy, and clients communicate directly. That changed everything.',
+    stat: '250+ jobs · 4.8★',
+  },
+  {
+    name: 'James Mwangi',
+    role: 'Plumber & Handyman',
+    location: 'Nairobi, Kenya',
+    initials: 'JM',
+    headline: '₦200K+/month',
+    story: 'Used to take whatever came his way. Now cherry-picks premium jobs with a 95% on-time completion rate.',
+    quote: 'HANDLY customers value quality. I charge fairly and they happily pay for reliability.',
+    stat: '350+ jobs · 4.9★',
+  },
+  {
+    name: 'Nkechi Okoro',
+    role: 'Fashion Designer',
+    location: 'Port Harcourt, Nigeria',
+    initials: 'NO',
+    headline: '₦220K+/month',
+    story: 'Started with custom orders from friends. HANDLY connected her with wholesale buyers — now she supplies 3 boutiques.',
+    quote: 'HANDLY opened doors I didn\'t know existed. From single orders to wholesale partnerships.',
+    stat: '25+ active clients · 4.9★',
+  },
+  {
+    name: 'Kofi Mensah',
+    role: 'Restaurant Owner',
+    location: 'Kumasi, Ghana',
+    initials: 'KM',
+    headline: '+50% revenue',
+    story: 'Listed his restaurant for catering. Doubled revenue through corporate contracts discovered on the platform.',
+    quote: 'HANDLY connected me with corporate clients I could never reach through traditional methods.',
+    stat: '20+ catering orders/month · 4.8★',
+  },
+  {
+    name: 'Grace Adetayo',
+    role: 'Virtual Assistant',
+    location: 'Ibadan, Nigeria',
+    initials: 'GA',
+    headline: '₦160K+/month',
+    story: 'Left her corporate job after three months on HANDLY. More flexibility, more income, steady clients.',
+    quote: 'I quit my job after 3 months on HANDLY. Now I earn more than my salary — on my own terms.',
+    stat: '200+ jobs · 80% repeat clients',
+  },
+];
+
 export default function SuccessStoriesPage() {
-  const stories = [
-    {
-      id: 1,
-      name: 'Chinedu Okafor',
-      role: 'Master Electrician',
-      location: 'Lagos, Nigeria',
-      image: '⚡',
-      earnings: '₦250K+/month',
-      story: 'Started with 2 jobs/week through HANDLY. Now gets 15+ requests daily. Built a team of 5 electricians and operates across Lagos.',
-      quote: 'HANDLY changed my life. I went from struggling to find customers to having more work than I can handle.',
-      metrics: [
-        { label: 'Jobs Completed', value: '500+' },
-        { label: 'Customer Rating', value: '4.9/5' },
-        { label: 'Team Size', value: '5 people' },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Ama Mensah',
-      role: 'Graphic Designer',
-      location: 'Accra, Ghana',
-      image: '🎨',
-      earnings: '₦180K+/month',
-      story: 'Freelanced on multiple platforms. HANDLY gave her the reliability and payment security she needed. Now focuses exclusively on HANDLY clients.',
-      quote: 'The payment system is trustworthy, and I love how easy it is to communicate with clients directly.',
-      metrics: [
-        { label: 'Jobs Completed', value: '250+' },
-        { label: 'Customer Rating', value: '4.8/5' },
-        { label: 'Average Project Value', value: '₦15K' },
-      ],
-    },
-    {
-      id: 3,
-      name: 'James Mwangi',
-      role: 'Plumber & Handyman',
-      location: 'Nairobi, Kenya',
-      image: '🔧',
-      earnings: '₦200K+/month',
-      story: 'Used to take whatever jobs came his way. With HANDLY, he cherry-picks premium jobs and maintains 95% on-time completion rate.',
-      quote: 'HANDLY customers value quality work. I can charge fairly and customers happily pay for reliability.',
-      metrics: [
-        { label: 'Jobs Completed', value: '350+' },
-        { label: 'Customer Rating', value: '4.9/5' },
-        { label: 'On-Time Rate', value: '95%' },
-      ],
-    },
-    {
-      id: 4,
-      name: 'Nkechi Okoro',
-      role: 'Fashion Designer',
-      location: 'Port Harcourt, Nigeria',
-      image: '👗',
-      earnings: '₦220K+/month',
-      story: 'Started with custom orders from friends. HANDLY connected her with wholesale buyers. Now supplies 3 boutiques across Nigeria.',
-      quote: 'HANDLY opened doors I didn\'t know existed. From single orders to wholesale partnerships.',
-      metrics: [
-        { label: 'Active Clients', value: '25+' },
-        { label: 'Customer Rating', value: '4.9/5' },
-        { label: 'Portfolio Items', value: '150+' },
-      ],
-    },
-    {
-      id: 5,
-      name: 'Kofi Mensah',
-      role: 'Small Restaurant Owner',
-      location: 'Kumasi, Ghana',
-      image: '🍽️',
-      earnings: '50% Growth',
-      story: 'Listed his restaurant on HANDLY for catering services. Doubled revenue through corporate catering contracts discovered via the platform.',
-      quote: 'HANDLY connected me with corporate clients I would never have reached through traditional methods.',
-      metrics: [
-        { label: 'Catering Orders/Month', value: '20+' },
-        { label: 'Customer Rating', value: '4.8/5' },
-        { label: 'Revenue Growth', value: '+50%' },
-      ],
-    },
-    {
-      id: 6,
-      name: 'Grace Adetayo',
-      role: 'Virtual Assistant',
-      location: 'Ibadan, Nigeria',
-      image: '💻',
-      earnings: '₦160K+/month',
-      story: 'Transitioned from corporate job to freelancing. HANDLY provided the steady stream of clients and payment reliability she needed.',
-      quote: 'I quit my job after 3 months on HANDLY. Now I have more flexibility and earn more than my salary.',
-      metrics: [
-        { label: 'Jobs Completed', value: '200+' },
-        { label: 'Customer Rating', value: '4.9/5' },
-        { label: 'Repeat Clients', value: '80%' },
-      ],
-    },
-  ];
-
-  const businessStories = [
-    {
-      company: 'TechHub Nigeria',
-      industry: 'IT Services',
-      location: 'Lagos',
-      icon: '🏢',
-      story: 'Used HANDLY to find specialized developers for overflow projects. Now sources 30% of contractor workforce through platform.',
-      metrics: [
-        { label: 'Contractors Hired', value: '15+' },
-        { label: 'Projects Completed', value: '50+' },
-        { label: 'Cost Savings', value: '35%' },
-      ],
-    },
-    {
-      company: 'ABC Distribution',
-      industry: 'Logistics',
-      location: 'Accra',
-      icon: '📦',
-      story: 'Connected with delivery partners through HANDLY. Reduced logistics costs and improved delivery speed dramatically.',
-      metrics: [
-        { label: 'Delivery Partners', value: '20+' },
-        { label: 'Monthly Shipments', value: '500+' },
-        { label: 'Cost Per Delivery', value: '-40%' },
-      ],
-    },
-  ];
-
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">
-            Real Stories from Real People
-          </h1>
-          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto mb-10">
-            See how workers, artisans, customers, and businesses are transforming their lives and growing their enterprises with HANDLY.
-          </p>
-          <Button
-            href="/waitlist"
-            variant="primary"
-            size="lg"
-            icon={<ArrowRight size={20} />}
-            iconPosition="right"
-            className="!bg-white !text-handly-600 hover:!shadow-2xl"
-          >
-            Join the Community
-          </Button>
+    <div className="bg-white">
+      {/* Hero */}
+      <section className="pt-40 pb-16 lg:pt-48">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Success stories</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+              Real people. Real growth.
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
+              From first jobs to full teams — how workers and businesses across Africa are building on HANDLY.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Worker Stories */}
-      <Section>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Stories</span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Workers & Artisans
-          </h2>
-          <p className="text-gray-600 text-center">
-            How workers transformed their income and built thriving businesses
-          </p>
-        </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {stories.map((story) => (
-              <div
-                key={story.id}
-                className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
-              >
-                {/* Header */}
-                <div className="bg-gradient-to-r from-handly-500 to-handly-600 p-6 text-white">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="text-5xl mb-3">{story.image}</div>
-                      <h3 className="text-2xl font-bold">{story.name}</h3>
-                      <p className="text-handly-100">{story.role}</p>
-                      <p className="text-handly-100 text-sm">{story.location}</p>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-handly-100 text-sm">Monthly Earnings</p>
-                      <p className="text-2xl font-bold">{story.earnings}</p>
-                    </div>
+      {/* Stories */}
+      <section className="pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {stories.map((s) => (
+              <article key={s.name} className="rounded-3xl border border-gray-900/10 p-9 flex flex-col">
+                <p className="text-3xl font-bold text-handly-600 tracking-tight mb-6">{s.headline}</p>
+                <p className="text-[15px] text-gray-500 leading-relaxed mb-6">{s.story}</p>
+                <p className="text-[15px] text-gray-700 leading-relaxed italic flex-1">&ldquo;{s.quote}&rdquo;</p>
+                <div className="flex items-center gap-3 mt-8 pt-7 border-t border-gray-900/5">
+                  <div className="w-10 h-10 rounded-full bg-handly-50 flex items-center justify-center shrink-0">
+                    <span className="text-[12px] font-bold text-handly-700">{s.initials}</span>
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold text-gray-900">{s.name}</p>
+                    <p className="text-[13px] text-gray-500 truncate">{s.role} · {s.location}</p>
                   </div>
                 </div>
-
-                {/* Story Content */}
-                <div className="p-6">
-                  <p className="text-gray-700 mb-4">{story.story}</p>
-
-                  {/* Quote */}
-                  <div className="bg-handly-50 border-l-4 border-handly-500 p-4 mb-6 rounded-r">
-                    <p className="text-gray-800 italic">"{story.quote}"</p>
-                  </div>
-
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4">
-                    {story.metrics.map((metric, i) => (
-                      <div key={i} className="text-center">
-                        <p className="text-2xl font-bold text-handly-600">{metric.value}</p>
-                        <p className="text-xs text-gray-600">{metric.label}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Rating */}
-                  <div className="mt-6 flex items-center gap-1">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        size={16}
-                        className="fill-yellow-400 text-yellow-400"
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
+                <p className="text-xs text-gray-400 mt-3">{s.stat}</p>
+              </article>
             ))}
           </div>
-      </Section>
-
-      {/* Business Stories */}
-      <Section light>
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-handly-100 text-handly-700 rounded-full text-sm font-semibold mb-4">Businesses</span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
-            Businesses Growing with HANDLY
-          </h2>
-          <p className="text-gray-600 text-center">
-            How businesses find reliable contractors and scale operations
-          </p>
         </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {businessStories.map((story, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
+      {/* CTA */}
+      <section className="pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Your story starts here.
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                Join thousands of workers and businesses growing on HANDLY.
+              </p>
+              <a
+                href="https://apps.apple.com/us/app/handly-app/id6778122913"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-handly-50 transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-black/10"
               >
-                <div className="bg-gradient-to-r from-handly-500 to-handly-600 p-6 text-white">
-                  <div className="flex items-start justify-between mb-4">
-                    <div>
-                      <div className="text-5xl mb-3">{story.icon}</div>
-                      <h3 className="text-2xl font-bold">{story.company}</h3>
-                      <p className="text-handly-100">{story.industry}</p>
-                      <p className="text-handly-100 text-sm">{story.location}</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6">
-                  <p className="text-gray-700 mb-6">{story.story}</p>
-
-                  <div className="grid grid-cols-3 gap-4">
-                    {story.metrics.map((metric, i) => (
-                      <div key={i} className="text-center">
-                        <p className="text-2xl font-bold text-handly-600">
-                          {metric.value}
-                        </p>
-                        <p className="text-xs text-gray-600">{metric.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-      </Section>
-
-      {/* Stats Section */}
-      <Section>
-        <div className="bg-gradient-to-r from-handly-600 to-handly-700 rounded-2xl p-12 text-white text-center">
-          <h2 className="text-4xl font-black mb-8">Impact by the Numbers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div>
-                <p className="text-5xl font-bold mb-2">50K+</p>
-                <p className="text-handly-100">Total Users</p>
-              </div>
-              <div>
-                <p className="text-5xl font-bold mb-2">15K+</p>
-                <p className="text-handly-100">Active Workers</p>
-              </div>
-              <div>
-                <p className="text-5xl font-bold mb-2">10K+</p>
-                <p className="text-handly-100">Jobs Completed</p>
-              </div>
-              <div>
-                <p className="text-5xl font-bold mb-2">₦2B+</p>
-                <p className="text-handly-100">Paid to Workers</p>
-              </div>
+                Download the App
+                <ArrowRight size={18} />
+              </a>
             </div>
-        </div>
-      </Section>
-
-      {/* CTA Section */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
-
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Ready to Write Your Success Story?
-          </h2>
-          <p className="text-xl text-white text-opacity-90 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join thousands of workers, artisans, customers, and businesses already transforming their lives with HANDLY.
-          </p>
-          <Button
-            href="/waitlist"
-            variant="primary"
-            size="lg"
-            icon={<ArrowRight size={20} />}
-            iconPosition="right"
-            className="!bg-white !text-handly-600 hover:!shadow-2xl"
-          >
-            Get Started Today
-          </Button>
+          </div>
         </div>
       </section>
     </div>

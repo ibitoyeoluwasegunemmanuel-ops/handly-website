@@ -1,118 +1,80 @@
 import { Metadata } from 'next';
-import Button from '@/components/Button';
-import Card from '@/components/Card';
-import Section from '@/components/Section';
+import ContactForm from '@/components/ContactForm';
+import { Mail, MessageCircle, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - HANDLY',
-  description: 'Get in touch with the HANDLY team.',
+  title: 'Contact – HANDLY',
+  description: 'Get in touch with the HANDLY team. We respond within one business day.',
 };
+
+const channels = [
+  {
+    icon: <Mail size={20} className="text-handly-600" />,
+    title: 'General',
+    desc: 'Questions, feedback, anything else.',
+    value: 'hello@handly.africa',
+    href: 'mailto:hello@handly.africa',
+  },
+  {
+    icon: <Briefcase size={20} className="text-handly-600" />,
+    title: 'Partnerships & Investors',
+    desc: 'Enterprise, press, and investment.',
+    value: 'partners@handly.africa',
+    href: 'mailto:partners@handly.africa',
+  },
+  {
+    icon: <MessageCircle size={20} className="text-handly-600" />,
+    title: 'Support',
+    desc: 'Help with the app or an active job.',
+    value: 'support@handly.africa',
+    href: 'mailto:support@handly.africa',
+  },
+];
 
 export default function ContactPage() {
   return (
-    <div>
-      {/* Hero */}
-      <section className="relative py-24 overflow-hidden" style={{ background: 'linear-gradient(135deg, #158F72 0%, #0E6B55 100%)' }}>
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        </div>
+    <div className="bg-white">
+      <section className="pt-40 pb-28 lg:pt-48">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            {/* Left */}
+            <div>
+              <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Contact</p>
+              <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+                Let's talk.
+              </h1>
+              <p className="text-lg text-gray-500 leading-relaxed max-w-md mb-14">
+                Whether you have a question, a partnership idea, or need help — we respond within one business day.
+              </p>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-black text-white mb-6">Contact Us</h1>
-          <p className="text-xl text-white text-opacity-90 leading-relaxed max-w-3xl mx-auto">
-            We'd love to hear from you. Get in touch and let's start a conversation.
-          </p>
+              <div className="space-y-8">
+                {channels.map((c) => (
+                  <div key={c.title} className="flex gap-5">
+                    <div className="w-11 h-11 rounded-2xl bg-handly-50 flex items-center justify-center shrink-0">
+                      {c.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-[15px] font-bold text-gray-900">{c.title}</h3>
+                      <p className="text-sm text-gray-500 mt-0.5 mb-1.5">{c.desc}</p>
+                      <a href={c.href} className="text-sm font-semibold text-handly-600 hover:text-handly-700 transition-colors">
+                        {c.value}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: form */}
+            <div>
+              <div className="rounded-[2rem] border border-gray-900/10 p-8 sm:p-10">
+                <h2 className="text-xl font-bold text-gray-900 mb-8">Send us a message</h2>
+                <ContactForm />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* Contact Options */}
-      <Section>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {[
-            {
-              icon: '📧',
-              title: 'Email',
-              description: 'hello@handly.africa',
-              action: 'mailto:hello@handly.africa',
-            },
-            {
-              icon: '💬',
-              title: 'WhatsApp',
-              description: 'Chat with us on WhatsApp',
-              action: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
-            },
-            {
-              icon: '🌐',
-              title: 'Twitter',
-              description: '@handlyafrica',
-              action: process.env.NEXT_PUBLIC_TWITTER_LINK || '#',
-            },
-          ].map((item, index) => (
-            <a
-              key={index}
-              href={item.action}
-              target={item.action.startsWith('mailto') ? undefined : '_blank'}
-              rel={item.action.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            >
-              <Card variant="default" hover="lift">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </Card>
-            </a>
-          ))}
-        </div>
-
-        {/* Contact Form */}
-        <div className="max-w-2xl mx-auto">
-          <Card variant="default" hover="none">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Send us a Message</h2>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
-                  placeholder="What's this about?"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                <textarea
-                  rows={6}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
-
-              <Button type="submit" variant="primary" size="lg" fullWidth>
-                Send Message
-              </Button>
-            </form>
-          </Card>
-        </div>
-      </Section>
     </div>
   );
 }
