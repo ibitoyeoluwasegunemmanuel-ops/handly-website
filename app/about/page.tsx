@@ -1,79 +1,81 @@
 import { Metadata } from 'next';
-import Button from '@/components/Button';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About HANDLY - Our Mission & Vision',
-  description: 'Learn about HANDLY\'s mission to transform work in Africa by connecting skilled professionals with opportunities.',
+  title: 'About HANDLY – Our Mission',
+  description: 'HANDLY\'s mission is to transform work in Africa by connecting skilled professionals with opportunity.',
 };
 
 export default function AboutPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-handly-700 via-handly-800 to-handly-900">
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10" style={{ animationDelay: '-2s' }} />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-8">
-              Transforming Work<br />in Africa.
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">About</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+              Africa's talent is world-class. Now the access is too.
             </h1>
-            <p className="text-2xl md:text-3xl text-white/80 leading-relaxed font-light max-w-2xl">
-              We believe Africa's talent is world-class. We built HANDLY to connect that talent with opportunity.
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
+              We're building the trusted infrastructure that connects skilled people with the work they deserve.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-12">Our Story</h2>
-
-          <div className="space-y-8 text-lg text-gray-700 leading-relaxed">
+      {/* Story */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-3xl mx-auto px-6 lg:px-8">
+          <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Our story</p>
+          <div className="space-y-7 text-lg text-gray-600 leading-relaxed">
             <p>
-              HANDLY was born from a simple observation: Africa has incredible talent and unmet demand for services, but the connection between them is broken.
+              HANDLY was born from a simple observation: Africa has incredible talent and enormous demand for services — but the connection between them is broken.
             </p>
             <p>
-              We watched skilled workers struggle to find reliable customers. We watched customers unable to find trustworthy professionals. And we saw an opportunity to fix this.
+              Skilled workers struggle to find reliable customers. Customers struggle to find professionals they can trust. The gap costs everyone: lost income, wasted time, missed opportunity.
             </p>
             <p>
-              So we built HANDLY - a marketplace designed for Africa. Built on the understanding that trust is everything, that transparency matters, and that fair pricing benefits everyone.
+              So we built the marketplace we wished existed — designed for African realities. Identity verification because trust is everything. Transparent pricing because fairness compounds. Local payments because convenience matters.
             </p>
-            <p>
-              Today, 50K+ users trust HANDLY to connect them with opportunity. And we're just getting started.
+            <p className="text-gray-900 font-semibold">
+              Today, 50,000+ people use HANDLY to hire and earn. We're just getting started.
             </p>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">Our Values</h2>
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Values</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              What we won't compromise on.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {[
               {
-                title: 'Trust First',
-                desc: 'Verification isn\'t optional. Every user is verified. Real reviews. Real ratings. Real peace of mind.'
+                title: 'Trust first',
+                desc: 'Verification isn\'t optional. Every user is verified, every review is real. Trust is the product.',
               },
               {
-                title: 'Fair Always',
-                desc: 'No hidden fees. No surprise charges. Transparent pricing. You know exactly what you\'re paying.'
+                title: 'Fair always',
+                desc: 'No hidden fees. No exploitative cuts. When workers win and customers win, we win.',
               },
               {
-                title: 'Africa Built',
-                desc: 'Built for African context. Understanding local payment, trust, and communication challenges. For Africans, by Africans.'
+                title: 'Built for Africa',
+                desc: 'Local payments, local languages, local context. Designed by Africans, for African realities.',
               },
             ].map((value, idx) => (
-              <div key={idx} className="space-y-4">
-                <h3 className="text-2xl font-bold text-gray-900">{value.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{value.desc}</p>
+              <div key={value.title}>
+                <p className="text-sm font-bold text-handly-600 mb-5">{String(idx + 1).padStart(2, '0')}</p>
+                <div className="h-px bg-gray-900/10 mb-7" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{value.desc}</p>
               </div>
             ))}
           </div>
@@ -81,18 +83,18 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+      <section className="py-20 border-y border-gray-900/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { label: 'Active Users', value: '50K+' },
-              { label: 'Jobs Completed', value: '10K+' },
-              { label: 'Countries', value: '15+' },
-              { label: 'Success Rate', value: '95%' },
-            ].map((stat, idx) => (
-              <div key={idx}>
-                <p className="text-sm text-gray-600 uppercase tracking-wide font-semibold">{stat.label}</p>
-                <p className="text-5xl font-black text-gray-900 mt-3">{stat.value}</p>
+              { value: '50K+', label: 'Active users' },
+              { value: '10K+', label: 'Jobs completed' },
+              { value: '15+', label: 'Countries' },
+              { value: '95%', label: 'Success rate' },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
+                <p className="text-[15px] text-gray-500 mt-2">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -100,46 +102,38 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-handly-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-5xl md:text-6xl font-black">Join Our Mission</h2>
-          <p className="text-xl text-white/90">Help us transform how work happens in Africa</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              href="https://apps.apple.com/us/app/handly-app/id6778122913"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={20} />}
-              iconPosition="right"
-            >
-              Download App
-            </Button>
-            <Button
-              href="/careers"
-              variant="outline"
-              size="lg"
-              className="!bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
-            >
-              View Careers
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400">© 2026 HANDLY. All rights reserved.</p>
-            <div className="flex gap-6 text-gray-400 mt-4 md:mt-0">
-              <a href="/" className="hover:text-white">Home</a>
-              <a href="/customers" className="hover:text-white">For Customers</a>
-              <a href="/workers" className="hover:text-white">For Workers</a>
-              <a href="/businesses" className="hover:text-white">For Businesses</a>
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Join the mission.
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                Help us transform how work happens across Africa.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <a
+                  href="https://apps.apple.com/us/app/handly-app/id6778122913"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-handly-50 transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-black/10"
+                >
+                  Download the App
+                  <ArrowRight size={18} />
+                </a>
+                <Link
+                  href="/careers"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-semibold text-white border border-white/25 hover:bg-white/10 transition-colors"
+                >
+                  View Careers
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }

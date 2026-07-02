@@ -1,168 +1,178 @@
 import { Metadata } from 'next';
-import Button from '@/components/Button';
+import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Investors - HANDLY | Funding & Growth Opportunities',
-  description: 'Join us in transforming work across Africa. Explore investment opportunities with HANDLY, the fastest-growing marketplace for skilled professionals.',
+  title: 'Investors – HANDLY',
+  description: 'Join us in transforming work across Africa. Explore investment opportunities with HANDLY.',
 };
 
 export default function InvestorsPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-handly-700 via-handly-800 to-handly-900">
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10" style={{ animationDelay: '-2s' }} />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-          <div className="max-w-4xl">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-black text-white leading-none tracking-tighter mb-8">
-              Africa's Marketplace for Talent
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Investor Relations</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+              The marketplace for Africa's services economy.
             </h1>
-            <p className="text-2xl md:text-3xl text-white/80 leading-relaxed mb-12 font-light max-w-2xl">
-              50K+ users. ₦480K/month revenue. Growing 45% month-over-month. This is a $100B opportunity.
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10">
+              50K+ users. 45% month-over-month growth. A $100B addressable market with no dominant player — yet.
             </p>
-            <Button
-              href="#contact"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={20} />}
-              iconPosition="right"
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-handly-600 text-white rounded-full font-semibold hover:bg-handly-700 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
             >
-              Schedule a Meeting
-            </Button>
+              Request the Deck
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* Key Metrics */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12">
+      {/* Traction */}
+      <section className="py-20 border-y border-gray-900/5 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { label: 'Active Users', value: '50K+', context: 'year-over-year growth' },
-              { label: 'Monthly Revenue', value: '₦480K', context: '45% month-over-month' },
-              { label: 'Success Rate', value: '95%', context: 'customer satisfaction' },
-              { label: 'Countries', value: '15+', context: 'pan-African presence' },
-            ].map((metric, idx) => (
-              <div key={idx}>
-                <p className="text-5xl font-black text-handly-700 mb-3">{metric.value}</p>
-                <p className="font-semibold text-gray-900 mb-2">{metric.label}</p>
-                <p className="text-sm text-gray-600">{metric.context}</p>
+              { value: '50K+', label: 'Active users', sub: 'growing 45% MoM' },
+              { value: '₦480K', label: 'Monthly revenue', sub: 'and accelerating' },
+              { value: '300:1', label: 'LTV to CAC', sub: '$0.50 CAC · $150 LTV' },
+              { value: '15+', label: 'Countries', sub: 'pan-African footprint' },
+            ].map((m) => (
+              <div key={m.label}>
+                <p className="text-4xl font-bold text-gray-900 tracking-tight">{m.value}</p>
+                <p className="text-[15px] font-semibold text-gray-900 mt-2">{m.label}</p>
+                <p className="text-sm text-gray-500 mt-0.5">{m.sub}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The Opportunity */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-12">The Opportunity</h2>
+      {/* Market */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">The opportunity</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              A massive market, still up for grabs.
+            </h2>
+          </div>
 
-            <div className="space-y-12">
-              <div>
-                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Total Addressable Market</p>
-                <p className="text-5xl font-black text-gray-900">$100B</p>
-                <p className="text-lg text-gray-600 mt-4">Services economy across Africa growing at 15%+ annually</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            {[
+              { value: '$100B', label: 'Total addressable market', desc: 'Africa\'s services economy, growing 15%+ annually as urbanization accelerates.' },
+              { value: '$5B', label: 'Serviceable market', desc: 'Platform-enabled services across our target geographies and verticals.' },
+              { value: '$50M', label: 'Revenue at 1% share', desc: 'Our conservative five-year target at just 1% market penetration.' },
+            ].map((m) => (
+              <div key={m.label}>
+                <p className="text-5xl font-bold text-handly-600 tracking-tight mb-4">{m.value}</p>
+                <div className="h-px bg-gray-900/10 mb-6" />
+                <h3 className="text-lg font-bold text-gray-900 mb-2.5">{m.label}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{m.desc}</p>
               </div>
-
-              <div>
-                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Serviceable Market</p>
-                <p className="text-5xl font-black text-gray-900">$5B</p>
-                <p className="text-lg text-gray-600 mt-4">Platform-enabled services in our target geographies and verticals</p>
-              </div>
-
-              <div>
-                <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-3">Serviceable Obtainable Market (1% target)</p>
-                <p className="text-5xl font-black text-gray-900">$50M</p>
-                <p className="text-lg text-gray-600 mt-4">Conservative 5-year revenue target at 1% market penetration</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Why HANDLY */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-16">Why HANDLY</h2>
+      {/* Why now */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Why HANDLY</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Four reasons this compounds.
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-14">
             {[
               {
-                title: 'First-Mover Advantage',
-                desc: 'No mature competitor in Africa doing this at scale. We\'re building the standard.'
+                title: 'First-mover at scale',
+                desc: 'No mature competitor is doing this across Africa. We\'re setting the standard while the market is still forming.',
               },
               {
-                title: 'Network Effects',
-                desc: 'More workers attract more customers. More customers attract more workers. Exponential growth.'
+                title: 'Network effects',
+                desc: 'Every new worker makes the platform more valuable to customers — and vice versa. Growth compounds on both sides.',
               },
               {
-                title: 'Built for Africa',
-                desc: 'Designed for emerging markets. Local payment methods, trust-first approach, African team.'
+                title: 'Built for the market',
+                desc: 'Local payments, verification designed for African context, and a team that lives the problem daily.',
               },
               {
-                title: 'Unit Economics',
-                desc: '$0.50 CAC, $150 LTV, 300:1 ratio. Profitable at scale. Clear path to profitability in 18 months.'
+                title: 'Unit economics that work',
+                desc: '$0.50 CAC against $150 LTV. A clear, modeled path to profitability within 18 months of Series A.',
               },
             ].map((item, idx) => (
-              <div key={idx} className="space-y-4 border-l-4 border-handly-600 pl-6">
-                <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
-                <p className="text-lg text-gray-600 leading-relaxed">{item.desc}</p>
+              <div key={item.title} className="flex gap-6">
+                <p className="text-sm font-bold text-handly-600 pt-1">{String(idx + 1).padStart(2, '0')}</p>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2.5">{item.title}</h3>
+                  <p className="text-[15px] text-gray-500 leading-relaxed">{item.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Investment Terms */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-16">Investment Opportunities</h2>
+      {/* Rounds */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Funding</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Where the capital goes.
+            </h2>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: 'Series A',
+                round: 'Series A',
                 amount: '$2M',
+                status: 'Raising now',
                 use: [
-                  'Product development & mobile app improvements',
-                  'Sales & marketing (user acquisition)',
-                  'Operations & customer support scaling',
-                  'Geographic expansion (3+ new countries)'
-                ]
+                  'Product & mobile app development',
+                  'User acquisition in core markets',
+                  'Operations & support scaling',
+                  'Expansion to 3 new countries',
+                ],
               },
               {
-                title: 'Series B',
+                round: 'Series B',
                 amount: '$10M',
+                status: 'Projected 2027',
                 use: [
-                  'Enterprise SaaS platform for organizations',
-                  'Regional expansion (pan-African scale)',
-                  'AI-powered matching & recommendation engine',
-                  'Strategic partnerships & integrations'
-                ]
+                  'Enterprise platform for organizations',
+                  'Pan-African regional expansion',
+                  'AI-powered matching engine',
+                  'Strategic partnerships & integrations',
+                ],
               },
-            ].map((round, idx) => (
-              <div key={idx} className="space-y-8 border-t-4 border-handly-600 pt-8">
-                <div>
-                  <p className="text-sm uppercase tracking-widest font-semibold text-handly-700 mb-2">Funding Round</p>
-                  <h3 className="text-4xl font-black text-gray-900">{round.title}</h3>
-                  <p className="text-3xl font-black text-gray-900 mt-2">{round.amount}</p>
+            ].map((r) => (
+              <div key={r.round} className="rounded-3xl border border-gray-900/10 p-10">
+                <div className="flex items-start justify-between mb-8">
+                  <div>
+                    <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-2">{r.round}</p>
+                    <p className="text-5xl font-bold text-gray-900 tracking-tight">{r.amount}</p>
+                  </div>
+                  <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-handly-50 text-handly-700">
+                    {r.status}
+                  </span>
                 </div>
-                <div>
-                  <p className="text-sm uppercase tracking-widest font-semibold text-gray-600 mb-4">Use of Funds</p>
-                  <ul className="space-y-3">
-                    {round.use.map((item, i) => (
-                      <li key={i} className="flex gap-3">
-                        <span className="text-handly-600 font-bold">→</span>
-                        <span className="text-gray-600">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul className="space-y-3.5">
+                  {r.use.map((item) => (
+                    <li key={item} className="flex gap-3 text-[15px] text-gray-600">
+                      <span className="text-handly-600 font-bold shrink-0">→</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
@@ -170,37 +180,28 @@ export default function InvestorsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-handly-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8" id="contact">
-          <h2 className="text-5xl md:text-6xl font-black">Let's Build the Future Together</h2>
-          <p className="text-xl text-white/90">Join us in transforming how work happens across Africa</p>
-          <Button
-            href="/contact"
-            variant="primary"
-            size="lg"
-            icon={<ArrowRight size={20} />}
-            iconPosition="right"
-            className="mx-auto"
-          >
-            Schedule a Call
-          </Button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400">© 2026 HANDLY. All rights reserved.</p>
-            <div className="flex gap-6 text-gray-400 mt-4 md:mt-0">
-              <a href="/" className="hover:text-white">Home</a>
-              <a href="/about" className="hover:text-white">About</a>
-              <a href="/company" className="hover:text-white">Company</a>
-              <a href="/traction" className="hover:text-white">Traction</a>
+      <section className="pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Let's talk.
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                We're raising our Series A. Request the deck or schedule a call with the founders.
+              </p>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-handly-50 transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-black/10"
+              >
+                Schedule a Call
+                <ArrowRight size={18} />
+              </Link>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }

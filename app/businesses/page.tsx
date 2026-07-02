@@ -1,112 +1,123 @@
 import { Metadata } from 'next';
-import Button from '@/components/Button';
-import { ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight, Store, LayoutDashboard, TrendingUp } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'For Businesses - List Your Service | HANDLY',
-  description: 'Reach thousands of customers. Grow your business. List your services on Africa\'s fastest-growing marketplace.',
+  title: 'For Businesses – Grow with HANDLY',
+  description: 'Reach thousands of customers. Grow your business on Africa\'s fastest-growing services marketplace.',
 };
 
 export default function BusinessesPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-handly-700 via-handly-800 to-handly-900">
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10" style={{ animationDelay: '-2s' }} />
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
+      <section className="pt-40 pb-24 lg:pt-48 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter mb-8">
-              Grow Your<br />Business.
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">For Businesses</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+              More customers.
+              <br />
+              <span className="text-handly-600">Less hustle.</span>
             </h1>
-            <p className="text-2xl md:text-3xl text-white/80 leading-relaxed mb-10 font-light max-w-2xl">
-              List your business and reach thousands of customers across Africa. No hidden fees. Simple tools to grow.
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10">
+              List your business where thousands of customers are already looking. Simple tools, no hidden fees, real growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
+              <Link
                 href="/waitlist"
-                variant="primary"
-                size="lg"
-                icon={<ArrowRight size={20} />}
-                iconPosition="right"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-handly-600 text-white rounded-full font-semibold hover:bg-handly-700 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
               >
                 List Your Business
-              </Button>
-              <Button
-                href="/#how-it-works"
-                variant="outline"
-                size="lg"
-                className="!bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
+                <ArrowRight size={18} />
+              </Link>
+              <Link
+                href="/how-it-works"
+                className="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-semibold text-gray-900 border border-gray-200 hover:border-gray-900 transition-colors"
               >
                 See How It Works
-              </Button>
+              </Link>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-12 pt-16 border-t border-white/20 mt-16">
+            <div className="flex gap-14 mt-16 pt-10 border-t border-gray-900/5">
               <div>
-                <p className="text-sm text-white/70 uppercase tracking-widest font-semibold">Businesses Listed</p>
-                <p className="text-4xl font-black text-white mt-2">3.2K+</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">3.2K+</p>
+                <p className="text-sm text-gray-500 mt-1">Businesses listed</p>
               </div>
               <div>
-                <p className="text-sm text-white/70 uppercase tracking-widest font-semibold">Growth Rate</p>
-                <p className="text-4xl font-black text-white mt-2">+180% YoY</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">+180%</p>
+                <p className="text-sm text-gray-500 mt-1">Year-over-year growth</p>
+              </div>
+              <div>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">50K+</p>
+                <p className="text-sm text-gray-500 mt-1">Customers on the platform</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why Businesses Choose HANDLY */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">Why Businesses Choose HANDLY</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Simple tools to help you grow</p>
+      {/* Benefits */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Simple tools built to help you grow.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {[
               {
-                title: 'Reach Local Customers',
-                description: 'Get discovered by thousands of customers actively looking for your services in your area.'
+                icon: <Store size={22} className="text-handly-600" />,
+                title: 'Reach local customers',
+                desc: 'Get discovered by customers in your area actively searching for what you offer.',
               },
               {
-                title: 'Manage Your Business',
-                description: 'Simple dashboard to manage orders, communicate with customers, and track your growth.'
+                icon: <LayoutDashboard size={22} className="text-handly-600" />,
+                title: 'Run it from one place',
+                desc: 'Manage orders, chat with customers, and track your performance from a simple dashboard.',
               },
               {
-                title: 'Grow Without Limits',
-                description: 'Scale from side hustle to full-time business. No restrictions. Only your ambition matters.'
+                icon: <TrendingUp size={22} className="text-handly-600" />,
+                title: 'Grow without limits',
+                desc: 'Scale from a side hustle to a full operation. Reviews and repeat customers compound.',
               },
-            ].map((item, idx) => (
-              <div key={idx} className="space-y-4">
-                <h3 className="text-2xl font-bold text-gray-900">{item.title}</h3>
-                <p className="text-lg text-gray-600 leading-relaxed">{item.description}</p>
+            ].map((item) => (
+              <div key={item.title}>
+                <div className="w-12 h-12 rounded-2xl bg-white border border-gray-900/5 flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">How It Works</h2>
+      {/* How it works */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">How it works</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Listed in four steps.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
             {[
-              { num: '1', title: 'Create Profile', desc: 'Tell customers about your business' },
-              { num: '2', title: 'List Services', desc: 'Add the services you offer and pricing' },
-              { num: '3', title: 'Get Orders', desc: 'Receive customer requests instantly' },
-              { num: '4', title: 'Grow Business', desc: 'Build reviews and grow month after month' },
-            ].map((step, idx) => (
-              <div key={idx}>
-                <p className="text-5xl font-black text-handly-600 mb-4">{step.num}</p>
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.desc}</p>
+              { num: '01', title: 'Create your profile', desc: 'Add your business info, photos, and services.' },
+              { num: '02', title: 'Get discovered', desc: 'Customers find you through search and categories.' },
+              { num: '03', title: 'Receive orders', desc: 'Requests come straight to your dashboard.' },
+              { num: '04', title: 'Grow your reputation', desc: 'Great service earns reviews and repeat business.' },
+            ].map((step) => (
+              <div key={step.num}>
+                <p className="text-sm font-bold text-handly-600 mb-5">{step.num}</p>
+                <div className="h-px bg-gray-900/10 mb-7" />
+                <h3 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -114,37 +125,28 @@ export default function BusinessesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-handly-700 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-5xl md:text-6xl font-black">Ready to Grow?</h2>
-          <p className="text-xl text-white/90">List your business today and start reaching new customers</p>
-          <Button
-            href="/waitlist"
-            variant="primary"
-            size="lg"
-            icon={<ArrowRight size={20} />}
-            iconPosition="right"
-            className="mx-auto"
-          >
-            List Your Business
-          </Button>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400">© 2026 HANDLY. All rights reserved.</p>
-            <div className="flex gap-6 text-gray-400 mt-4 md:mt-0">
-              <a href="/" className="hover:text-white">Home</a>
-              <a href="/customers" className="hover:text-white">For Customers</a>
-              <a href="/workers" className="hover:text-white">For Workers</a>
-              <a href="/about" className="hover:text-white">About</a>
+      <section className="pb-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Ready to grow your business?
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                Get your profile live today and start reaching new customers.
+              </p>
+              <Link
+                href="/waitlist"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-handly-50 transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-black/10"
+              >
+                List Your Business
+                <ArrowRight size={18} />
+              </Link>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 }

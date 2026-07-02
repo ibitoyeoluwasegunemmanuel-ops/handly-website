@@ -1,219 +1,355 @@
-'use client';
-
 import Link from 'next/link';
-import { ArrowRight, CheckCircle, Users, Briefcase, TrendingUp } from 'lucide-react';
-import Button from '@/components/Button';
-import { useState, useEffect } from 'react';
+import { ArrowRight, Search, Star, Home as HomeIcon, Briefcase, User, MessageCircle, ShieldCheck, Zap, BadgeCheck } from 'lucide-react';
+
+const APP_STORE_URL = 'https://apps.apple.com/us/app/handly-app/id6778122913';
+
+function AppStoreButton({ dark = false }: { dark?: boolean }) {
+  return (
+    <a
+      href={APP_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full font-semibold transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] ${
+        dark
+          ? 'bg-gray-900 text-white hover:bg-gray-800'
+          : 'bg-white text-gray-900 hover:bg-handly-50 shadow-lg shadow-black/10'
+      }`}
+    >
+      <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+      </svg>
+      Download on the App Store
+    </a>
+  );
+}
+
+function PhoneMockup() {
+  return (
+    <div className="relative">
+      {/* Ambient glow */}
+      <div className="absolute -inset-10 bg-handly-400/20 rounded-full blur-3xl" />
+
+      <div className="relative w-[310px] rounded-[3rem] bg-gray-950 p-2.5 shadow-2xl shadow-black/40 ring-1 ring-white/20">
+        <div className="rounded-[2.4rem] bg-gray-50 overflow-hidden">
+          {/* Status bar */}
+          <div className="flex items-center justify-between px-7 pt-4 pb-2">
+            <span className="text-[13px] font-semibold text-gray-900">9:41</span>
+            <div className="w-24 h-6 bg-gray-950 rounded-full" />
+            <div className="flex items-center gap-1">
+              <div className="w-4 h-2.5 rounded-[2px] bg-gray-900" />
+              <div className="w-1 h-2.5 rounded-[2px] bg-gray-300" />
+            </div>
+          </div>
+
+          {/* App header */}
+          <div className="px-5 pt-3 pb-4 flex items-center justify-between">
+            <div>
+              <p className="text-[11px] text-gray-400 font-medium">Good morning 👋</p>
+              <p className="text-[15px] font-bold text-gray-900">What do you need done?</p>
+            </div>
+            <div className="w-9 h-9 rounded-full bg-handly-100 flex items-center justify-center">
+              <span className="text-[12px] font-bold text-handly-700">AO</span>
+            </div>
+          </div>
+
+          {/* Search */}
+          <div className="px-5 pb-4">
+            <div className="flex items-center gap-2.5 bg-white rounded-2xl px-4 py-3 shadow-sm border border-gray-100">
+              <Search size={15} className="text-gray-400" />
+              <span className="text-[13px] text-gray-400">Try &quot;fix my generator&quot;</span>
+            </div>
+          </div>
+
+          {/* Category chips */}
+          <div className="px-5 pb-4 flex gap-2">
+            {['Plumbing', 'Cleaning', 'Repairs'].map((chip, i) => (
+              <span
+                key={chip}
+                className={`text-[11px] font-semibold px-3.5 py-1.5 rounded-full ${
+                  i === 0 ? 'bg-handly-600 text-white' : 'bg-white text-gray-600 border border-gray-200'
+                }`}
+              >
+                {chip}
+              </span>
+            ))}
+          </div>
+
+          {/* Worker cards */}
+          <div className="px-5 pb-3">
+            <p className="text-[12px] font-bold text-gray-900 mb-2.5">Top rated near you</p>
+            <div className="space-y-2.5">
+              {[
+                { initials: 'TA', name: 'Tunde Adeyemi', role: 'Electrician', rating: '4.9', price: '₦8,500' },
+                { initials: 'AM', name: 'Ama Mensah', role: 'Cleaner', rating: '4.8', price: '₦6,000' },
+              ].map((w) => (
+                <div key={w.name} className="flex items-center gap-3 bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
+                  <div className="w-10 h-10 rounded-full bg-handly-50 flex items-center justify-center shrink-0">
+                    <span className="text-[12px] font-bold text-handly-700">{w.initials}</span>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1">
+                      <p className="text-[13px] font-bold text-gray-900 truncate">{w.name}</p>
+                      <BadgeCheck size={12} className="text-handly-500 shrink-0" />
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[11px] text-gray-500">
+                      <span>{w.role}</span>
+                      <span className="flex items-center gap-0.5">
+                        <Star size={9} className="fill-amber-400 text-amber-400" /> {w.rating}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="text-[12px] font-bold text-gray-900">{w.price}</p>
+                    <p className="text-[10px] font-semibold text-handly-600">Book</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Bottom nav */}
+          <div className="flex items-center justify-around px-8 py-3.5 bg-white border-t border-gray-100">
+            <HomeIcon size={18} className="text-handly-600" />
+            <Search size={18} className="text-gray-300" />
+            <Briefcase size={18} className="text-gray-300" />
+            <MessageCircle size={18} className="text-gray-300" />
+            <User size={18} className="text-gray-300" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
-
   return (
-    <div className="overflow-hidden bg-white">
-      {/* SECTION 1: HERO */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-handly-700 via-handly-800 to-handly-900">
-        {/* Subtle animated blobs */}
-        <div className="absolute top-0 right-1/3 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob-float" />
-        <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob-float-slow" style={{ animationDelay: '-2s' }} />
+    <div className="bg-white">
+      {/* ============ HERO ============ */}
+      <section className="relative overflow-hidden bg-handly-900">
+        <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] bg-handly-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30 animate-blob-float" />
+        <div className="absolute -bottom-32 left-1/4 w-[400px] h-[400px] bg-teal-400 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-blob-float-slow" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            {/* Left: Text */}
-            <div className="space-y-10">
-              <div className="space-y-8">
-                <h1 className="text-7xl md:text-8xl lg:text-9xl font-black text-white leading-none tracking-tighter">
-                  Get It<br />Done.
-                </h1>
-                <p className="text-2xl md:text-3xl text-white/80 leading-relaxed max-w-2xl font-light">
-                  Find trusted workers and get things done. Africa's most reliable marketplace.
-                </p>
-              </div>
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-36 pb-24 lg:pt-44 lg:pb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
+            {/* Left */}
+            <div className="max-w-xl">
+              <p className="animate-fade-up inline-flex items-center gap-2 text-sm font-semibold text-handly-200 mb-8">
+                <span className="w-1.5 h-1.5 bg-handly-300 rounded-full" />
+                Now live on the App Store
+              </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Button
-                  href="https://apps.apple.com/us/app/handly-app/id6778122913"
-                  variant="primary"
-                  size="lg"
-                  icon={<ArrowRight size={20} />}
-                  iconPosition="right"
-                >
-                  Download on App Store
-                </Button>
-                <Button
+              <h1 className="animate-fade-up animation-delay-100 text-5xl sm:text-6xl lg:text-[4.75rem] font-bold text-white leading-[1.04] tracking-tight mb-7">
+                Trusted help,
+                <br />
+                one tap away.
+              </h1>
+
+              <p className="animate-fade-up animation-delay-200 text-lg sm:text-xl text-handly-100/80 leading-relaxed mb-10">
+                HANDLY connects you with verified workers, artisans, and businesses across Africa. Post a job, compare offers, get it done.
+              </p>
+
+              <div className="animate-fade-up animation-delay-300 flex flex-col sm:flex-row gap-4 mb-16">
+                <AppStoreButton />
+                <Link
                   href="/customers"
-                  variant="outline"
-                  size="lg"
-                  className="!bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold text-white border border-white/25 hover:bg-white/10 transition-all duration-300"
                 >
                   Post a Job
-                </Button>
+                  <ArrowRight size={18} />
+                </Link>
               </div>
 
-              {/* Trust metrics */}
-              <div className="flex flex-col sm:flex-row gap-12 pt-12 border-t border-white/20">
+              <div className="animate-fade-up animation-delay-300 flex gap-14">
                 <div>
-                  <p className="text-sm text-white/70 uppercase tracking-widest font-semibold">Active Users</p>
-                  <p className="text-4xl font-black text-white mt-2">50K+</p>
+                  <p className="text-3xl font-bold text-white tracking-tight">50K+</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Active users</p>
                 </div>
                 <div>
-                  <p className="text-sm text-white/70 uppercase tracking-widest font-semibold">Jobs Completed</p>
-                  <p className="text-4xl font-black text-white mt-2">10K+</p>
+                  <p className="text-3xl font-bold text-white tracking-tight">10K+</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Jobs completed</p>
+                </div>
+                <div>
+                  <p className="text-3xl font-bold text-white tracking-tight">4.8★</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Average rating</p>
                 </div>
               </div>
             </div>
 
-            {/* Right: iPhone mockup */}
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-3xl blur-2xl" />
-                <div className="relative bg-black rounded-3xl p-3 shadow-2xl" style={{ aspectRatio: '9/19' }}>
-                  <div className="bg-white rounded-2xl h-full flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="text-6xl mb-4">📱</div>
-                      <p className="text-sm font-semibold text-gray-600">Coming Soon</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Right: phone */}
+            <div className="hidden lg:flex justify-center">
+              <PhoneMockup />
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2: TRUST METRICS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+      {/* ============ TRUST STRIP ============ */}
+      <section className="border-b border-gray-900/5">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { label: 'Verified Workers', value: '15K+' },
-              { label: 'Registered Businesses', value: '3.2K+' },
-              { label: 'Success Rate', value: '95%' },
-              { label: 'Countries', value: '15+' },
-            ].map((stat, idx) => (
-              <div key={idx}>
-                <p className="text-sm text-gray-600 uppercase tracking-wide font-semibold">{stat.label}</p>
-                <p className="text-4xl md:text-5xl font-black text-gray-900 mt-3">{stat.value}</p>
+              { value: '15K+', label: 'Verified workers' },
+              { value: '3.2K+', label: 'Businesses listed' },
+              { value: '95%', label: 'Jobs completed successfully' },
+              { value: '15+', label: 'African countries' },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
+                <p className="text-[15px] text-gray-500 mt-2">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 3: SERVICES */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">What You Can Get Done</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">From home repairs to freelance services, skilled professionals ready to help</p>
+      {/* ============ SERVICES ============ */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Services</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-5">
+              Whatever you need, someone nearby does it well.
+            </h2>
+            <p className="text-lg text-gray-500 leading-relaxed">
+              From quick home fixes to professional services — every category, verified.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: '🏠', label: 'Home Repair' },
-              { icon: '💼', label: 'Freelance' },
-              { icon: '✏️', label: 'Tutoring' },
+              { icon: '🔧', label: 'Home Repair' },
+              { icon: '🧹', label: 'Cleaning' },
+              { icon: '💻', label: 'Tech & Design' },
               { icon: '🚗', label: 'Transport' },
               { icon: '💇', label: 'Beauty' },
               { icon: '📸', label: 'Photography' },
-            ].map((service, idx) => (
-              <div key={idx} className="text-center">
-                <div className="text-5xl mb-4">{service.icon}</div>
-                <p className="font-semibold text-gray-900">{service.label}</p>
+            ].map((service) => (
+              <div
+                key={service.label}
+                className="group rounded-3xl border border-gray-900/5 p-8 text-center hover:border-handly-200 hover:bg-handly-50/40 transition-all duration-300"
+              >
+                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+                <p className="text-[15px] font-semibold text-gray-900">{service.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 4: HOW IT WORKS */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">How It Works</h2>
-            <p className="text-xl text-gray-600">Simple steps to get started</p>
+      {/* ============ HOW IT WORKS ============ */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">How it works</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              From request to done, in three steps.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {[
-              { num: '01', title: 'Post or Browse', desc: 'Tell us what you need or showcase your skills' },
-              { num: '02', title: 'Connect', desc: 'Match with trusted professionals instantly' },
-              { num: '03', title: 'Get It Done', desc: 'Communicate, deliver, and rate each other' },
-            ].map((step, idx) => (
-              <div key={idx}>
-                <p className="text-6xl font-black text-handly-600 mb-6">{step.num}</p>
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600 text-lg">{step.desc}</p>
+              { num: '01', title: 'Post or browse', desc: 'Describe what you need — or browse top-rated professionals near you.' },
+              { num: '02', title: 'Compare & connect', desc: 'Review verified profiles, ratings, and prices. Chat before you commit.' },
+              { num: '03', title: 'Get it done', desc: 'Work gets completed, payment is handled, and both sides leave a rating.' },
+            ].map((step) => (
+              <div key={step.num}>
+                <p className="text-sm font-bold text-handly-600 mb-5">{step.num}</p>
+                <div className="h-px bg-gray-900/10 mb-7" />
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 5: WHY HANDLY */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">Why HANDLY</h2>
-            <p className="text-xl text-gray-600">Africa's most trusted marketplace</p>
+      {/* ============ WHY HANDLY ============ */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Why HANDLY</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Built on trust, priced fairly.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {[
-              { icon: '✓', title: 'Verified & Trusted', desc: 'Every user verified. Real reviews. Real reliability.' },
-              { icon: '⚡', title: 'Instant Matching', desc: 'Connect with right professionals in minutes, not days.' },
-              { icon: '💰', title: 'Fair & Transparent', desc: 'No hidden fees. You control the rates and terms.' },
-            ].map((feature, idx) => (
-              <div key={idx} className="space-y-6">
-                <p className="text-5xl">{feature.icon}</p>
-                <h3 className="text-2xl font-bold text-gray-900">{feature.title}</h3>
-                <p className="text-lg text-gray-600 leading-relaxed">{feature.desc}</p>
+              {
+                icon: <ShieldCheck size={22} className="text-handly-600" />,
+                title: 'Verified & trusted',
+                desc: 'Every worker is identity-verified with real reviews from real customers. No surprises at your door.',
+              },
+              {
+                icon: <Zap size={22} className="text-handly-600" />,
+                title: 'Matched in minutes',
+                desc: 'Post a job and get responses from available professionals near you — often within the hour.',
+              },
+              {
+                icon: <BadgeCheck size={22} className="text-handly-600" />,
+                title: 'Fair, transparent pricing',
+                desc: 'See prices upfront. No hidden fees, no haggling games. Workers keep what they earn.',
+              },
+            ].map((item) => (
+              <div key={item.title}>
+                <div className="w-12 h-12 rounded-2xl bg-handly-50 flex items-center justify-center mb-6">
+                  {item.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* SECTION 6: TESTIMONIALS */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">Loved by Our Community</h2>
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Testimonials</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Loved by the people who use it.
+            </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                quote: 'Found quality freelancers within days. The platform is incredibly intuitive.',
-                author: 'Chioma M.',
-                role: 'Business Owner',
+                quote: 'Found a qualified electrician in 30 minutes. He fixed the issue the same day. This is how it should work.',
+                author: 'Chioma Okafor',
+                role: 'Customer, Lagos',
+                initials: 'CO',
               },
               {
-                quote: 'Finally a marketplace that understands African professionals. The earnings are fair.',
-                author: 'James O.',
-                role: 'Freelancer',
+                quote: 'HANDLY changed my business. I started with small jobs — now I have repeat customers every single week.',
+                author: 'Chinedu Eze',
+                role: 'Electrician, Abuja',
+                initials: 'CE',
               },
               {
-                quote: 'The verification process gives me confidence. Every hire has been reliable.',
-                author: 'Sarah A.',
-                role: 'Marketing Manager',
+                quote: 'The verification gives me real confidence. Every person I’ve hired through HANDLY has been reliable.',
+                author: 'Sarah Amoah',
+                role: 'Operations Manager, Accra',
+                initials: 'SA',
               },
-            ].map((testimonial, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-8 space-y-4">
-                <div className="flex gap-1">
+            ].map((t) => (
+              <div key={t.author} className="bg-white rounded-3xl p-8 border border-gray-900/5 flex flex-col">
+                <div className="flex gap-1 mb-6">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-lg">⭐</span>
+                    <Star key={i} size={15} className="fill-amber-400 text-amber-400" />
                   ))}
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.quote}"</p>
-                <div>
-                  <p className="font-semibold text-gray-900">{testimonial.author}</p>
-                  <p className="text-sm text-gray-600">{testimonial.role}</p>
+                <p className="text-[15px] text-gray-700 leading-relaxed flex-1">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-3 mt-8">
+                  <div className="w-10 h-10 rounded-full bg-handly-50 flex items-center justify-center">
+                    <span className="text-[12px] font-bold text-handly-700">{t.initials}</span>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-gray-900">{t.author}</p>
+                    <p className="text-[13px] text-gray-500">{t.role}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -221,73 +357,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SECTION 7: CTA - DOWNLOAD */}
-      <section className="py-24 bg-gradient-to-br from-handly-700 to-handly-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-          <h2 className="text-5xl md:text-6xl font-black">Ready to Get Started?</h2>
-          <p className="text-xl text-white/90">Join thousands of users transforming how work gets done in Africa</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-            <Button
-              href="https://apps.apple.com/us/app/handly-app/id6778122913"
-              variant="primary"
-              size="lg"
-              icon={<ArrowRight size={20} />}
-              iconPosition="right"
-            >
-              Download on App Store
-            </Button>
-            <Button
-              href="/workers"
-              variant="outline"
-              size="lg"
-              className="!bg-white/10 !border-white/30 !text-white hover:!bg-white/20"
-            >
-              Find Work
-            </Button>
+      {/* ============ DOWNLOAD CTA ============ */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 sm:py-24 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="absolute top-0 left-1/3 w-96 h-96 bg-handly-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-30" />
+
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Get the app. Get it done.
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                Join 50,000+ people across Africa hiring and earning on HANDLY.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <AppStoreButton />
+                <span
+                  aria-disabled="true"
+                  className="inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full font-semibold bg-white/10 text-white/50 cursor-not-allowed select-none border border-white/10"
+                >
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current" aria-hidden="true">
+                    <path d="M3 20.5V3.5c0-.59.34-1.11.84-1.35L13.69 12l-9.85 9.85c-.5-.25-.84-.76-.84-1.35m13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27m3.35-4.31c.34.27.59.69.59 1.19s-.22.9-.57 1.18l-2.29 1.32-2.5-2.5 2.5-2.5 2.27 1.31M6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49z" />
+                  </svg>
+                  Google Play — Coming Soon
+                </span>
+              </div>
+            </div>
           </div>
-          <p className="text-white/75 text-sm pt-4">Available on iOS • Android coming soon</p>
         </div>
       </section>
-
-      {/* SECTION 8: FOOTER */}
-      <footer className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
-            <div>
-              <h3 className="font-bold mb-4">Product</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/how-it-works" className="hover:text-white">How It Works</a></li>
-                <li><a href="/success-stories" className="hover:text-white">Success Stories</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Company</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/about" className="hover:text-white">About Us</a></li>
-                <li><a href="/careers" className="hover:text-white">Careers</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Community</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="/community" className="hover:text-white">Join Community</a></li>
-                <li><a href="/blog" className="hover:text-white">Blog</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold mb-4">Legal</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white">Privacy</a></li>
-                <li><a href="#" className="hover:text-white">Terms</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400">© 2026 HANDLY. All rights reserved.</p>
-            <p className="text-gray-400 text-sm mt-4 md:mt-0">Built for Africa, by Africans</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
