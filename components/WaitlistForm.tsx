@@ -1,7 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { addToWaitlist } from '@/lib/supabase';
+import { useState, useRef } from 'react';
+import { addToWaitlist, getOrCreateUser } from '@/lib/supabase';
+import { trackEvent, EventCategory, EventName, trackFormStart, trackUserTypeSelect, trackWaitlistSignup } from '@/lib/analytics';
 import { ArrowRight, Loader } from 'lucide-react';
 
 const NIGERIAN_STATES = [
@@ -21,6 +22,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const formStartedRef = useRef(false);
   const [formData, setFormData] = useState({
     email: '',
     phone: '',
@@ -32,6 +34,18 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+
+    // Track form start on first interaction
+    if (!formStartedRef.current) {
+      formStartedRef.current = true;
+      trackFormStart('waitlist_form');
+    }
+
+    // Track user type selection
+    if (name === 'type') {
+      trackUserTypeSelect(value as 'customer' | 'worker' | 'business');
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -64,6 +78,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
 
     setLoading(true);
     try {
+      // Add to waitlist
       await addToWaitlist({
         email: formData.email,
         phone: formData.phone,
@@ -73,7 +88,26 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
         referredBy: formData.referralCode || undefined,
       });
 
+      // Create user record for authentication integration
+      const roleMap = {
+        customer: 'customer' as const,
+        worker: 'worker' as const,
+        business: 'business' as const,
+      };
+
+      await getOrCreateUser({
+        email: formData.email,
+        phone: formData.phone,
+        role: roleMap[formData.type as keyof typeof roleMap],
+        state: formData.state,
+        isFromApp: false,
+      });
+
       setSuccess(true);
+
+      // Track successful waitlist signup
+      trackWaitlistSignup(formData.email, formData.type as 'customer' | 'worker' | 'business', formData.state);
+
       setFormData({
         email: '',
         phone: '',
@@ -96,6 +130,12 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
       } else {
         setError(message);
       }
+
+      // Track form error
+      trackEvent(EventCategory.ERROR, EventName.FORM_ERROR, {
+        form: 'waitlist_form',
+        error: message,
+      });
     } finally {
       setLoading(false);
     }
@@ -103,12 +143,12 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
 
   if (success) {
     return (
-      <div className="p-6 bg-green-50 border border-green-200 rounded-lg">
-        <h3 className="text-lg font-semibold text-green-900 mb-2">Success! 🎉</h3>
-        <p className="text-green-700 mb-4">
+      <div className="p-6 bg-handly-50 border border-handly-200 rounded-lg">
+        <h3 className="text-lg font-semibold text-handly-900 mb-2">Success! 🎉</h3>
+        <p className="text-handly-700 mb-4">
           You've been added to the HANDLY waitlist. We'll notify you when we launch!
         </p>
-        <p className="text-sm text-green-600">
+        <p className="text-sm text-handly-600">
           Check your email for more details and how to track your referral.
         </p>
       </div>
@@ -137,8 +177,8 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
                 <div
                   className={`p-3 text-center rounded-lg border-2 transition-all cursor-pointer capitalize ${
                     formData.type === type
-                      ? 'border-blue-600 bg-blue-50'
-                      : 'border-gray-200 bg-white hover:border-blue-300'
+                      ? 'border-handly-600 bg-handly-50'
+                      : 'border-gray-200 bg-white hover:border-handly-300'
                   }`}
                 >
                   {type === 'customer' && '👤 Customer'}
@@ -163,7 +203,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
           value={formData.email}
           onChange={handleChange}
           placeholder="your@email.com"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
           required
         />
       </div>
@@ -180,7 +220,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
           value={formData.phone}
           onChange={handleChange}
           placeholder="+234 8XX XXX XXXX"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
           required
         />
       </div>
@@ -195,7 +235,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
           name="state"
           value={formData.state}
           onChange={handleChange}
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
           required
         >
           <option value="">Select your state</option>
@@ -219,7 +259,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
           value={formData.city}
           onChange={handleChange}
           placeholder="Your city or local government area"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
           required
         />
       </div>
@@ -236,7 +276,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
           value={formData.referralCode}
           onChange={handleChange}
           placeholder="Referred by a friend? Enter their code"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-handly-500 focus:border-transparent"
         />
       </div>
 
@@ -251,7 +291,7 @@ export default function WaitlistForm({ defaultType, onSuccess }: WaitlistFormPro
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-handly-600 text-white py-3 rounded-lg hover:bg-handly-700 transition-colors font-medium flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? (
           <>

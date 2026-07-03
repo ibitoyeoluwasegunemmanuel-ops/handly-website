@@ -4,6 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Script from "next/script";
+import { getOrganizationSchema, getWebsiteSchema } from "@/lib/schema";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,13 +17,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HANDLY | Africa's Premier Freelancer Marketplace",
-  description: "Hire Africa's best talent or sell your skills. HANDLY connects 50K+ freelancers with leading businesses across 15 countries. Secure payments. Instant matching. Real results.",
-  keywords: "freelance, talent marketplace, Africa, remote work, hiring, jobs, gig economy",
+  title: "Handly – Find Trusted Workers Near You",
+  description: "Book verified workers and artisans near you or post a job and receive offers from professionals across Nigeria.",
+  keywords: "handyman, artisan, services marketplace, Nigeria, plumber, electrician, cleaner, hire workers, skilled work",
   authors: [{ name: "HANDLY" }],
   openGraph: {
-    title: "HANDLY - Work Worth Doing",
-    description: "Africa's premier talent marketplace. 50K+ freelancers. 15 countries. Secure payments. Instant matching.",
+    title: "Handly – Find Trusted Workers Near You",
+    description: "Book verified workers and artisans near you or post a job and receive offers from professionals across Nigeria.",
     url: "https://handly.africa",
     type: "website",
     locale: "en_US",
@@ -38,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HANDLY - Work Worth Doing",
-    description: "Africa's premier talent marketplace",
+    title: "Handly – Find Trusted Workers Near You",
+    description: "Book verified workers near you or post a job and receive offers from professionals across Nigeria.",
     creator: "@handlyafrica",
     images: ["https://handly.africa/og-image.png"],
   },
@@ -73,6 +74,24 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
+        {/* Structured Data - Organization Schema */}
+        <Script
+          id="organization-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getOrganizationSchema()),
+          }}
+        />
+
+        {/* Structured Data - Website Schema */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(getWebsiteSchema()),
+          }}
+        />
+
         {/* Google Analytics */}
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>

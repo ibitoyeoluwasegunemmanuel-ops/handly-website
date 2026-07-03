@@ -1,107 +1,99 @@
 import { Metadata } from 'next';
+import ContactForm from '@/components/ContactForm';
+import { Mail, MessageCircle, Briefcase } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Contact Us - HANDLY',
-  description: 'Get in touch with the HANDLY team.',
+  title: 'Contact – HANDLY',
+  description: 'Get in touch with the HANDLY team. We respond within one business day.',
 };
+
+const channels = [
+  {
+    icon: <Mail size={20} className="text-handly-600" />,
+    title: 'General',
+    desc: 'Questions, feedback, anything else.',
+    value: 'hello@handly.africa',
+    href: 'mailto:hello@handly.africa',
+  },
+  {
+    icon: <Briefcase size={20} className="text-handly-600" />,
+    title: 'Partnerships & Investors',
+    desc: 'Enterprise, press, and investment.',
+    value: 'partners@handly.africa',
+    href: 'mailto:partners@handly.africa',
+  },
+  {
+    icon: <MessageCircle size={20} className="text-handly-600" />,
+    title: 'Support',
+    desc: 'Help with the app or an active job.',
+    value: 'support@handly.africa',
+    href: 'mailto:support@handly.africa',
+  },
+];
 
 export default function ContactPage() {
   return (
-    <div>
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-          <p className="text-xl text-gray-600">We'd love to hear from you</p>
-        </div>
-      </section>
+    <div className="bg-white">
+      <section className="pt-40 pb-28 lg:pt-48">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            {/* Left */}
+            <div>
+              <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Contact</p>
+              <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+                Let's talk.
+              </h1>
+              <p className="text-lg text-gray-500 leading-relaxed max-w-md mb-14">
+                Whether you have a question, a partnership idea, or need help — we respond within one business day.
+              </p>
 
-      {/* Contact Options */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            {[
-              {
-                icon: '📧',
-                title: 'Email',
-                description: 'hello@handly.africa',
-                action: 'mailto:hello@handly.africa',
-              },
-              {
-                icon: '💬',
-                title: 'WhatsApp',
-                description: 'Chat with us on WhatsApp',
-                action: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
-              },
-              {
-                icon: '🌐',
-                title: 'Twitter',
-                description: '@handlyafrica',
-                action: process.env.NEXT_PUBLIC_TWITTER_LINK || '#',
-              },
-            ].map((item, index) => (
-              <a
-                key={index}
-                href={item.action}
-                target={item.action.startsWith('mailto') ? undefined : '_blank'}
-                rel={item.action.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-                className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow text-center"
-              >
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-600">{item.description}</p>
-              </a>
-            ))}
-          </div>
+              <div className="space-y-8">
+                {channels.map((c) => (
+                  <div key={c.title} className="flex gap-5">
+                    <div className="w-11 h-11 rounded-2xl bg-handly-50 flex items-center justify-center shrink-0">
+                      {c.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-[15px] font-bold text-gray-900">{c.title}</h3>
+                      <p className="text-sm text-gray-500 mt-0.5 mb-1.5">{c.desc}</p>
+                      <a href={c.href} className="text-sm font-semibold text-handly-600 hover:text-handly-700 transition-colors">
+                        {c.value}
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-          {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg border border-gray-200 max-w-2xl mx-auto">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                  <input
-                    type="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="your@email.com"
-                  />
+              {/* Social channels */}
+              <div className="mt-14 pt-10 border-t border-gray-900/5">
+                <p className="text-sm font-semibold text-gray-900 mb-4">Prefer chat? Find us on</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { label: 'WhatsApp', href: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#' },
+                    { label: 'Telegram', href: process.env.NEXT_PUBLIC_TELEGRAM_LINK || '#' },
+                    { label: 'X / Twitter', href: process.env.NEXT_PUBLIC_TWITTER_LINK || '#' },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-semibold text-gray-700 hover:border-handly-600 hover:text-handly-700 transition-colors"
+                    >
+                      {s.label}
+                    </a>
+                  ))}
                 </div>
               </div>
+            </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Subject</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="What's this about?"
-                />
+            {/* Right: form */}
+            <div>
+              <div className="rounded-[2rem] border border-gray-900/10 p-8 sm:p-10">
+                <h2 className="text-xl font-bold text-gray-900 mb-8">Send us a message</h2>
+                <ContactForm />
               </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                <textarea
-                  rows={6}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  placeholder="Your message..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors font-medium"
-              >
-                Send Message
-              </button>
-            </form>
+            </div>
           </div>
         </div>
       </section>

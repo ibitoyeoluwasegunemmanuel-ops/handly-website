@@ -78,7 +78,7 @@ export default function InvestorDashboard() {
       label: 'Active Countries',
       value: topStates ? topStates.length : 0,
       change: '+5 new',
-      changeColor: 'text-blue-600',
+      changeColor: 'text-handly-600',
     },
     {
       icon: DollarSign,
@@ -92,7 +92,7 @@ export default function InvestorDashboard() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-handly-600"></div>
       </div>
     );
   }
@@ -107,7 +107,7 @@ export default function InvestorDashboard() {
         </div>
 
         {/* Executive Summary */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-lg mb-8">
+        <div className="bg-gradient-to-r from-handly-500 to-handly-700 text-white p-8 rounded-lg mb-8">
           <h2 className="text-2xl font-bold mb-4">Executive Summary</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
@@ -130,7 +130,7 @@ export default function InvestorDashboard() {
             return (
               <div key={index} className="bg-white p-6 rounded-lg border border-gray-200">
                 <div className="flex items-start justify-between mb-4">
-                  <Icon size={24} className="text-blue-600" />
+                  <Icon size={24} className="text-handly-600" />
                   <span className={`text-sm font-semibold ${kpi.changeColor}`}>
                     {kpi.change}
                   </span>
@@ -155,17 +155,17 @@ export default function InvestorDashboard() {
             <div className="space-y-4">
               {[
                 { type: 'Customers', value: stats?.customers || 0, percentage: stats?.total ? ((stats.customers / stats.total) * 100).toFixed(1) : 0 },
-                { type: 'Freelancers', value: stats?.workers || 0, percentage: stats?.total ? ((stats.workers / stats.total) * 100).toFixed(1) : 0 },
+                { type: 'Workers & Artisans', value: stats?.workers || 0, percentage: stats?.total ? ((stats.workers / stats.total) * 100).toFixed(1) : 0 },
                 { type: 'Businesses', value: stats?.businesses || 0, percentage: stats?.total ? ((stats.businesses / stats.total) * 100).toFixed(1) : 0 },
               ].map((segment, i) => (
                 <div key={i}>
                   <div className="flex justify-between items-center mb-2">
                     <span className="text-gray-900 font-medium">{segment.type}</span>
-                    <span className="text-blue-600 font-bold">{segment.value.toLocaleString()}</span>
+                    <span className="text-handly-600 font-bold">{segment.value.toLocaleString()}</span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-handly-600 h-2 rounded-full"
                       style={{ width: `${segment.percentage}%` }}
                     ></div>
                   </div>
@@ -182,7 +182,7 @@ export default function InvestorDashboard() {
               {topStates.slice(0, 5).map((state, i) => (
                 <div key={i} className="flex justify-between items-center">
                   <span className="text-gray-900">{state.state}</span>
-                  <span className="text-blue-600 font-bold">{state.count}</span>
+                  <span className="text-handly-600 font-bold">{state.count}</span>
                 </div>
               ))}
             </div>
@@ -237,7 +237,7 @@ export default function InvestorDashboard() {
               {
                 icon: '🚀',
                 title: 'Network Effects',
-                description: 'More freelancers = better matching = more customers',
+                description: 'More workers = better matching = more customers',
               },
             ].map((advantage, i) => (
               <div key={i} className="text-center">

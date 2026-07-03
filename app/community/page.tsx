@@ -1,70 +1,74 @@
 import { Metadata } from 'next';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight, MessageCircle, Send, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Community - Join HANDLY\'s Community',
-  description: 'Join our thriving community of freelancers and businesses.',
+  title: 'Community – HANDLY',
+  description: 'Join thousands of workers, customers, and businesses connecting across Africa.',
 };
 
 export default function CommunityPage() {
+  const channels = [
+    {
+      icon: <MessageCircle size={20} className="text-handly-600" />,
+      title: 'WhatsApp Community',
+      desc: 'Daily tips, job alerts, and direct support from the HANDLY team.',
+      href: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
+      cta: 'Join on WhatsApp',
+    },
+    {
+      icon: <Send size={20} className="text-handly-600" />,
+      title: 'Telegram Channel',
+      desc: 'Product updates, announcements, and community highlights.',
+      href: process.env.NEXT_PUBLIC_TELEGRAM_LINK || '#',
+      cta: 'Join on Telegram',
+    },
+    {
+      icon: <Users size={20} className="text-handly-600" />,
+      title: 'Worker Meetups',
+      desc: 'In-person events in Lagos, Abuja, and Port Harcourt. Learn, network, grow.',
+      href: '/contact',
+      cta: 'Get notified',
+    },
+  ];
+
   return (
-    <div>
+    <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Join Our Community</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Connect with freelancers and businesses across Africa. Share experiences, learn, and grow together.
-          </p>
+      <section className="pt-40 pb-20 lg:pt-48">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-6">Community</p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 tracking-tight leading-[1.05] mb-8">
+              You're not building alone.
+            </h1>
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
+              Join thousands of workers, customers, and business owners sharing knowledge, opportunities, and wins across Africa.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Community Channels */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Connect With Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: '💬',
-                name: 'WhatsApp Group',
-                description: 'Join our main community group for daily discussions',
-                action: 'Join Group',
-                link: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#',
-              },
-              {
-                icon: '📱',
-                name: 'Telegram',
-                description: 'Get updates and share announcements',
-                action: 'Join Channel',
-                link: process.env.NEXT_PUBLIC_TELEGRAM_LINK || '#',
-              },
-              {
-                icon: '🐦',
-                name: 'Twitter',
-                description: 'Follow us for news and updates',
-                action: 'Follow Us',
-                link: process.env.NEXT_PUBLIC_TWITTER_LINK || '#',
-              },
-              {
-                icon: '💼',
-                name: 'LinkedIn',
-                description: 'Connect with us on LinkedIn',
-                action: 'Connect',
-                link: process.env.NEXT_PUBLIC_LINKEDIN_LINK || '#',
-              },
-            ].map((channel, index) => (
+      {/* Channels */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {channels.map((c) => (
               <a
-                key={index}
-                href={channel.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white p-8 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow text-center"
+                key={c.title}
+                href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="group rounded-3xl border border-gray-900/10 p-9 hover:border-handly-300 hover:bg-handly-50/30 transition-all duration-300"
               >
-                <div className="text-4xl mb-4">{channel.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{channel.name}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{channel.description}</p>
-                <span className="inline-block px-4 py-2 text-blue-600 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors font-medium text-sm">
-                  {channel.action}
+                <div className="w-11 h-11 rounded-2xl bg-handly-50 flex items-center justify-center mb-6 group-hover:bg-white transition-colors">
+                  {c.icon}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2.5">{c.title}</h3>
+                <p className="text-[15px] text-gray-500 leading-relaxed mb-6">{c.desc}</p>
+                <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-handly-600">
+                  {c.cta}
+                  <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </span>
               </a>
             ))}
@@ -72,88 +76,47 @@ export default function CommunityPage() {
         </div>
       </section>
 
-      {/* Community Benefits */}
-      <section className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Community Benefits</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Stats */}
+      <section className="py-20 border-y border-gray-900/5 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              {
-                icon: '🤝',
-                title: 'Network',
-                description: 'Build relationships with thousands of freelancers and business owners',
-              },
-              {
-                icon: '📚',
-                title: 'Learn',
-                description: 'Access exclusive content, tips, and strategies from successful members',
-              },
-              {
-                icon: '🎁',
-                title: 'Rewards',
-                description: 'Earn badges, featured listings, and exclusive perks as an active member',
-              },
-              {
-                icon: '💡',
-                title: 'Share Knowledge',
-                description: 'Help others by sharing your experience and expertise with the community',
-              },
-              {
-                icon: '📣',
-                title: 'Get Discovered',
-                description: 'Showcase your work and get featured in community spotlights',
-              },
-              {
-                icon: '🌟',
-                title: 'Opportunities',
-                description: 'Access exclusive job opportunities and partnerships',
-              },
-            ].map((benefit, index) => (
-              <div key={index} className="bg-white p-8 rounded-lg border border-gray-200">
-                <div className="text-4xl mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{benefit.title}</h3>
-                <p className="text-gray-600">{benefit.description}</p>
+              { value: 'Open', label: 'To all workers & customers' },
+              { value: '10+', label: 'States across Nigeria' },
+              { value: '12', label: 'Service categories' },
+              { value: 'Weekly', label: 'Events & workshops' },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
+                <p className="text-[15px] text-gray-500 mt-2">{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Community Events */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Upcoming Events</h2>
-          <div className="space-y-4 max-w-3xl mx-auto">
-            {[
-              {
-                title: 'Virtual Meetup: Pricing Your Services',
-                date: 'June 30, 2024 • 3:00 PM WAT',
-                speaker: 'Chioma Okafor',
-              },
-              {
-                title: 'Webinar: Building Your Freelance Brand',
-                date: 'July 7, 2024 • 7:00 PM WAT',
-                speaker: 'Tunde Ajayi',
-              },
-              {
-                title: 'Q&A Session: Ask the HANDLY Team',
-                date: 'July 14, 2024 • 4:00 PM WAT',
-                speaker: 'HANDLY Team',
-              },
-            ].map((event, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg border border-gray-200 hover:shadow-lg transition-shadow">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">{event.title}</h3>
-                    <p className="text-gray-600 text-sm mb-2">{event.date}</p>
-                    <p className="text-gray-600 text-sm">Speaker: {event.speaker}</p>
-                  </div>
-                  <button className="mt-4 md:mt-0 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
-                    RSVP
-                  </button>
-                </div>
-              </div>
-            ))}
+      {/* CTA */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-handly-900 px-8 py-20 sm:px-16 text-center">
+            <div className="absolute inset-0 bg-gradient-to-br from-handly-800 via-handly-900 to-[#031a17]" />
+            <div className="relative max-w-2xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl font-bold text-white tracking-tight mb-6">
+                Grow with us.
+              </h2>
+              <p className="text-lg text-handly-100/80 mb-10">
+                Download the app and become part of Africa's fastest-growing work community.
+              </p>
+              <a
+                href="https://apps.apple.com/us/app/handly-app/id6778122913"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-gray-900 rounded-full font-semibold hover:bg-handly-50 transition-all duration-300 hover:scale-[1.03] shadow-lg shadow-black/10"
+              >
+                Download the App
+                <ArrowRight size={18} />
+              </a>
+            </div>
           </div>
         </div>
       </section>
