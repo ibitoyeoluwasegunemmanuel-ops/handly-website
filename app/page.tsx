@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Search, Star, Home as HomeIcon, Briefcase, User, MessageCircle, ShieldCheck, Zap, BadgeCheck } from 'lucide-react';
+import { ArrowRight, Search, Star, Home as HomeIcon, Briefcase, User, MessageCircle, BadgeCheck } from 'lucide-react';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/handly-app/id6778122913';
 
@@ -146,7 +146,7 @@ export default function Home() {
               </h1>
 
               <p className="animate-fade-up animation-delay-200 text-lg sm:text-xl text-handly-100/80 leading-relaxed mb-10">
-                HANDLY connects you with verified workers, artisans, and businesses across Africa. Post a job, compare offers, get it done.
+                Find verified workers near you or post a job and let professionals compete for your business.
               </p>
 
               <div className="animate-fade-up animation-delay-300 flex flex-col sm:flex-row gap-4 mb-16">
@@ -162,16 +162,16 @@ export default function Home() {
 
               <div className="animate-fade-up animation-delay-300 flex gap-14">
                 <div>
-                  <p className="text-3xl font-bold text-white tracking-tight">50K+</p>
-                  <p className="text-sm text-handly-200/70 mt-1">Active users</p>
+                  <p className="text-3xl font-bold text-white tracking-tight">12</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Service categories</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-white tracking-tight">10K+</p>
-                  <p className="text-sm text-handly-200/70 mt-1">Jobs completed</p>
+                  <p className="text-3xl font-bold text-white tracking-tight">2</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Ways to hire</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-white tracking-tight">4.8★</p>
-                  <p className="text-sm text-handly-200/70 mt-1">Average rating</p>
+                  <p className="text-3xl font-bold text-white tracking-tight">100%</p>
+                  <p className="text-sm text-handly-200/70 mt-1">Verified workers</p>
                 </div>
               </div>
             </div>
@@ -189,10 +189,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { value: '15K+', label: 'Verified workers' },
-              { value: '3.2K+', label: 'Businesses listed' },
-              { value: '95%', label: 'Jobs completed successfully' },
+              { value: 'Live', label: 'On the iOS App Store' },
+              { value: '12', label: 'Service categories' },
               { value: '10+', label: 'States across Nigeria' },
+              { value: '100%', label: 'Identity-verified workers' },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
@@ -294,42 +294,141 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ WHY HANDLY ============ */}
+      {/* ============ APP PREVIEW (screenshot placeholders) ============ */}
+      {/* Replace each placeholder by dropping real screenshots into public/screens/
+          as home.png, book-now.png, post-a-job.png, worker-profile.png, wallet.png
+          and swapping the placeholder divs for <Image> tags. */}
       <section className="py-28">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
-            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Why HANDLY</p>
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Inside the app</p>
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
-              Built on trust, priced fairly.
+              Everything happens in one app.
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              {
-                icon: <ShieldCheck size={22} className="text-handly-600" />,
-                title: 'Verified & trusted',
-                desc: 'Every worker is identity-verified with real reviews from real customers. No surprises at your door.',
-              },
-              {
-                icon: <Zap size={22} className="text-handly-600" />,
-                title: 'Matched in minutes',
-                desc: 'Post a job and get responses from available professionals near you — often within the hour.',
-              },
-              {
-                icon: <BadgeCheck size={22} className="text-handly-600" />,
-                title: 'Fair, transparent pricing',
-                desc: 'See prices upfront. No hidden fees, no haggling games. Workers keep what they earn.',
-              },
-            ].map((item) => (
-              <div key={item.title}>
-                <div className="w-12 h-12 rounded-2xl bg-handly-50 flex items-center justify-center mb-6">
-                  {item.icon}
+              { label: 'Home', desc: 'Browse categories & top-rated workers' },
+              { label: 'Book Now', desc: 'Instant matching near you' },
+              { label: 'Post a Job', desc: 'Photos, budget, offers' },
+              { label: 'Worker Profile', desc: 'Ratings, reviews, portfolio' },
+              { label: 'Wallet', desc: 'Earnings & fast withdrawals' },
+            ].map((screen) => (
+              <div key={screen.label}>
+                <div className="aspect-[9/19] rounded-[1.75rem] bg-gray-950 p-1.5 shadow-xl shadow-gray-950/10">
+                  <div className="h-full rounded-[1.4rem] bg-gradient-to-b from-handly-50 to-gray-100 flex flex-col items-center justify-center gap-3 px-4">
+                    <div className="w-10 h-10 rounded-2xl bg-handly-600 flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">H</span>
+                    </div>
+                    <p className="text-[13px] font-bold text-gray-700 text-center">{screen.label}</p>
+                    <p className="text-[11px] text-gray-400 text-center leading-snug">Screenshot coming soon</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{item.title}</h3>
-                <p className="text-[15px] text-gray-500 leading-relaxed">{item.desc}</p>
+                <p className="text-sm font-semibold text-gray-900 mt-4">{screen.label}</p>
+                <p className="text-[13px] text-gray-500 mt-0.5">{screen.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ WHY CUSTOMERS / WHY WORKERS ============ */}
+      <section className="py-28 bg-gray-50/70">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20">
+            {/* Customers */}
+            <div>
+              <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">For customers</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-9">
+                Why customers love HANDLY.
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {[
+                  'Verified workers',
+                  'Nearby professionals',
+                  'Multiple offers per job',
+                  'Compare prices upfront',
+                  'Ratings & reviews',
+                  'In-app chat',
+                  'Photo uploads',
+                  'Fast response',
+                  'Secure experience',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[15px] text-gray-700">
+                    <span className="w-5 h-5 rounded-full bg-handly-100 text-handly-700 flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/customers" className="inline-flex items-center gap-2 text-[15px] font-semibold text-handly-600 hover:text-handly-700 transition-colors mt-9">
+                Learn more for customers <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            {/* Workers */}
+            <div>
+              <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">For workers</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight mb-9">
+                Why workers love HANDLY.
+              </h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4">
+                {[
+                  'More customers',
+                  'Flexible schedule',
+                  'Build your reputation',
+                  'Wallet & fast payouts',
+                  'More jobs nearby',
+                  'Business growth tools',
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-[15px] text-gray-700">
+                    <span className="w-5 h-5 rounded-full bg-handly-100 text-handly-700 flex items-center justify-center text-[11px] font-bold shrink-0">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/workers" className="inline-flex items-center gap-2 text-[15px] font-semibold text-handly-600 hover:text-handly-700 transition-colors mt-9">
+                Learn more for workers <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ PERFECT FOR BUSINESSES ============ */}
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">For businesses</p>
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-6">
+                Perfect for businesses.
+              </h2>
+              <p className="text-lg text-gray-500 leading-relaxed mb-9 max-w-lg">
+                Source trusted workers quickly — technicians, electricians, cleaners, drivers, and maintenance staff, all verified and rated.
+              </p>
+              <Link
+                href="/businesses"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-handly-600 text-white rounded-full font-semibold hover:bg-handly-700 transition-all duration-300 hover:scale-[1.03] active:scale-[0.98]"
+              >
+                HANDLY for Business
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                'Hire technicians on demand',
+                'Find electricians & cleaners',
+                'Reliable drivers & delivery',
+                'Maintenance workers',
+                'Verified & rated staff',
+                'Fast, repeatable sourcing',
+              ].map((item) => (
+                <li key={item} className="rounded-2xl border border-gray-900/10 px-6 py-5 text-[15px] font-medium text-gray-700">
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -399,7 +498,7 @@ export default function Home() {
                 Get the app. Get it done.
               </h2>
               <p className="text-lg text-handly-100/80 mb-10">
-                Join 50,000+ people across Africa hiring and earning on HANDLY.
+                Join customers and workers across Nigeria hiring and earning on HANDLY.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <AppStoreButton />

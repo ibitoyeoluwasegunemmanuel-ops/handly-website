@@ -51,7 +51,7 @@ const sections = [
       },
       {
         q: 'How much can I earn?',
-        a: 'You set your own rates and keep what you earn minus a small platform commission. Top workers on HANDLY earn ₦150K+ per month.',
+        a: 'You set your own rates and keep what you earn minus a small platform commission. Your earnings depend on your skills, your prices, and how many jobs you take.',
       },
       {
         q: 'When do I get paid?',

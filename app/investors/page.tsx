@@ -19,7 +19,7 @@ export default function InvestorsPage() {
               The marketplace for Africa's services economy.
             </h1>
             <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl mb-10">
-              50K+ users. 45% month-over-month growth. A $100B addressable market with no dominant player — yet.
+              Live on iOS. An operational two-sided marketplace in a $100B addressable market with no dominant player — yet.
             </p>
             <Link
               href="/contact"
@@ -32,23 +32,24 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Traction */}
+      {/* Current status */}
       <section className="py-20 border-y border-gray-900/5 bg-gray-50/70">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-8">Current status</p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {[
-              { value: '50K+', label: 'Active users', sub: 'growing 45% MoM' },
-              { value: '₦480K', label: 'Monthly revenue', sub: 'and accelerating' },
-              { value: '300:1', label: 'LTV to CAC', sub: '$0.50 CAC · $150 LTV' },
-              { value: '10+', label: 'Nigerian states', sub: 'built to scale pan-African' },
-            ].map((m) => (
-              <div key={m.label}>
-                <p className="text-4xl font-bold text-gray-900 tracking-tight">{m.value}</p>
-                <p className="text-[15px] font-semibold text-gray-900 mt-2">{m.label}</p>
-                <p className="text-sm text-gray-500 mt-0.5">{m.sub}</p>
-              </div>
+              'Live on the iOS App Store',
+              'Android launch in progress',
+              'Product operational end-to-end',
+              'Expanding across Nigeria',
+              'Seeking strategic investors & partners',
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3">
+                <span className="w-5 h-5 rounded-full bg-handly-100 text-handly-700 flex items-center justify-center text-[11px] font-bold shrink-0 mt-0.5">✓</span>
+                <span className="text-[15px] font-medium text-gray-800">{item}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -104,8 +105,8 @@ export default function InvestorsPage() {
                 desc: 'Local payments, verification designed for African context, and a team that lives the problem daily.',
               },
               {
-                title: 'Unit economics that work',
-                desc: '$0.50 CAC against $150 LTV. A clear, modeled path to profitability within 18 months of Series A.',
+                title: 'Two products in one',
+                desc: 'Instant booking for urgent needs, marketplace bidding for planned work. Two demand engines, one supply base.',
               },
             ].map((item, idx) => (
               <div key={item.title} className="flex gap-6">
@@ -120,8 +121,38 @@ export default function InvestorsPage() {
         </div>
       </section>
 
-      {/* Rounds */}
+      {/* Roadmap */}
       <section className="py-28">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="max-w-2xl mb-16">
+            <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Roadmap</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
+              Where this goes.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+            {[
+              { phase: 'Phase 1', title: 'Scale across Nigeria', desc: 'Deepen supply and demand in every major state.' },
+              { phase: 'Phase 2', title: 'Expand across Africa', desc: 'Replicate the playbook in new markets.' },
+              { phase: 'Phase 3', title: 'AI matching', desc: 'Smarter dispatch, pricing, and quality prediction.' },
+              { phase: 'Phase 4', title: 'Business tools', desc: 'Management tools for workers and SMEs.' },
+              { phase: 'Phase 5', title: 'Pan-African marketplace', desc: 'The default way Africa hires local services.' },
+            ].map((item, idx) => (
+              <div key={item.phase}>
+                <p className="text-sm font-bold text-handly-600 mb-5">{String(idx + 1).padStart(2, '0')}</p>
+                <div className="h-px bg-gray-900/10 mb-7" />
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">{item.phase}</p>
+                <h3 className="text-lg font-bold text-gray-900 mb-2.5">{item.title}</h3>
+                <p className="text-[14px] text-gray-500 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Rounds */}
+      <section className="py-28 bg-gray-50/70">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">Funding</p>
@@ -155,7 +186,7 @@ export default function InvestorsPage() {
                 ],
               },
             ].map((r) => (
-              <div key={r.round} className="rounded-3xl border border-gray-900/10 p-10">
+              <div key={r.round} className="rounded-3xl bg-white border border-gray-900/10 p-10">
                 <div className="flex items-start justify-between mb-8">
                   <div>
                     <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-2">{r.round}</p>

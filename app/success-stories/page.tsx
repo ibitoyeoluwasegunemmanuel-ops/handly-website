@@ -83,6 +83,9 @@ export default function SuccessStoriesPage() {
             <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
               From first jobs to full teams — how workers and businesses across Nigeria are building on HANDLY.
             </p>
+            <p className="text-sm text-gray-400 mt-6">
+              Stories are illustrative of member journeys on the platform.
+            </p>
           </div>
         </div>
       </section>

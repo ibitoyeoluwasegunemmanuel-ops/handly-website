@@ -17,13 +17,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HANDLY | Trusted Help, One Tap Away",
-  description: "Book verified plumbers, electricians, cleaners, and more — instantly or by posting a job. HANDLY connects customers with trusted skilled workers across Nigeria.",
+  title: "Handly – Find Trusted Workers Near You",
+  description: "Book verified workers and artisans near you or post a job and receive offers from professionals across Nigeria.",
   keywords: "handyman, artisan, services marketplace, Nigeria, plumber, electrician, cleaner, hire workers, skilled work",
   authors: [{ name: "HANDLY" }],
   openGraph: {
-    title: "HANDLY - Work Worth Doing",
-    description: "Book verified skilled workers instantly or post a job and compare offers. Africa's trusted services marketplace, starting in Nigeria.",
+    title: "Handly – Find Trusted Workers Near You",
+    description: "Book verified workers and artisans near you or post a job and receive offers from professionals across Nigeria.",
     url: "https://handly.africa",
     type: "website",
     locale: "en_US",
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HANDLY - Work Worth Doing",
-    description: "Africa's premier talent marketplace",
+    title: "Handly – Find Trusted Workers Near You",
+    description: "Book verified workers near you or post a job and receive offers from professionals across Nigeria.",
     creator: "@handlyafrica",
     images: ["https://handly.africa/og-image.png"],
   },

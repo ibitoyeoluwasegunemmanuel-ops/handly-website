@@ -41,16 +41,16 @@ export default function BusinessesPage() {
 
             <div className="flex gap-14 mt-16 pt-10 border-t border-gray-900/5">
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">3.2K+</p>
-                <p className="text-sm text-gray-500 mt-1">Businesses listed</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">12</p>
+                <p className="text-sm text-gray-500 mt-1">Service categories</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">+180%</p>
-                <p className="text-sm text-gray-500 mt-1">Year-over-year growth</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">10+</p>
+                <p className="text-sm text-gray-500 mt-1">States across Nigeria</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">50K+</p>
-                <p className="text-sm text-gray-500 mt-1">Customers on the platform</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">100%</p>
+                <p className="text-sm text-gray-500 mt-1">Verified workers</p>
               </div>
             </div>
           </div>

@@ -63,6 +63,28 @@ export default function ContactPage() {
                   </div>
                 ))}
               </div>
+
+              {/* Social channels */}
+              <div className="mt-14 pt-10 border-t border-gray-900/5">
+                <p className="text-sm font-semibold text-gray-900 mb-4">Prefer chat? Find us on</p>
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { label: 'WhatsApp', href: process.env.NEXT_PUBLIC_WHATSAPP_LINK || '#' },
+                    { label: 'Telegram', href: process.env.NEXT_PUBLIC_TELEGRAM_LINK || '#' },
+                    { label: 'X / Twitter', href: process.env.NEXT_PUBLIC_TWITTER_LINK || '#' },
+                  ].map((s) => (
+                    <a
+                      key={s.label}
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-2.5 rounded-full border border-gray-200 text-sm font-semibold text-gray-700 hover:border-handly-600 hover:text-handly-700 transition-colors"
+                    >
+                      {s.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
 
             {/* Right: form */}

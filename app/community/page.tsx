@@ -81,9 +81,9 @@ export default function CommunityPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { value: '50K+', label: 'Community members' },
+              { value: 'Open', label: 'To all workers & customers' },
               { value: '10+', label: 'States across Nigeria' },
-              { value: '200+', label: 'Cities active' },
+              { value: '12', label: 'Service categories' },
               { value: 'Weekly', label: 'Events & workshops' },
             ].map((stat) => (
               <div key={stat.label}>

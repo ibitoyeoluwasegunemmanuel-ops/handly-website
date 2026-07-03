@@ -22,10 +22,10 @@ const columns = [
   {
     title: 'Resources',
     links: [
-      { href: '/blog', label: 'Blog' },
       { href: '/success-stories', label: 'Success Stories' },
       { href: '/community', label: 'Community' },
       { href: '/faq', label: 'FAQ' },
+      { href: 'https://apps.apple.com/us/app/handly-app/id6778122913', label: 'Download App' },
     ],
   },
 ];

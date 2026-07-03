@@ -40,7 +40,7 @@ export default function AboutPage() {
               So we built the marketplace we wished existed — designed for African realities. Identity verification because trust is everything. Transparent pricing because fairness compounds. Local payments because convenience matters.
             </p>
             <p className="text-gray-900 font-semibold">
-              Today, 50,000+ people use HANDLY to hire and earn. We're just getting started.
+              Today, HANDLY is live on the App Store and growing across Nigeria. We're just getting started.
             </p>
           </div>
         </div>
@@ -87,10 +87,10 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
-              { value: '50K+', label: 'Active users' },
-              { value: '10K+', label: 'Jobs completed' },
+              { value: 'Live', label: 'On the iOS App Store' },
+              { value: '12', label: 'Service categories' },
               { value: '10+', label: 'States in Nigeria' },
-              { value: '95%', label: 'Success rate' },
+              { value: '2', label: 'Ways to hire' },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>

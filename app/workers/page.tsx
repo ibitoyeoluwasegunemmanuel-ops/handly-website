@@ -4,7 +4,7 @@ import { ArrowRight, TrendingUp, Wallet, UserCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'For Workers – Earn on Your Terms | HANDLY',
-  description: 'Find work, build your reputation, and earn fair rates. Join 15K+ skilled workers earning on HANDLY.',
+  description: 'Find work, build your reputation, and earn fair rates. Join skilled workers earning on HANDLY across Nigeria.',
 };
 
 export default function WorkersPage() {
@@ -43,12 +43,12 @@ export default function WorkersPage() {
 
             <div className="flex gap-14 mt-16 pt-10 border-t border-gray-900/5">
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">15K+</p>
-                <p className="text-sm text-gray-500 mt-1">Active workers</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">Free</p>
+                <p className="text-sm text-gray-500 mt-1">To join & build a profile</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">₦50K+</p>
-                <p className="text-sm text-gray-500 mt-1">Avg. monthly earnings</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">You</p>
+                <p className="text-sm text-gray-500 mt-1">Set your own rates</p>
               </div>
               <div>
                 <p className="text-3xl font-bold text-gray-900 tracking-tight">Weekly</p>
@@ -136,7 +136,7 @@ export default function WorkersPage() {
                 Start earning today.
               </h2>
               <p className="text-lg text-handly-100/80 mb-10">
-                Join 15,000+ skilled workers building sustainable income on HANDLY.
+                Join skilled workers across Nigeria building sustainable income on HANDLY.
               </p>
               <a
                 href="https://apps.apple.com/us/app/handly-app/id6778122913"

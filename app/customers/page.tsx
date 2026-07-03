@@ -41,16 +41,16 @@ export default function CustomersPage() {
 
             <div className="flex gap-14 mt-16 pt-10 border-t border-gray-900/5">
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">12.5K+</p>
-                <p className="text-sm text-gray-500 mt-1">Jobs posted</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">Minutes</p>
+                <p className="text-sm text-gray-500 mt-1">To post a job</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">95%</p>
-                <p className="text-sm text-gray-500 mt-1">Completed successfully</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">Multiple</p>
+                <p className="text-sm text-gray-500 mt-1">Offers to compare</p>
               </div>
               <div>
-                <p className="text-3xl font-bold text-gray-900 tracking-tight">4.8★</p>
-                <p className="text-sm text-gray-500 mt-1">Average worker rating</p>
+                <p className="text-3xl font-bold text-gray-900 tracking-tight">100%</p>
+                <p className="text-sm text-gray-500 mt-1">Verified workers</p>
               </div>
             </div>
           </div>
