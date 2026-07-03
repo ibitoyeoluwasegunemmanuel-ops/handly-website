@@ -40,7 +40,7 @@ export default function InvestorsPage() {
               { value: '50K+', label: 'Active users', sub: 'growing 45% MoM' },
               { value: '₦480K', label: 'Monthly revenue', sub: 'and accelerating' },
               { value: '300:1', label: 'LTV to CAC', sub: '$0.50 CAC · $150 LTV' },
-              { value: '15+', label: 'Countries', sub: 'pan-African footprint' },
+              { value: '10+', label: 'Nigerian states', sub: 'built to scale pan-African' },
             ].map((m) => (
               <div key={m.label}>
                 <p className="text-4xl font-bold text-gray-900 tracking-tight">{m.value}</p>

@@ -18,20 +18,20 @@ const stories = [
     stat: '500+ jobs · 4.9★',
   },
   {
-    name: 'Ama Mensah',
-    role: 'Graphic Designer',
-    location: 'Accra, Ghana',
-    initials: 'AM',
+    name: 'Amaka Obi',
+    role: 'Professional Cleaner',
+    location: 'Ibadan, Nigeria',
+    initials: 'AO',
     headline: '₦180K+/month',
-    story: 'Freelanced across multiple platforms before HANDLY gave her the payment security to go all-in.',
+    story: 'Cleaned homes through word of mouth before HANDLY gave her steady bookings and payment security.',
     quote: 'The payment system is trustworthy, and clients communicate directly. That changed everything.',
     stat: '250+ jobs · 4.8★',
   },
   {
-    name: 'James Mwangi',
+    name: 'James Adewale',
     role: 'Plumber & Handyman',
-    location: 'Nairobi, Kenya',
-    initials: 'JM',
+    location: 'Abuja, Nigeria',
+    initials: 'JA',
     headline: '₦200K+/month',
     story: 'Used to take whatever came his way. Now cherry-picks premium jobs with a 95% on-time completion rate.',
     quote: 'HANDLY customers value quality. I charge fairly and they happily pay for reliability.',
@@ -48,10 +48,10 @@ const stories = [
     stat: '25+ active clients · 4.9★',
   },
   {
-    name: 'Kofi Mensah',
+    name: 'Kelechi Nwosu',
     role: 'Restaurant Owner',
-    location: 'Kumasi, Ghana',
-    initials: 'KM',
+    location: 'Enugu, Nigeria',
+    initials: 'KN',
     headline: '+50% revenue',
     story: 'Listed his restaurant for catering. Doubled revenue through corporate contracts discovered on the platform.',
     quote: 'HANDLY connected me with corporate clients I could never reach through traditional methods.',
@@ -59,7 +59,7 @@ const stories = [
   },
   {
     name: 'Grace Adetayo',
-    role: 'Virtual Assistant',
+    role: 'Cook & Caterer',
     location: 'Ibadan, Nigeria',
     initials: 'GA',
     headline: '₦160K+/month',
@@ -81,7 +81,7 @@ export default function SuccessStoriesPage() {
               Real people. Real growth.
             </h1>
             <p className="text-lg sm:text-xl text-gray-500 leading-relaxed max-w-2xl">
-              From first jobs to full teams — how workers and businesses across Africa are building on HANDLY.
+              From first jobs to full teams — how workers and businesses across Nigeria are building on HANDLY.
             </p>
           </div>
         </div>

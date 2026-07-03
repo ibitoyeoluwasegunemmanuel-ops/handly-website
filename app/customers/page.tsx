@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, Zap, BadgeCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'For Customers – Hire Trusted Workers | HANDLY',
-  description: 'Post jobs and hire verified workers across Africa. Fair prices, verified professionals, guaranteed quality.',
+  description: 'Post jobs and hire verified workers across Nigeria. Fair prices, verified professionals, guaranteed quality.',
 };
 
 export default function CustomersPage() {

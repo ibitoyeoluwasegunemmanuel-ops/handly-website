@@ -101,8 +101,8 @@ export default function Footer() {
         <div className="border-t border-gray-900/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">&copy; {currentYear} HANDLY. All rights reserved.</p>
           <div className="flex items-center gap-8">
-            <Link href="#" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">Privacy</Link>
-            <Link href="#" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">Terms</Link>
+            <Link href="/privacy" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">Privacy</Link>
+            <Link href="/terms" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">Terms</Link>
             <p className="text-sm text-gray-400">Built for Africa 🌍</p>
           </div>
         </div>

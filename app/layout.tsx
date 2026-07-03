@@ -17,13 +17,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "HANDLY | Africa's Premier Freelancer Marketplace",
-  description: "Hire Africa's best talent or sell your skills. HANDLY connects 50K+ freelancers with leading businesses across 15 countries. Secure payments. Instant matching. Real results.",
-  keywords: "freelance, talent marketplace, Africa, remote work, hiring, jobs, gig economy",
+  title: "HANDLY | Trusted Help, One Tap Away",
+  description: "Book verified plumbers, electricians, cleaners, and more — instantly or by posting a job. HANDLY connects customers with trusted skilled workers across Nigeria.",
+  keywords: "handyman, artisan, services marketplace, Nigeria, plumber, electrician, cleaner, hire workers, skilled work",
   authors: [{ name: "HANDLY" }],
   openGraph: {
     title: "HANDLY - Work Worth Doing",
-    description: "Africa's premier talent marketplace. 50K+ freelancers. 15 countries. Secure payments. Instant matching.",
+    description: "Book verified skilled workers instantly or post a job and compare offers. Africa's trusted services marketplace, starting in Nigeria.",
     url: "https://handly.africa",
     type: "website",
     locale: "en_US",

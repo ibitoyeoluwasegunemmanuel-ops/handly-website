@@ -26,7 +26,7 @@ export default function CommunityPage() {
     {
       icon: <Users size={20} className="text-handly-600" />,
       title: 'Worker Meetups',
-      desc: 'In-person events in Lagos, Abuja, and Accra. Learn, network, grow.',
+      desc: 'In-person events in Lagos, Abuja, and Port Harcourt. Learn, network, grow.',
       href: '/contact',
       cta: 'Get notified',
     },
@@ -82,7 +82,7 @@ export default function CommunityPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
             {[
               { value: '50K+', label: 'Community members' },
-              { value: '15+', label: 'Countries represented' },
+              { value: '10+', label: 'States across Nigeria' },
               { value: '200+', label: 'Cities active' },
               { value: 'Weekly', label: 'Events & workshops' },
             ].map((stat) => (

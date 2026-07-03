@@ -80,7 +80,7 @@ function PhoneMockup() {
             <div className="space-y-2.5">
               {[
                 { initials: 'TA', name: 'Tunde Adeyemi', role: 'Electrician', rating: '4.9', price: '₦8,500' },
-                { initials: 'AM', name: 'Ama Mensah', role: 'Cleaner', rating: '4.8', price: '₦6,000' },
+                { initials: 'AO', name: 'Amaka Obi', role: 'Cleaner', rating: '4.8', price: '₦6,000' },
               ].map((w) => (
                 <div key={w.name} className="flex items-center gap-3 bg-white rounded-2xl p-3 shadow-sm border border-gray-100">
                   <div className="w-10 h-10 rounded-full bg-handly-50 flex items-center justify-center shrink-0">
@@ -192,7 +192,7 @@ export default function Home() {
               { value: '15K+', label: 'Verified workers' },
               { value: '3.2K+', label: 'Businesses listed' },
               { value: '95%', label: 'Jobs completed successfully' },
-              { value: '15+', label: 'African countries' },
+              { value: '10+', label: 'States across Nigeria' },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-4xl font-bold text-gray-900 tracking-tight">{stat.value}</p>
@@ -218,12 +218,18 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: '🔧', label: 'Home Repair' },
+              { icon: '🔧', label: 'Plumbing' },
+              { icon: '⚡', label: 'Electrical' },
               { icon: '🧹', label: 'Cleaning' },
-              { icon: '💻', label: 'Tech & Design' },
-              { icon: '🚗', label: 'Transport' },
-              { icon: '💇', label: 'Beauty' },
-              { icon: '📸', label: 'Photography' },
+              { icon: '🛠️', label: 'Repairs' },
+              { icon: '🎨', label: 'Painting' },
+              { icon: '🪚', label: 'Carpentry' },
+              { icon: '🚗', label: 'Driving' },
+              { icon: '📦', label: 'Delivery' },
+              { icon: '🌿', label: 'Gardening' },
+              { icon: '🛡️', label: 'Security' },
+              { icon: '🍳', label: 'Cooking' },
+              { icon: '🧺', label: 'Laundry' },
             ].map((service) => (
               <div
                 key={service.label}
@@ -242,16 +248,40 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold text-handly-600 uppercase tracking-widest mb-4">How it works</p>
-            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">
-              From request to done, in three steps.
+            <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight mb-5">
+              Two ways to hire. Both effortless.
             </h2>
+            <p className="text-lg text-gray-500 leading-relaxed">
+              Need someone now? Book instantly. Want to compare offers? Post a job and let workers come to you.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+            <div className="rounded-3xl bg-white border border-gray-900/10 p-10">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-handly-50 text-handly-700 mb-6">
+                ⚡ Book Now
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Instant assign</h3>
+              <p className="text-[15px] text-gray-500 leading-relaxed">
+                Pick a category, describe the task, and get matched with an available verified worker near you — right away.
+              </p>
+            </div>
+            <div className="rounded-3xl bg-white border border-gray-900/10 p-10">
+              <div className="inline-flex items-center gap-2 text-xs font-semibold px-3.5 py-1.5 rounded-full bg-handly-50 text-handly-700 mb-6">
+                🏪 Post a Job
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Workers apply</h3>
+              <p className="text-[15px] text-gray-500 leading-relaxed">
+                Post your job with a budget and photos. Verified workers apply, you compare ratings and prices, and choose the best.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
             {[
-              { num: '01', title: 'Post or browse', desc: 'Describe what you need — or browse top-rated professionals near you.' },
-              { num: '02', title: 'Compare & connect', desc: 'Review verified profiles, ratings, and prices. Chat before you commit.' },
-              { num: '03', title: 'Get it done', desc: 'Work gets completed, payment is handled, and both sides leave a rating.' },
+              { num: '01', title: 'Book or post', desc: 'Get matched instantly, or post a job with photos and your budget.' },
+              { num: '02', title: 'Chat & agree', desc: 'Message workers in the app, compare ratings and prices, agree on terms.' },
+              { num: '03', title: 'Done & rated', desc: 'Work gets completed, payment is handled, and both sides leave a rating.' },
             ].map((step) => (
               <div key={step.num}>
                 <p className="text-sm font-bold text-handly-600 mb-5">{step.num}</p>
@@ -330,8 +360,8 @@ export default function Home() {
               },
               {
                 quote: 'The verification gives me real confidence. Every person I’ve hired through HANDLY has been reliable.',
-                author: 'Sarah Amoah',
-                role: 'Operations Manager, Accra',
+                author: 'Sarah Adebayo',
+                role: 'Operations Manager, Port Harcourt',
                 initials: 'SA',
               },
             ].map((t) => (

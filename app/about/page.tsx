@@ -89,7 +89,7 @@ export default function AboutPage() {
             {[
               { value: '50K+', label: 'Active users' },
               { value: '10K+', label: 'Jobs completed' },
-              { value: '15+', label: 'Countries' },
+              { value: '10+', label: 'States in Nigeria' },
               { value: '95%', label: 'Success rate' },
             ].map((stat) => (
               <div key={stat.label}>
